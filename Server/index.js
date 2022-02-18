@@ -33,7 +33,7 @@ app.post('/upload', (req, res) => {
   
     const file = req.files.file;
   console.log(file)
-    file.mv(`/Users/sgs/Downloads/WorkSpace/Projects/MyITreturn/client/public/uploads/${file.name}`, err => {
+    file.mv(`/Users/sgs/Downloads/WorkSpace/Projects/MyITreturn/server/uploads/${file.name}`, err => {
       if (err) {
         console.error(err);
         return res.status(500).send(err);

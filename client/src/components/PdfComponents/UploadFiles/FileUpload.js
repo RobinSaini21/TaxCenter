@@ -4,9 +4,15 @@ import Progress from './Progress';
 import instance from '../../../http/Instance';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
+import { useSelector } from 'react-redux';
+import { pdfsuccess } from '../../../Store/actions/PdfActions';
+import { useDispatch } from 'react-redux';
 
  const FileUpload = () => {
 
+  const userLoggedIn = useSelector((state) => state.userLoggedIn);
+  console.log("fileuplaod",userLoggedIn)
+  const dispatch = useDispatch()
   const Navigate = useNavigate() 
   const [file, setFile] = useState('');
   const [filename, setFilename] = useState('Choose File');
@@ -39,7 +45,10 @@ import { useNavigate } from 'react-router';
         }
     
       },
-Navigate("/salary")
+
+    
+
+
       );
       
       // Clear percentage
@@ -58,6 +67,8 @@ Navigate("/salary")
       }
       setUploadPercentage(0)
     }
+    dispatch(pdfsuccess())
+    Navigate('/login')
   };
 
   return (

@@ -27,7 +27,7 @@ export default function UploadPdf() {
 
   const handleSubmit = async e => {
     e.preventDefault();
-     navigate("/salary")
+  
     //  uploadFile(file)
     console.log(file.name)
 const fileName = file.name;

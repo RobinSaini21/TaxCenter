@@ -17,7 +17,7 @@ import {
         authError: '',
       };
       
-      const authReducer = (state = initialState, action) => {
+      const authRsdeducer = (state = initialState, action) => {
         switch (action.type) {
           case START_LOADER:
             return { ...state, loading: true };

@@ -23,7 +23,7 @@ function Section_1() {
         </div>
         <div className="btn_new" >
           <div className="btn_vio">
-            <Link to="/register">
+            <Link to="/login">
             <button className="btn_blk" >Quick File Return</button>
             </Link>
             <br/>
@@ -43,7 +43,7 @@ function Section_1() {
            
           </div>
           <div className="btn_vio">
-          <Link to="/register">
+          <Link to="/login">
             <button className="btn_grn" >Easy Self Filing</button>
             </Link>
             <br/>

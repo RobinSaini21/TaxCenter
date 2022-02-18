@@ -16,17 +16,18 @@ import { useSelector } from "react-redux";
 import Salary from "./components/PdfComponents/Salary";
 import Interest from "./components/PdfComponents/Interest";
 import Hp from "./components/PdfComponents/Hp";
-
+import { useDispatch } from "react-redux";
+import { logoutSuccess } from "./Store/actions/AuthActions";
 
 
 
 function App() {
-  
-  
+
 
 return (
     
     <div className="App">
+
        <Navbar_2/> 
       <AllRoutes/>  
 

@@ -17,7 +17,7 @@ const initialState = {
 
 
 
-const authReducer = (state = [initialState],action) => {
+const authReducer = (state = initialState,action) => {
 switch (action.type){
     case REGISTER_SUCCESS:
         return {
@@ -41,6 +41,7 @@ switch (action.type){
             auth_token: null,
             userDetails: null
         }
+        default: return state
  
     }
 

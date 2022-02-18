@@ -7,16 +7,16 @@ import persistReducer from "redux-persist/es/persistReducer";
 import { composeWithDevTools } from "redux-devtools-extension";
 import authReducer from "./Store/Reducer";
 import { useSelector } from "react-redux";
+import pdfReducer from "./Store/reducers/PdfReducer";
 
 
 // import thunk from "redux-thunk";
 // import { applyMiddleware } from "redux";
 
-// const rootReducer = combineReducers({
-// // api: apiReducer,
-// // products: fetchProducts,
-// reducer: 
-// })
+const rootReducer = combineReducers({
+authReducer,
+pdfReducer
+})
 
 
 
@@ -25,7 +25,7 @@ const persistConfig = {
     storage
 }
 
- const persistedReducer = persistReducer(persistConfig, authReducer)
+ const persistedReducer = persistReducer(persistConfig, rootReducer)
 const store = createStore(
     persistedReducer,
 // rootReducer,

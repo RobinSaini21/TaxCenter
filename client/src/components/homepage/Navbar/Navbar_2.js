@@ -6,28 +6,37 @@ import Logout from '../../login/logout';
 import "./Navbar.css";
 import { useDispatch } from 'react-redux';
 import { logoutSuccess } from '../../../Store/actions/AuthActions';
+import store from '../../../Store';
 
 
 function Navbar_2() {
+
 const dispatch = useDispatch()
-  const userLoggedIn = useSelector((state) => state.userLoggedIn)
+  const userLoggedIn = useSelector(store => store.userLoggedIn)
   console.log("Navbar", userLoggedIn)
 
 const Logout_button = () =>{
 
  return(
   <Link to={"/login"}>
-      <button className='nav_btn' >SIGN IN</button>
+      <button className='nav_btn' >LOGIN</button>
  </Link>
  )
 }
 const Login_button = () =>{
+  const handleSubmit = () =>{
+    dispatch(logoutSuccess())
+  }
+
   return(
     <Link to={'/'}>
-   <button className='nav_btn' onClick={dispatch(logoutSuccess)} >SIGN OUT</button>
+   {/* <button className='nav_btn' onClick={} >LOG OUT</button> */}
+   <button className='nav_btn' onClick={handleSubmit} >LOGOUT</button>
   </Link>
   )
 }
+
+
 
   return (
     
@@ -66,11 +75,11 @@ const Login_button = () =>{
           <a className="nav_header_link nav-link" href="#" style={{color: "white"}}>HELP</a>
         </li>
         <li className="nav-item">
-        {userLoggedIn === undefined && true? (
-       <Logout_button/>
-        ) : (
-        <Login_button/>
-        )}{" "}
+        
+        {userLoggedIn? 
+         <Login_button/>  : <Logout_button/>
+     
+        }
  
           
         </li>
@@ -81,7 +90,9 @@ const Login_button = () =>{
       </form> */}
     </div>
   </div>
+ 
 </nav>
+
     </>
   );
 }
