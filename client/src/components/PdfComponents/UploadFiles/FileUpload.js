@@ -10,8 +10,8 @@ import { useDispatch } from 'react-redux';
 
  const FileUpload = () => {
 
-  const userLoggedIn = useSelector((state) => state.userLoggedIn);
-  console.log("fileuplaod",userLoggedIn)
+  // const userLoggedIn = useSelector((state) => state.userLoggedIn);
+  // console.log("fileuplaod",userLoggedIn)
   const dispatch = useDispatch()
   const Navigate = useNavigate() 
   const [file, setFile] = useState('');

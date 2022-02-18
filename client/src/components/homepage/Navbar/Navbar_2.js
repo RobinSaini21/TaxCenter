@@ -12,7 +12,7 @@ import store from '../../../Store';
 function Navbar_2() {
 
 const dispatch = useDispatch()
-  const userLoggedIn = useSelector(store => store.userLoggedIn)
+  const userLoggedIn = useSelector(store => store.auth.userLoggedIn)
   console.log("Navbar", userLoggedIn)
 
 const Logout_button = () =>{
@@ -68,26 +68,20 @@ const Login_button = () =>{
             <li><a className="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
-        {/* <li className="nav-item">
-          <a className="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li> */}
+      
          <li className="nav-item">
           <a className="nav_header_link nav-link" href="#" style={{color: "white"}}>HELP</a>
         </li>
         <li className="nav-item">
         
         {userLoggedIn? 
-         <Login_button/>  : <Logout_button/>
-     
+         <Login_button/>:<Logout_button/>
         }
+      
  
           
         </li>
       </ul>
-      {/* <form className="d-flex">
-        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button className="btn btn-outline-success" type="submit">Search</button>
-      </form> */}
     </div>
   </div>
  

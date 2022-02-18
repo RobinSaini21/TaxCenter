@@ -4,6 +4,8 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const AllRoutes = require('./AllExpressRoutes/AllExpressRoutes')
 const fileupload = require('express-fileupload')
+const session = require('express-session');
+const { cookie } = require('express-validator');
 
 
 
@@ -12,7 +14,24 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: true }));
 app.use(cors());
-// 
+app.set('trust proxy', 1)
+app.use(session({
+  secret: 'secret',
+  saveUninitialized: true,
+  resave: true,
+  cookie: {
+    maxAge: 24 * 60 * 60 * 365 * 1000
+  }
+}))
+app.get('/', (req, res) => {
+  if (req.session.views) {
+    req.session.views++;
+  }
+  else {
+    req.session.views = 1;
+  }
+  res.send(`${req.session.views} views`);
+})
 app.use(AllRoutes);
   
 
@@ -42,6 +61,32 @@ app.post('/upload', (req, res) => {
       res.json({ fileName: file.name, filePath: `/uploads/${file.name}` });
     });
   })
+
+  app.get("/auth", (req, res) => {
+ 
+
+    const token = req.body.token;
+   
+  console.log("token",token)
+    if (token) {
+   
+    
+      const decode = jwt.verify(token,"randomString");
+   
+ 
+      res.json({
+        login: true,
+        data: decode,
+      });
+    } else {
+   
+  
+      res.json({
+        login: false,
+        data: "error",
+      });
+    }
+  });
 
 app.get('/', (req, res) => {
    return  res.send("you are in user singup")
