@@ -1,8 +1,4 @@
-
-import React, { useEffect } from "react";
 import { Formik, Field } from "formik";
-import * as Yup from "yup";
-import { Input, Link } from "@material-ui/core";
 import MyGoolgeLogin from "../GoogleLogin/GoolgeLogin";
 import Facebook from "../GoogleLogin/FacebookLogin";
 import { apiregister } from "../../services/AuthApi";
@@ -10,13 +6,24 @@ import { useNavigate } from "react-router";
 import "./Register.css";
 import { registerSuccess } from "../../Store/actions/AuthActions";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import store from "../../Store";
+import { useEffect } from "react";
 
 
 const Register = () => {
   const dispatch = useDispatch()
   const Navigate = useNavigate();
-  const token = localStorage.getItem("reg_token")
-  
+
+  const userLoggedIn = useSelector((store) =>store.auth.userLoggedIn)
+  const auth = useSelector((store) =>store.auth.auth_token)
+  console.log("REGISTER =>", userLoggedIn)
+useEffect(()=>{
+    if(userLoggedIn){
+  Navigate(`/basicuser/${auth}`)
+    }
+})
+   
 
      
    
@@ -71,12 +78,13 @@ const Register = () => {
     
         const data = {email,auth_token}
         
-        console.log('auth_token' ,email, auth_token)
+        console.log('auth_token' ,data)
    
       dispatch(registerSuccess(data))
 
-  Navigate("/basicuser")
 
+
+ 
    
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));

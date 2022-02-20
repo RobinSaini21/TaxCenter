@@ -23,6 +23,7 @@ function AllRoutes() {
 // const {token} = useSelector((state) => authReducer)
 const token = localStorage.getItem("User_toker")
 // console.log(token)
+
 const ProtectedRoutes = ({ children }) =>{
   return token ? children : <Navigate to="/login"  />
 }
@@ -67,7 +68,7 @@ element: <Logout/>
   element: <Interest/>
       },
     {
-        path: "/basicuser",
+        path: "/basicuser/:id",
         element: <ProtectedRoutes><BasicDetailForm/></ProtectedRoutes>,
         children:[
         ,

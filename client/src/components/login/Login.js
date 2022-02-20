@@ -9,12 +9,26 @@ import MyGoolgeLogin from "../GoogleLogin/GoolgeLogin";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { pdfclear } from "../../Store/actions/PdfActions";
+import { useEffect } from "react";
 
 export default function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const pdf = useSelector((store) => store.pdf.userPdf)
-  console.log("LOGGIN =>" ,pdf)
+   const userLoggedIn = useSelector((store) =>store.auth.userLoggedIn)
+   const auth = useSelector((store) =>store.auth.auth_token)
+   console.log('auth token' ,auth)
+
+  // console.log("LOGGIN =>" ,pdf)
+  useEffect(()=>{
+     if (pdf === true && userLoggedIn) {
+              navigate("/salary") 
+              dispatch(pdfclear())
+            } else if(userLoggedIn === null){ navigate("/register");}
+             else if(userLoggedIn){
+              navigate(`/basicuser/${auth}`);
+             }
+  })
 
   const intialData = {
     email: "",
@@ -53,13 +67,7 @@ export default function Login() {
           
             const Rdata = { email, auth_token };
 
-            if (pdf === true && auth_token) {
-              navigate("/salary") 
-              dispatch(pdfclear())
-            } else if(auth_token === null){ navigate("/register");}
-             else if(auth_token){
-              navigate("/basicuser");
-             }
+           
             
             
             
