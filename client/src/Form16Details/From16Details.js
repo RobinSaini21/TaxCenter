@@ -204,16 +204,16 @@ const From16Details = () => {
           const totaldeduciton = values.totaldeduciton;
           const reliefus89 = values.reliefus89;
           const totaltaxdeducted = values.totaltaxdeducted;
-          
+
           const form16Data = {
-              pan,
-              finacialyear,
-              regimetype,
-              tanofemploye,
-              organisation,
-              typeoforganisation,
-              salarysec171,
-              salarysec172,
+            pan,
+            finacialyear,
+            regimetype,
+            tanofemploye,
+            organisation,
+            typeoforganisation,
+            salarysec171,
+            salarysec172,
             lieusalarysec173,
             grossalary,
             allowancessectio,
@@ -239,8 +239,8 @@ const From16Details = () => {
             tta80,
             totaldeduciton,
             reliefus89,
-            totaltaxdeducted
-          }
+            totaltaxdeducted,
+          };
 
           //   axios.post("http://localhost:4000/userbasicdetails", basic).then((res) => {
           //      console.log(res)
@@ -253,12 +253,13 @@ const From16Details = () => {
           // Navigate("/product_launchboard")
 
           //   });
-          console.log(form16Data)
-form16api(form16Data)
+          console.log(form16Data);
+          form16api(form16Data);
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
             setSubmitting(false);
           }, 400);
+       Navigate("/form16check")
         }}
       >
         {({
@@ -341,21 +342,28 @@ form16api(form16Data)
                 {/* <span style={{color:"red" }} >{errors.middlename}</span> */}
                 <span style={{ color: "red" }}>{errors.tanofemployer}</span>
               </div>
+         
               <div class="form-group">
-                <input
-                  type="text"
-                  class="form-control item"
-                  id="organisation"
-                  type="Last Name"
-                  placeholder="Name of Organisation/Company"
+                <select
+                  className="sSelect w-100"
                   name="organisation"
-                  // value={values.pan}
+                  id="organisation"
                   value={values.organisation}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                />
-                {/* <span style={{color:"red" }} >{errors.lastname}</span> */}
-                <span style={{ color: "red" }}>{errors.organisation}</span>
+                >
+                  <option value="" class="form-control item" disabled>
+                    --Please choose an option--
+                  </option>
+                  <option value="Private - Other than Goverment and PSU Organisation">Private - Other than Goverment and PSU Organisation</option>
+                  <option value="State Goverment">State Goverment</option>
+                  <option value="Central Goverment">Central Goverment</option>
+                  <option value="Public Sector Unit">Public Sector Unit</option>
+                  <option value="Pensioners">Pensioners</option>
+                  <option value="Not Applicable">Not Applicable</option>
+                </select>
+
+                <span style={{ color: "red" }}>{errors.regimetype}</span>
               </div>
 
               <div class="form-group">

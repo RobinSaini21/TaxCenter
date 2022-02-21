@@ -169,7 +169,7 @@ useEffect(()=>{
                         </label>{" "}
                         <input
                           class="mb-4"
-                          type="text"
+                          type="password"
                           id="password"
                           name="password"
                           value={values.password}

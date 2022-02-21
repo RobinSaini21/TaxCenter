@@ -94,10 +94,6 @@ app.post('/upload', (req, res) => {
 //    return  res.send("you are in user singup")
 //   })
 
-
-
-
-
 const form16schema = require('./MongodbSchema/Form16Schema')
 
 
@@ -182,6 +178,8 @@ app.post("/form16data",(req,res)=>{
         }
     })
 }) 
+
+
 
 
 app.listen(4000,()=>{

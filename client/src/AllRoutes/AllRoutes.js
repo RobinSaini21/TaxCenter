@@ -17,7 +17,8 @@ import Hp from "../components/PdfComponents/Hp";
 import Interest from "../components/PdfComponents/Interest";
 import Salary from "../components/PdfComponents/Salary";
 import Logout from "../components/login/logout";
-
+import From16Details from "../Form16Details/From16Details";
+import Form16check from "../Form16Details/Form16check";
 
 function AllRoutes() {
 // const {token} = useSelector((state) => authReducer)
@@ -39,6 +40,10 @@ const ProtectedRoutes = ({ children }) =>{
       element: <Register />,
     },
     {
+      path: "/form16check",
+element: <Form16check/>
+    },
+    {
       path: "/login",
       element: <Login />,
     },
@@ -48,7 +53,7 @@ element: <Logout/>
     },
    
     {
-      path: "/product_launchboard",
+      path: "/product_launchboard/:id",
       element: <ProtectedRoutes><Allcards/></ProtectedRoutes>,
     },
       {
@@ -66,6 +71,10 @@ element: <Logout/>
       {
   path: "/interest",
   element: <Interest/>
+      },
+      {
+path: "/form16/:id",
+element:<From16Details/>
       },
     {
         path: "/basicuser/:id",

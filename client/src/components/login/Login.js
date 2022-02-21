@@ -22,7 +22,7 @@ export default function Login() {
   // console.log("LOGGIN =>" ,pdf)
   useEffect(() => {
      if (pdf === true && userLoggedIn) {
-              navigate(`/salary/${auth}`) 
+              navigate(`/form16/${auth}`) 
               dispatch(pdfclear())
             } else if(userLoggedIn === null){ navigate("/register");}
              else if(userLoggedIn){

@@ -6,8 +6,10 @@ import FormCalendar from "../Calendar/Calender";
 import axios from "axios";
 import { Formik } from "formik";
 import { useNavigate } from "react-router";
+import { useSelector } from "react-redux";
 
 function BasicDetailForm() {
+  const auth = useSelector((store) =>store.auth.auth_token)
   const Navigate = useNavigate()
   const intialData = {
     pan: "",
@@ -185,7 +187,7 @@ function BasicDetailForm() {
        console.log(token)
        localStorage.setItem("User_toker",token)
 
-  Navigate("/product_launchboard")
+  Navigate(`/product_launchboard/${auth}`)
 
 
     }); 

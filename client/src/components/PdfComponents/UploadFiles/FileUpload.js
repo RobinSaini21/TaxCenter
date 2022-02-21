@@ -9,9 +9,10 @@ import { pdfsuccess } from '../../../Store/actions/PdfActions';
 import { useDispatch } from 'react-redux';
 
  const FileUpload = () => {
-
+  const userLoggedIn = useSelector((store) =>store.auth.userLoggedIn)
   // const userLoggedIn = useSelector((state) => state.userLoggedIn);
   // console.log("fileuplaod",userLoggedIn)
+  const auth = useSelector((store) =>store.auth.auth_token)
   const dispatch = useDispatch()
   const Navigate = useNavigate() 
   const [file, setFile] = useState('');
@@ -68,9 +69,15 @@ import { useDispatch } from 'react-redux';
       setUploadPercentage(0)
     }
     dispatch(pdfsuccess())
-    Navigate('/login')
-  };
+  if(userLoggedIn){
 
+    Navigate(`/form16/${auth}`)
+   
+  } else{
+ Navigate("/login")
+  }
+  };
+ 
   return (
     <Fragment>
       {message ? <Message msg={message} /> : null}
