@@ -60,7 +60,7 @@ element: <Logout/>
   element: <Hp/>
       },
       {
-  path: "/salary",
+  path: "/salary/:id",
   element: <Salary/>
       },
       {

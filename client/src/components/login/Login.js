@@ -20,9 +20,9 @@ export default function Login() {
    console.log('auth token' ,auth)
 
   // console.log("LOGGIN =>" ,pdf)
-  useEffect(()=>{
+  useEffect(() => {
      if (pdf === true && userLoggedIn) {
-              navigate("/salary") 
+              navigate(`/salary/${auth}`) 
               dispatch(pdfclear())
             } else if(userLoggedIn === null){ navigate("/register");}
              else if(userLoggedIn){

@@ -80,3 +80,13 @@ export const salaryapi = async (data) => {
       return null;
     }
   };
+
+
+  export const form16api = async (data) => {
+    try {
+      const res = await instance.post("/form16data", data);
+      console.log(res);
+    } catch (err) {
+      return null;
+    }
+  };

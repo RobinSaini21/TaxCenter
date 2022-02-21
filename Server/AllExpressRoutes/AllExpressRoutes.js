@@ -8,6 +8,7 @@ const Login = require('../RegisterUpandLogin/Login');
 const Google = require('../SocialLogin/GoogleLogin');
 const BasicDetailForm = require('../Basicdetail/Basicdetails');
 const files = require('../16Documents/16files');
+const form16 = require('../16Documents/16files')
 
 router.use(Salary);
 router.use(Interest);
@@ -17,5 +18,6 @@ router.use(Login);
 router.use(Google);
 router.use(BasicDetailForm);
 router.use(files)
+router.use(form16)
 
 module.exports = router
