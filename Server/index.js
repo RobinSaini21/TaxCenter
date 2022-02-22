@@ -6,7 +6,10 @@ const AllRoutes = require('./AllExpressRoutes/AllExpressRoutes')
 const fileupload = require('express-fileupload')
 const session = require('express-session');
 const { cookie } = require('express-validator');
-
+const fs = require('fs')
+const pdfpasre = require('pdf-parse')
+const readline = require('readline')
+ const rl = readline.createInterface(process.stdin,process.stdout)
 
 
 
@@ -56,43 +59,39 @@ app.post('/upload', (req, res) => {
       if (err) {
         console.error(err);
         return res.status(500).send(err);
-      }
-  
-      res.json({ fileName: file.name, filePath: `/uploads/${file.name}` });
+      } 
+   
+      const pdffile = fs.readFileSync(`/Users/sgs/Downloads/WorkSpace/Projects/MyITreturn/server/uploads/${file.name}`)
+      pdfpasre(pdffile).then(function(data){
+       console.log(data.text)
+       const interface = readline.createInterface({
+         input: fs.createReadStream(`/Users/sgs/Downloads/WorkSpace/Projects/MyITreturn/server/uploads/${file.name}`)
+       })
+       var lineno = 0;
+       const linedata = data.text
+       
+       interface.on('line',() =>{
+        lineno++;
+        console.log()
+        let linearr = Array('Line number ' + lineno + ':' + data)
+        // console.log(linearr[90])
+        // console.log(linearr[0])
+        // console.log(lineno)
+        // console.log(lineno[90])
+       })
+     
+        res.json({ fileName: file.name, filePath: `/uploads/${file.name}` , msg: "File is uploaded", data: data.text});
+          })
+       
+       
     });
   })
 
-
-
-//   app.get("/auth", (req, res) => {
+ 
+ 
  
 
-//     const token = req.body.token;
-   
-//   console.log("token",token)
-//     if (token) {
-   
-    
-//       const decode = jwt.verify(token,"randomString");
-   
- 
-//       res.json({
-//         login: true,
-//         data: decode,
-//       });
-//     } else {
-   
-  
-//       res.json({
-//         login: false,
-//         data: "error",
-//       });
-//     }
-//   });
 
-// app.get('/', (req, res) => {
-//    return  res.send("you are in user singup")
-//   })
 
 const form16schema = require('./MongodbSchema/Form16Schema')
 

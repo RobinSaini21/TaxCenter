@@ -26,6 +26,7 @@
     "mongoose": "^6.1.7",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.15",
+    "pdf-parse": "^1.1.1",
     "upload-file": "^1.2.0"
   }
 }

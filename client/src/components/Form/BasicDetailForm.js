@@ -1,16 +1,15 @@
-import React from "react";
-import { Form, Button } from "react-bootstrap";
-import { useState } from "react";
 import "./BasicDetailForm.css";
-import FormCalendar from "../Calendar/Calender";
 import axios from "axios";
 import { Formik } from "formik";
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
+import { basicsuccsess } from "../../Store/actions/PdfActions";
+import { useDispatch } from "react-redux";
 
 function BasicDetailForm() {
   const auth = useSelector((store) =>store.auth.auth_token)
   const Navigate = useNavigate()
+  const dispatch = useDispatch()
   const intialData = {
     pan: "",
     email: "",
@@ -26,16 +25,16 @@ function BasicDetailForm() {
   const basicRegistrationSchema = (values) => {
     const errors = {};
     if (!values.pan) {
-      //  document.getElementById("pan").style.borderColor = "red"
+    
       errors.pan = "Required";
     } else if (
-      // !/^[A-Z0-9._%+-]+[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+     
       values.pan.length > 10
     ) {
       errors.pan = "Invalid Pan Card Number Format";
     }
     if (!values.email) {
-      // document.getElementById("email").style.borderColor = "red"
+     
       errors.email = "Required";
     } else if (
       !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
@@ -43,34 +42,34 @@ function BasicDetailForm() {
       errors.email = "Invalid email address";
     }
     if (!values.firstname) {
-      // document.getElementById("firstname").style.borderColor = "red"
+      
       errors.firstname = "Required";
-      // document.getElementById("password").style.borderColor = "red"
+     
     }
     else if(values.firstname.length  < 3){
     
       errors.firstname = "firstname must be 3 characters or more"
     }
     if (!values.middlename) {
-      // document.getElementById("middlename").style.borderColor = "red"
+     
       errors.middlename = "Required";
-      // document.getElementById("password").style.borderColor = "red"
+     
     }
     else if(values.middlename.length  < 3){
     
       errors.firstname = "middlename must be 3 characters or more"
     }
     if (!values.lastname) {
-      // document.getElementById("lastname").style.borderColor = "red"
+   
       errors.lastname = "Required";
        
     }
     else if(values.lastname.length  < 3){
-      // document.getElementById("lastname").style.borderColor = "red"
+  
       errors.lastname = "lastname must be 3 characters or more"
     }
     if (!values.fathername) {
-      // document.getElementById("fathername").style.borderColor = "red"
+    
       errors.fathername = "Required";
       
     }
@@ -81,86 +80,34 @@ function BasicDetailForm() {
     if (!values.aadharnum) {
     
       errors.aadharnum = "Required";
-      // document.getElementById("aadharnum").style.borderColor = "red"
+    
     }
     else if(values.aadharnum.length  <= 12){
     
       errors.aadharnum = "Aadhar number must be 3 characters or more"
     }
     if (!values.mobilenumber) {
-    //  document.getElementById("mobilenum").style.borderColor = "red"
+
       errors.mobilenumber = "Required";
-    //  document.getElementById("password").style.borderColor = "red"
+    
     }
     else if(values.mobilenumber.length  > 10){
     
       errors.mobilenumber = "Aadhar number must be 3 characters or more"
     }
     if (!values.gender) {
-      // document.getElementById("mobilenum").style.borderColor = "red"
+     
        errors.gender = "Please Select One";
-        // document.getElementById("gender").style.borderColor = "red"
+   
      }
      if(!values.bday){
        errors.bday = "Select Your Birthday"
-      //  document.getElementById("bday").style.borderColor = "red"
-     }
-    // else if(values.password  != strongRegex ){
-    //   errors.password = "Password is not strong enough"
-    // }
-  //  else if(!/\d/.test(values.password)){
-  //    errors.password = "strong password"
-  //  }
-  //  if(values.confirm_password != values.password){
    
-  //    errors.confirm_password = "password is not matching"
-  //    document.getElementById("password_confirm").style.borderColor = "red"
-
-  //  }
+     }
+  
     return errors;
   }
-  // console.log(intialData)
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setUser({
-  //     ...user, 
-  //     [name]: value,
-  //   });
-  // // };
-  // const onSubmitHandler = (e) => {
-  //   e.preventDefault();
- 
-  //    store.dispatch({
-  //      type: "ADD_DETAILS",
-  //      payload: { 
-  //        email: values.email,
-  //        password: values.password,
-  //      },
-  //    });
 
-
-
-// const Email = user.email;
-// const Password = user.password
-//      const ruser = {Email, Password }  
-//      apiregister(user)
-    //  if (Email && Password) {
-    //    axios.post(process.env.REACT_APP_REGISTER_API_URL,ruser)
-    //    //`${process.env.REACT_APP_REGISTER_API_URL}`,
-    //      .then((res) => console.log(res));
-    //  } else {
-    //    alert("invalid input");
-    //  }
-  // };
-
- 
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setUser({
-  //     ...user, 
-  //     [name]: value,
-  //   });
-  // };
  return(
   <div>
     <Formik
@@ -186,7 +133,7 @@ function BasicDetailForm() {
        const token = res.data.token
        console.log(token)
        localStorage.setItem("User_toker",token)
-
+dispatch(basicsuccsess())
   Navigate(`/product_launchboard/${auth}`)
 
 

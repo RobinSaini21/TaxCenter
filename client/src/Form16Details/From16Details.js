@@ -2,35 +2,49 @@ import React from "react";
 import { Formik } from "formik";
 import { useNavigate } from "react-router";
 import { form16api } from "../services/AuthApi";
+import { useSelector } from "react-redux";
+import store from "../Store";
+
 
 const From16Details = () => {
-  const Navigate = useNavigate();
+  const Navigate = useNavigate()
+  const userform16data_1 = useSelector((store) => store.pdf.userform16data)
+  const pannum = userform16data_1.pannum;
+  const salarysection = userform16data_1.salarysection1;
+ const standarDeduction = userform16data_1.standarDeduction1;
+ const tannub = userform16data_1.tannub;
+ const incomefromsalary = userform16data_1.incomefromsalary1;
+ const c80 = userform16data_1.c801;
+ const d80 = userform16data_1.d801;
+ const totaldeduciton = userform16data_1.totaldeduciton1;
+ const totaltaxdeducted = userform16data_1.totaltaxdeducted1;
+//  const salarysec17
   const intialData = {
-    pan: "",
+    pan: pannum,
     finacialyear: "",
     regimetype: "",
-    tanofemployer: "",
+    tanofemployer: tannub,
     organisation: "",
     typeoforganisation: "",
     //INCOMES
-    salarysec171: "",
+    salarysec171: salarysection,
     salarysec172: "",
     lieusalarysec173: "",
-    grossalary: "",
+    grossalary: salarysection,
     allowancessection10: "",
-    balance: "",
-    standarDeduction: "",
+    balance: salarysection,
+    standarDeduction: standarDeduction,
     professionaltax: "",
-    incomefromsalary: "",
+    incomefromsalary: incomefromsalary,
     incomeonhouse: "",
     incomeothersource: "",
     //DEDUCTIONS
-    c80: "",
+    c80: c80,
     ccc80: "",
     ccd80: "",
     ccd801b: "",
     ccc80companycontribution: "",
-    d80: "",
+    d80: d80,
     dd80: "",
     ddb80: "",
     e80: "",
@@ -39,9 +53,9 @@ const From16Details = () => {
     g80: "",
     gg80: "",
     tta80: "",
-    totaldeduciton: "",
+    totaldeduciton: totaldeduciton,
     reliefus89: "",
-    totaltaxdeducted: "",
+    totaltaxdeducted: totaltaxdeducted,
   };
   const basicRegistrationSchema = (values) => {
     const errors = {};
@@ -242,17 +256,7 @@ const From16Details = () => {
             totaltaxdeducted,
           };
 
-          //   axios.post("http://localhost:4000/userbasicdetails", basic).then((res) => {
-          //      console.log(res)
-          //      console.log(res.data)
-          //       const message = (res.data.message);
-          //      const token = res.data.token
-          //      console.log(token)
-          //      localStorage.setItem("User_toker",token)
-
-          // Navigate("/product_launchboard")
-
-          //   });
+       
           console.log(form16Data);
           form16api(form16Data);
           setTimeout(() => {
@@ -283,7 +287,7 @@ const From16Details = () => {
                   class="form-control item"
                   id="pan"
                   type="pan"
-                  placeholder="PAN"
+                  placeholder={pannum}
                   name="pan"
                   // value={values.pan}
                   value={values.pan}

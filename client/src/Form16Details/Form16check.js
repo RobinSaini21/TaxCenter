@@ -1,8 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 
 function Form16check() {
-    const totalincome = 27000
+    const totalincome = 27000;
+    // const Navigate = useNavigate()
+    const auth = useSelector((store) =>store.auth.auth_token)
   return (
     <div>
         <div class="card display-none" id="form_16_summary" style={{display: "block"}}>
@@ -71,8 +75,10 @@ function Form16check() {
                                 <div class="col-sm-5 col-sm-offset-2 col-xs-9 text-right">
                                     <a href="javascript:void(0);" onclick="saveForm16Data();">
                                         <i class="zmdi zmdi-arrow-right zmdi-hc-fw p-t-27 pull-right"></i>
-                                        <span class="l-h-18 c-gray">Next</span>
+                                        {/* <span class="l-h-18 c-gray">Next</span> */}
+                                        <Link to={`/basicuser/${auth}`}>
                                         <div class="f-18" id="next_link_text">Continue</div>
+                                        </Link>
                                     </a>
                                 </div>
                             </div>

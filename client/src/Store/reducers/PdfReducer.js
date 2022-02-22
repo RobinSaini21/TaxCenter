@@ -1,7 +1,9 @@
-import { PDF_SUCCESS,PDF_CLEAR } from "../actions/PdfActions";
+import { PDF_SUCCESS,PDF_CLEAR, BASIC_SUCCSESS, EXTRACTED_DATA } from "../actions/PdfActions";
 
 const initialState ={
-    userPdf: false
+    userPdf: false,
+    userbasic: false,
+    userform16data: null
 }
 
 const pdfReducer = (state = initialState,action) => {
@@ -16,6 +18,15 @@ const pdfReducer = (state = initialState,action) => {
                 ...state,
               userPdf: false
             }
+            case BASIC_SUCCSESS:
+                return{
+                    ...state,
+                  userbasic: true
+                }
+                case EXTRACTED_DATA:
+                  return{
+                   userform16data: action.payload.data
+                  }
           
             default: 
             return state
