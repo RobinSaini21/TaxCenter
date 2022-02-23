@@ -8,7 +8,7 @@ import store from "../Store";
 
 const From16Details = () => {
   const Navigate = useNavigate()
-  const userform16data_1 = useSelector((store) => store.pdf.userform16data)
+  const userform16data_1 = useSelector((state) => state.pdf.userform16data)
   const pannum = userform16data_1.pannum;
   const salarysection = userform16data_1.salarysection1;
  const standarDeduction = userform16data_1.standarDeduction1;

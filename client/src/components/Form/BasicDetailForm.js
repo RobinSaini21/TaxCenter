@@ -133,7 +133,7 @@ function BasicDetailForm() {
        const token = res.data.token
        console.log(token)
        localStorage.setItem("User_toker",token)
-dispatch(basicsuccsess())
+dispatch(basicsuccsess(basic))
   Navigate(`/product_launchboard/${auth}`)
 
 

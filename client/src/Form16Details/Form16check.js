@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 function Form16check() {
     const totalincome = 27000;
-    // const Navigate = useNavigate()
+
     const auth = useSelector((store) =>store.auth.auth_token)
   return (
     <div>

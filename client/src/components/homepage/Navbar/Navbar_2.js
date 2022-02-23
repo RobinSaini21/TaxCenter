@@ -13,14 +13,14 @@ function Navbar_2() {
   const userLoggedIn = useSelector((store) => store.auth.userLoggedIn);
   console.log("Navbar", userLoggedIn);
 
-  const Logout_button = () => {
+  const Login_button = () => {
     return (
       <Link to={"/login"}>
         <button className="nav_btn">LOGIN</button>
       </Link>
     );
   };
-  const Login_button = () => {
+  const Logout_button = () => {
     const handleSubmit = () => {
       dispatch(logoutSuccess());
     };
@@ -132,7 +132,7 @@ function Navbar_2() {
                 </a>
               </li>
               <li className="nav-item">
-                {userLoggedIn ? <Login_button /> : <Logout_button />}
+                {userLoggedIn ? <Logout_button />: <Login_button /> }
               </li>
             </ul>
           </div>

@@ -19,16 +19,19 @@ import Salary from "../components/PdfComponents/Salary";
 import Logout from "../components/login/logout";
 import From16Details from "../Form16Details/From16Details";
 import Form16check from "../Form16Details/Form16check";
+import ClickContinue from "../components/ClickContinue/ClickContinue";
+import Taxsummary from "../components/TaxService/Taxsummary";
+import Dashboard from "../Dashboard/DashboardName";
+import ResidentialStatus from "../components/TaxService/ResidentialStatus";
 
 function AllRoutes() {
-// const {token} = useSelector((state) => authReducer)
-const token = localStorage.getItem("User_toker")
-// console.log(token)
+  // const {token} = useSelector((state) => authReducer)
+  const token = localStorage.getItem("User_toker");
+  // console.log(token)
 
-const ProtectedRoutes = ({ children }) =>{
-  return token ? children : <Navigate to="/login"  />
-}
-
+  const ProtectedRoutes = ({ children }) => {
+    return token ? children : <Navigate to="/login" />;
+  };
 
   let routes = useRoutes([
     {
@@ -41,57 +44,81 @@ const ProtectedRoutes = ({ children }) =>{
     },
     {
       path: "/form16check",
-element: <Form16check/>
+      element: <Form16check />,
     },
     {
       path: "/login",
       element: <Login />,
     },
     {
-path: 'logout',
-element: <Logout/>
+      path: "logout",
+      element: <Logout />,
     },
-   
+    {
+      path: "/dashboard",
+      element: <ClickContinue />,
+    },
+    {
+path: "/dashboard_Con",
+element: <Dashboard/>
+    },
+    {
+      path: "/taxsummary",
+      element: <Taxsummary/>
+    },
+    {
+path:"/ResidentialStatus",
+element: <ResidentialStatus/>
+    },
+
     {
       path: "/product_launchboard/:id",
-      element: <ProtectedRoutes><Allcards/></ProtectedRoutes>,
+      element: (
+        <ProtectedRoutes>
+          <Allcards />
+        </ProtectedRoutes>
+      ),
     },
-      {
-  path: "/uploadpdf",
-  element: <UploadPdf/>
-      },
-      {
-  path: "/hp",
-  element: <Hp/>
-      },
-      {
-  path: "/salary/:id",
-  element: <Salary/>
-      },
-      {
-  path: "/interest",
-  element: <Interest/>
-      },
-      {
-path: "/form16/:id",
-element:<From16Details/>
-      },
     {
-        path: "/basicuser/:id",
-        element: <ProtectedRoutes><BasicDetailForm/></ProtectedRoutes>,
-        children:[
+      path: "/uploadpdf",
+      element: <UploadPdf />,
+    },
+    {
+      path: "/hp",
+      element: <Hp />,
+    },
+    {
+      path: "/salary/:id",
+      element: <Salary />,
+    },
+    {
+      path: "/interest",
+      element: <Interest />,
+    },
+    {
+      path: "/form16/:id",
+      element: <From16Details />,
+    },
+    {
+      path: "/basicuser/:id",
+      element: (
+        <ProtectedRoutes>
+          <BasicDetailForm />
+        </ProtectedRoutes>
+      ),
+      children: [
         ,
-          {
-            path: "bmi_cal",
-            element: <BMICalculator />,
-          },
-          {
-            path: "emi_cal",
-            element: <EmiCalculator />,
-          }
-        ]
-      }
-      ]);
+        {
+          path: "bmi_cal",
+          element: <BMICalculator />,
+        },
+        {
+          path: "emi_cal",
+          element: <EmiCalculator />,
+        },
+      ],
+    },
+  ]);
   return routes;
 }
 

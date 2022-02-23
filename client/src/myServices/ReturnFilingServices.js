@@ -1,13 +1,5 @@
-import {
-  MDBCard,
-  MDBCardBody,
-  MDBCardTitle,
-  MDBCardText,
-  MDBCardHeader,
-  MDBCardFooter,
-  MDBBtn,
-} from "mdb-react-ui-kit";
 import React from "react";
+import { Link } from "react-router-dom";
 import "./ReturnFilingServices.css";
 
 function ReturnFilingServices() {
@@ -35,7 +27,9 @@ Finish filing in less than 15 minutes.
                   </p>
                 </div>
                 <div class="card-footer text-muted d-flex justify-content-center">
+                  <Link to={"/dashboard"}>
                 START YOURSELF
+                </Link>
                 </div>
               </div>
             </div>

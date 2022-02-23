@@ -15,17 +15,6 @@ import "./BasicDetailForm.css";
 import axios from "axios";
 
 
-
-// const Schema = Yup.object().shape({
-//   password: Yup.string().required("This field is required"),
-//   changepassword: Yup.string().when("password", {
-//     is: val => (val && val.length > 0 ? true : false),
-//     then: Yup.string().oneOf(
-//       [Yup.ref("password")],
-//       "Both password need to be the same"
-//     )
-//   })
-// });
 const BasicTestReg = () => {
   const Navigate = useNavigate()
   const intialData = {
@@ -46,7 +35,6 @@ const BasicTestReg = () => {
        document.getElementById("pan").style.borderColor = "red"
       errors.pan = "Required";
     } else if (
-      // !/^[A-Z0-9._%+-]+[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
       values.pan.length > 10
     ) {
       errors.pan = "Invalid Pan Card Number Format";
@@ -62,7 +50,6 @@ const BasicTestReg = () => {
     if (!values.firstname) {
       document.getElementById("firstname").style.borderColor = "red"
       errors.firstname = "Required";
-      // document.getElementById("password").style.borderColor = "red"
     }
     else if(values.firstname.length  < 3){
     
@@ -71,7 +58,7 @@ const BasicTestReg = () => {
     if (!values.middlename) {
       document.getElementById("middlename").style.borderColor = "red"
       errors.middlename = "Required";
-      // document.getElementById("password").style.borderColor = "red"
+
     }
     else if(values.middlename.length  < 3){
     
@@ -98,7 +85,7 @@ const BasicTestReg = () => {
     if (!values.aadharnum) {
       document.getElementById("aadharnum").style.borderColor = "red"
       errors.aadharnum = "Required";
-      // document.getElementById("password").style.borderColor = "red"
+
     }
     else if(values.aadharnum.length  <= 12){
     
@@ -107,76 +94,22 @@ const BasicTestReg = () => {
     if (!values.mobilenumber) {
      document.getElementById("mobilenum").style.borderColor = "red"
       errors.mobilenumber = "Required";
-      // document.getElementById("password").style.borderColor = "red"
+
     }
     else if(values.mobilenumber.length  > 10){
     
       errors.mobilenumber = "Aadhar number must be 3 characters or more"
     }
     if (!values.gender) {
-      // document.getElementById("mobilenum").style.borderColor = "red"
        errors.gender = "Please Select One";
-       // document.getElementById("password").style.borderColor = "red"
+
      }
      if(!values.bday){
        errors.bday = "Select Your Birthday"
      }
-    // else if(values.password  != strongRegex ){
-    //   errors.password = "Password is not strong enough"
-    // }
-  //  else if(!/\d/.test(values.password)){
-  //    errors.password = "strong password"
-  //  }
-  //  if(values.confirm_password != values.password){
-   
-  //    errors.confirm_password = "password is not matching"
-  //    document.getElementById("password_confirm").style.borderColor = "red"
-
-  //  }
+  
     return errors;
   }
-  // console.log(intialData)
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setUser({
-  //     ...user, 
-  //     [name]: value,
-  //   });
-  // // };
-  // const onSubmitHandler = (e) => {
-  //   e.preventDefault();
- 
-  //    store.dispatch({
-  //      type: "ADD_DETAILS",
-  //      payload: { 
-  //        email: values.email,
-  //        password: values.password,
-  //      },
-  //    });
-
-
-
-// const Email = user.email;
-// const Password = user.password
-//      const ruser = {Email, Password }  
-//      apiregister(user)
-    //  if (Email && Password) {
-    //    axios.post(process.env.REACT_APP_REGISTER_API_URL,ruser)
-    //    //`${process.env.REACT_APP_REGISTER_API_URL}`,
-    //      .then((res) => console.log(res));
-    //  } else {
-    //    alert("invalid input");
-    //  }
-  // };
-
- 
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setUser({
-  //     ...user, 
-  //     [name]: value,
-  //   });
-  // };
  return(
   <div>
     <Formik
@@ -209,8 +142,7 @@ const BasicTestReg = () => {
     }); 
    
         
-    // basicuserdata(basic)
-    // Navigate()
+   
         setTimeout(() => {
           alert(JSON.stringify(values, null, 2));
           setSubmitting(false);
@@ -226,7 +158,7 @@ const BasicTestReg = () => {
         handleBlur,
         handleSubmit,
         isSubmitting
-        /* and other goodies */
+     
       }) => (
         <div id="Detail_from">
         <form onSubmit={handleSubmit}  style={{width:"40%",margin:"auto"}}>
