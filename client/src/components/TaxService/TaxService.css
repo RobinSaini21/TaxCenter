@@ -131,8 +131,11 @@ a:focus{
 
 .Resid{
     border: 2px solid black;
+    width: 60rem;
+    height: 40rem;
 }
 .Reesident{
     display: grid;
     place-content: center;
+    margin-top: 100px;
 }
