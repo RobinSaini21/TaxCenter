@@ -23,6 +23,14 @@ import ClickContinue from "../components/ClickContinue/ClickContinue";
 import Taxsummary from "../components/TaxService/Taxsummary";
 import Dashboard from "../Dashboard/DashboardName";
 import ResidentialStatus from "../components/TaxService/ResidentialStatus";
+import SelectRegime from "../components/TaxService/SelectRegime";
+import ChooseTypeofRegime from "../components/TaxService/ChooseTypeofRegime";
+import SalaryIncome from "../components/TaxService/SalaryIncome";
+import Deduction from "../components/TaxService/Deduction";
+import SavingDeduction from "../components/TaxService/SavingDeduction";
+import AboutIncome from "../components/TaxService/AboutIncome";
+import IncometaxPaid from "../components/TaxService/IncometaxPaid";
+
 
 function AllRoutes() {
   // const {token} = useSelector((state) => authReducer)
@@ -59,16 +67,24 @@ function AllRoutes() {
       element: <ClickContinue />,
     },
     {
-path: "/dashboard_Con",
-element: <Dashboard/>
+      path: "/dashboard_Con",
+      element: <Dashboard />,
     },
     {
       path: "/taxsummary",
-      element: <Taxsummary/>
+      element: <Taxsummary />,
     },
     {
-path:"/ResidentialStatus",
-element: <ResidentialStatus/>
+      path: "/ResidentialStatus",
+      element: <ResidentialStatus />,
+    },
+    {
+      path: "ChooseTypeofRegime",
+      element: <ChooseTypeofRegime />,
+    },
+    {
+      path: "/SelectRegime",
+      element: <SelectRegime />,
     },
 
     {
@@ -118,6 +134,26 @@ element: <ResidentialStatus/>
         },
       ],
     },
+    {
+     path:"/SalaryIncome",
+     element: <SalaryIncome/> 
+    },
+    {
+      path: "/Deduction",
+      element: <Deduction/>
+    },
+    {
+      path: "/SavingDeduction",
+      element: <SavingDeduction/>
+    },
+    {
+      path: "/IncometaxPaid",
+element: <IncometaxPaid/>
+    },
+    {
+      path: "/AboutIncome",
+      element: <AboutIncome/>
+    }
   ]);
   return routes;
 }

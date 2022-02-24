@@ -5,34 +5,30 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { clearuserbasicdata } from "../../Store/actions/PdfActions";
 
-
-
 function ClickContinue() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const pannum = useSelector((state) => state.pdf.userbasicdata.pan);
   const firsname = useSelector((store) => store.pdf.userbasicdata.firsname);
   const lastname = useSelector((store) => store.pdf.userbasicdata.lastname);
   const middlename = useSelector((store) => store.pdf.userbasicdata.middlename);
-  const auth =  useSelector((store) =>store.auth.auth_token)
-  //
-  // 
-  // 
-  // 
-  // 
- 
+  const auth = useSelector((store) => store.auth.auth_token);
 
-  const DeleteDetails = () =>{
-    const handleDelete = () =>{
-      dispatch(clearuserbasicdata())
-      }
-      return(
-        <div>
-          <Link class="dropdown-item" to={`/basicuser/${auth}`} onClick={handleDelete}> 
-     Delete
-       </Link>
+  const DeleteDetails = () => {
+    const handleDelete = () => {
+      dispatch(clearuserbasicdata());
+    };
+    return (
+      <div>
+        <Link
+          class="dropdown-item"
+          to={`/basicuser/${auth}`}
+          onClick={handleDelete}
+        >
+          Delete
+        </Link>
       </div>
-      )
-  }
+    );
+  };
   return (
     <div>
       <div class="container py-3">
@@ -51,7 +47,10 @@ function ClickContinue() {
                 </p>
                 <div className="PanCardSec">
                   <Link to={"/dashboard_Con"}>
-                    <p>{firsname}&nbsp;{middlename}&nbsp;{lastname}&nbsp;(Click here to Continue )</p>
+                    <p>
+                      {firsname}&nbsp;{middlename}&nbsp;{lastname}&nbsp;(Click
+                      here to Continue )
+                    </p>
                   </Link>
                   <p class="card-text">{pannum}</p>
                   <br />
@@ -74,12 +73,9 @@ function ClickContinue() {
                       Continue
                     </a>
                     <Link to={`/basicuser/${auth}`} class="dropdown-item">
-          
                       Edit
-       
                     </Link>
-                    <DeleteDetails/>
-                  
+                    <DeleteDetails />
                   </ol>
                 </div>
               </div>
@@ -90,7 +86,6 @@ function ClickContinue() {
 
       <br />
       <br />
-
     </div>
   );
 }

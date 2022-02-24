@@ -12,6 +12,12 @@ import Dashboard from "./Dashboard/DashboardName";
 import TaxService from "./components/TaxService/TaxService";
 import Taxsummary from "./components/TaxService/Taxsummary";
 import ResidentialStatus from "./components/TaxService/ResidentialStatus";
+import AboutIncome from "./components/TaxService/AboutIncome";
+import SelectRegime from "./components/TaxService/SelectRegime";
+import ChooseTypeofRegime from "./components/TaxService/ChooseTypeofRegime";
+import SalaryIncome from "./components/TaxService/SalaryIncome";
+import Deduction from "./components/TaxService/Deduction";
+import SavingDeduction from "./components/TaxService/SavingDeduction";
 
 
 
@@ -22,11 +28,12 @@ return (
 
        <Navbar_2/> 
       <AllRoutes/>  
- {/* <ClickContinue/> */}
-        {/* <Dashboard/>   
-<TaxService/> */}
-{/* <Taxsummary/> */}
-{/* <ResidentialStatus/> */}
+{/* <AboutIncome/> */}
+{/* <SelectRegime/> */}
+{/* <ChooseTypeofRegime/>
+<SalaryIncome/> */}
+{/* <Deduction/> */}
+{/* <SavingDeduction/> */}
     </>
   );
 }

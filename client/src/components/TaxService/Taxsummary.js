@@ -22,7 +22,8 @@ function Taxsummary() {
   <li class="list-group-item">Less: Self Assessment Tax<p className='other-list-item'>{salary}</p></li>
   <li class="list-group-item">Tax Refundable<p className='other-list-item'>{salary}</p></li>
   <li class="list-group-item"><p className='other-list-item'style={{color: 'green'}} >Next <br/>
-  <Link to={"/ResidentialStatus"}>
+  <Link to={"/AboutIncome"}>
+    {/* "/ResidentialStatus" */}
    Continue
    </Link></p></li>
 

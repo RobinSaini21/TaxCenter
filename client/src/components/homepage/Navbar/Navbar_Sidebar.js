@@ -11,7 +11,6 @@ export default class Sidebar extends React.Component {
   handleStateChange(state) {
     this.setState({ menuOpen: state.isOpen });
   }
-
   closeMenu() {
     this.setState({ menuOpen: false });
   }
