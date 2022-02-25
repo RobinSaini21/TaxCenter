@@ -18,6 +18,7 @@ import ChooseTypeofRegime from "./components/TaxService/ChooseTypeofRegime";
 import SalaryIncome from "./components/TaxService/SalaryIncome";
 import Deduction from "./components/TaxService/Deduction";
 import SavingDeduction from "./components/TaxService/SavingDeduction";
+import Apidata from "./ApiData/Apidata";
 
 
 
@@ -26,8 +27,9 @@ return (
     
   <>
 
-       <Navbar_2/> 
-      <AllRoutes/>  
+       {/* <Navbar_2/> 
+      <AllRoutes/>   */}
+      <Apidata/>
 {/* <AboutIncome/> */}
 {/* <SelectRegime/> */}
 {/* <ChooseTypeofRegime/>

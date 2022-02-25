@@ -1,10 +1,14 @@
 import React, { useEffect,useState } from 'react';
 import axios from 'axios';
-
+//https://apisetu.gov.in/api/pan
+//`http://apilayer.net/api/validate${access_key}`
 function Apidata() {
-
+  const access_key = "?access_key=12009281e35296599f69804863513cb5&number=7419028942&country_code=IN&format=1"
     const myApiData = () =>{
-    axios.get("/userbasicdetails")
+    axios.get("https://apisetu.gov.in/api/pan", {
+   
+      }
+    )
     .then(function (response) {
       console.log(response.data);
     })
@@ -12,24 +16,6 @@ function Apidata() {
       console.log(error);
     })
     }
-
-// Apidata();
-    // const [todos,setTodos]=useState() 
-    // useEffect(()=>{ 
-    // var request = new XMLHttpRequest(); 
-    // request.onreadystatechange = function() { 
-    // if (request.readyState == 4 && request.status == 200) { 
-    // const response=JSON.parse(request.response) 
-    // setTodos(response) 
-    // } 
-    // }; 
-    // request.open('GET', "http://localhost:4000/Register", true); 
-    // request.send(); 
-    // },[]) 
-    
-    // useEffect(()=>{ 
-    // console.log(todos) 
-    // },[todos]) 
 
     useEffect(() =>{
         myApiData();

@@ -4,8 +4,14 @@ import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 
 function Form16check() {
-    const totalincome = 27000;
+    // const totalincome = 27000;
+    const userform16data_1 = useSelector((state) => state.pdf.userform16data)
+    // const pannum = userform16data_1.pannum;
 
+   const incomefromsalary = userform16data_1.incomefromsalary1;
+
+   const totaldeduciton = userform16data_1.totaldeduciton1;
+   const totaltaxdeducted = userform16data_1.totaltaxdeducted1;
     const auth = useSelector((store) =>store.auth.auth_token)
   return (
     <div>
@@ -21,7 +27,7 @@ function Form16check() {
                                     <label class="col-sm-4 col-md-3 col-xs-6 control-label f-14 text-left-imp">
                                         Total Income from Salary
                                     </label>
-                                    <label class="col-sm-2 col-xs-6 text-right" id="summary_income_salary">{totalincome}</label>
+                                    <label class="col-sm-2 col-xs-6 text-right" id="summary_income_salary">{incomefromsalary}</label>
                                 </div>
                                 <div class="form-group display-none" id="tr_summary_house_property" style={{display: "none"}}>
                                     <label class="col-sm-4 col-md-3 col-xs-6 control-label f-14 text-left-imp">
@@ -39,7 +45,7 @@ function Form16check() {
                                     <label class="col-sm-4 col-md-3 col-xs-6 control-label f-14 text-left-imp">
                                         Less: Deductions
                                     </label>
-                                    <label class="col-sm-2 col-xs-6 text-right" id="summary_less_deductions">29,000</label>
+                                    <label class="col-sm-2 col-xs-6 text-right" id="summary_less_deductions">{totaldeduciton}</label>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-4 col-md-3 col-xs-6 control-label f-14 text-left-imp">
@@ -57,7 +63,7 @@ function Form16check() {
                                     <label class="col-sm-4 col-md-3 col-xs-6 control-label f-14 text-left-imp">
                                         Total TDS
                                     </label>
-                                    <label class="col-sm-2 col-xs-6 text-right" id="summary_total_tds">7,000</label>
+                                    <label class="col-sm-2 col-xs-6 text-right" id="summary_total_tds">{totaltaxdeducted}</label>
                                 </div>
                             </div>
                         </div>

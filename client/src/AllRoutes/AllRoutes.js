@@ -30,7 +30,12 @@ import Deduction from "../components/TaxService/Deduction";
 import SavingDeduction from "../components/TaxService/SavingDeduction";
 import AboutIncome from "../components/TaxService/AboutIncome";
 import IncometaxPaid from "../components/TaxService/IncometaxPaid";
-
+import TaxDeducted from "../components/TaxService/TaxDeducted";
+import OtherInformations from "../components/TaxService/OtherInformations";
+import FamilyIncome from "../components/TaxService/FamilyIncome";
+import ContactDetails from "../components/TaxService/ContactDetails";
+import BanKDetails from "../components/TaxService/BanKDetails";
+import AddBankDetails from "../components/TaxService/AddBankDetails";
 
 function AllRoutes() {
   // const {token} = useSelector((state) => authReducer)
@@ -75,6 +80,10 @@ function AllRoutes() {
       element: <Taxsummary />,
     },
     {
+      path: "/TaxDeducted",
+element: <TaxDeducted/>
+    },
+    {
       path: "/ResidentialStatus",
       element: <ResidentialStatus />,
     },
@@ -86,7 +95,14 @@ function AllRoutes() {
       path: "/SelectRegime",
       element: <SelectRegime />,
     },
-
+    {
+      path: "/OtherInformations" ,
+      element:<OtherInformations/>
+    },
+{ 
+  path:"/FamilyIncome",
+  element: <FamilyIncome/>
+},
     {
       path: "/product_launchboard/:id",
       element: (
@@ -110,6 +126,10 @@ function AllRoutes() {
     {
       path: "/interest",
       element: <Interest />,
+    },
+    { 
+      path: "/ContactDetails",
+      element: <ContactDetails/>
     },
     {
       path: "/form16/:id",
@@ -153,6 +173,14 @@ element: <IncometaxPaid/>
     {
       path: "/AboutIncome",
       element: <AboutIncome/>
+    },
+    {
+      path: "/BanKDetails",
+      element: <BanKDetails/>
+    },
+    {
+      path: "/AddBankDetails",
+      element: <AddBankDetails/>
     }
   ]);
   return routes;
