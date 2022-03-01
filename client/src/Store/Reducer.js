@@ -34,6 +34,14 @@ switch (action.type){
         userDetails: action.payload.data.email
 
     }
+    case  LOGIN_SUCCESS:
+        return {
+         ...state,
+         userLoggedIn: false,
+         auth_token: null,
+         userDetails: null
+ 
+     }
     case SIGN_OUT:
         return{
             ...state,

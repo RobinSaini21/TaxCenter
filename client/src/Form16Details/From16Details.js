@@ -8,17 +8,9 @@ import store from "../Store";
 
 const From16Details = () => {
   const Navigate = useNavigate()
-  const userform16data_1 = useSelector((state) => state.pdf.userform16data)
-  const pannum = userform16data_1.pannum;
-  const salarysection = userform16data_1.salarysection1;
- const standarDeduction = userform16data_1.standarDeduction1;
- const tannub = userform16data_1.tannub;
- const incomefromsalary = userform16data_1.incomefromsalary1;
- const c80 = userform16data_1.c801;
- const d80 = userform16data_1.d801;
- const totaldeduciton = userform16data_1.totaldeduciton1;
- const totaltaxdeducted = userform16data_1.totaltaxdeducted1;
-//  const salarysec17
+  const { pannum,salarysection1,standarDeduction1,tannub,incomefromsalary1,c801 ,d801,totaldeduciton1,totaltaxdeducted1  } = useSelector((state) => state.pdf.userform16data)
+
+console.log(salarysection1)
   const intialData = {
     pan: pannum,
     finacialyear: "",
@@ -27,24 +19,24 @@ const From16Details = () => {
     organisation: "",
     typeoforganisation: "",
     //INCOMES
-    salarysec171: salarysection,
+    salarysec171: salarysection1,
     salarysec172: "",
     lieusalarysec173: "",
-    grossalary: salarysection,
+    grossalary: salarysection1,
     allowancessection10: "",
-    balance: salarysection,
-    standarDeduction: standarDeduction,
+    balance: salarysection1,
+    standarDeduction: standarDeduction1,
     professionaltax: "",
-    incomefromsalary: incomefromsalary,
+    incomefromsalary: incomefromsalary1,
     incomeonhouse: "",
     incomeothersource: "",
     //DEDUCTIONS
-    c80: c80,
+    c80: c801,
     ccc80: "",
     ccd80: "",
     ccd801b: "",
     ccc80companycontribution: "",
-    d80: d80,
+    d80: d801,
     dd80: "",
     ddb80: "",
     e80: "",
@@ -53,9 +45,9 @@ const From16Details = () => {
     g80: "",
     gg80: "",
     tta80: "",
-    totaldeduciton: totaldeduciton,
+    totaldeduciton: totaldeduciton1,
     reliefus89: "",
-    totaltaxdeducted: totaltaxdeducted,
+    totaltaxdeducted: totaltaxdeducted1,
   };
   const basicRegistrationSchema = (values) => {
     const errors = {};
@@ -184,6 +176,7 @@ const From16Details = () => {
         initialValues={intialData}
         validate={basicRegistrationSchema}
         onSubmit={(values, { setSubmitting }) => {
+        
           const pan = values.pan;
           const finacialyear = values.finacialyear;
           const regimetype = values.regimetype;

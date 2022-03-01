@@ -39,11 +39,11 @@ import AddBankDetails from "../components/TaxService/AddBankDetails";
 
 function AllRoutes() {
   // const {token} = useSelector((state) => authReducer)
-  const token = localStorage.getItem("User_toker");
+  const user = useSelector((store) => store.auth.userLoggedIn);
   // console.log(token)
 
   const ProtectedRoutes = ({ children }) => {
-    return token ? children : <Navigate to="/login" />;
+    return user ? children : <Navigate to="/login" />;
   };
 
   let routes = useRoutes([

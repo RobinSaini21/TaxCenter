@@ -24,10 +24,11 @@ export default function Login() {
      if (pdf === true && userLoggedIn) {
               navigate(`/form16/${auth}`) 
               dispatch(pdfclear())
-            } else if(userLoggedIn === null){ navigate("/register");}
+            } 
              else if(userLoggedIn){
               navigate(`/basicuser/${auth}`);
              }
+            //  
   })
 
   const intialData = {
@@ -67,11 +68,15 @@ export default function Login() {
           
             const Rdata = { email, auth_token };
 
-           
+    if(res.status === 200){
+
+    } else {
+      console.log(dispatch(loginSuccess(Rdata)));
+    }
             
             
-            
-            console.log(dispatch(loginSuccess(Rdata)));
+            // if(!userLoggedIn){ navigate("/register");}
+       
           });
 
           setTimeout(() => {

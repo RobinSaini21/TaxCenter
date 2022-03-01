@@ -31,6 +31,7 @@ import { extracteddata } from '../../../Store/actions/PdfActions';
     e.preventDefault();
     const formData = new FormData();
     formData.append('file', file);
+  
 
     try {
       const res = await instance.post("/upload", formData,
@@ -97,14 +98,28 @@ localStorage.setItem("FORM16_DATA",extracteddata)
       }
       setUploadPercentage(0)
     }
-    dispatch(pdfsuccess())
-  if(userLoggedIn){
+    // console.log("FILE FOROM UPLOAD FILES",filename)
+//     if(file === ''){
+//        Navigate("/uploadpdf")
+//       alert("Choose A File")
+//     }
+//     dispatch(pdfsuccess())
+  
+//     if(userLoggedIn){
 
-    Navigate(`/form16/${auth}`)
+//     Navigate(`/form16/${auth}`)
    
-  } else{
- Navigate("/login")
-  }
+//   }  else  {
+//  Navigate("/login")
+//   }
+if(userLoggedIn && file !== ''){
+  Navigate(`/form16/${auth}`)
+} else if(file === ""){
+  alert("Please Select A File")
+} else if(!userLoggedIn){
+  Navigate("/login")
+  dispatch(pdfsuccess())
+}
   };
  
   return (

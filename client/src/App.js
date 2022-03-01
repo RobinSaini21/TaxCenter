@@ -27,9 +27,9 @@ return (
     
   <>
 
-       {/* <Navbar_2/> 
-      <AllRoutes/>   */}
-      <Apidata/>
+       <Navbar_2/> 
+      <AllRoutes/>  
+      {/* <Apidata/> */}
 {/* <AboutIncome/> */}
 {/* <SelectRegime/> */}
 {/* <ChooseTypeofRegime/>
