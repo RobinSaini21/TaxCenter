@@ -9,7 +9,13 @@ const { cookie } = require('express-validator');
 const fs = require('fs')
 const pdfpasre = require('pdf-parse')
 const readline = require('readline')
- const rl = readline.createInterface(process.stdin,process.stdout)
+ const rl = readline.createInterface(process.stdin,process.stdout);
+ const mserSchema = require('./MongodbSchema/RegisterSchema');
+ var MongoClient = require('mongodb').MongoClient;
+
+
+
+const User = new mongoose.model("User", mserSchema)
 
 
 
@@ -93,7 +99,8 @@ app.post('/upload', (req, res) => {
 
 
 
-const form16schema = require('./MongodbSchema/Form16Schema')
+const form16schema = require('./MongodbSchema/Form16Schema');
+const { connect } = require('http2');
 
 
 
@@ -177,7 +184,18 @@ app.post("/form16data",(req,res)=>{
         }
     })
 }) 
-
+app.get("/mynew",function(req,res){
+  MongoClient.connect(mongodbURL, function(err, db) {
+    if (err) throw err;
+    var dbo = db.db("test");
+    dbo.collection("users").find({}, { projection: { _id: 1, email: 1,}}).toArray(function(err, result) {
+      if (err) throw err;
+      console.log(result);
+      res.send(result)
+      db.close();
+    });
+  });
+})
 
 
 

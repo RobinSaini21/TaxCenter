@@ -152,3 +152,8 @@ a:hover, a:focus {
 .card[data-color="orange"] .category {
     color: #e95e37;
 }
+
+.Link_Route{
+    text-decoration: none;
+    color: #252422;
+}

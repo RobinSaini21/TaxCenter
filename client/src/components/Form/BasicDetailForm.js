@@ -3,11 +3,13 @@ import axios from "axios";
 import { Formik } from "formik";
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
-import { basicsuccsess } from "../../Store/actions/PdfActions";
+import { basicsuccsess, clearform16datasuccess} from "../../Store/actions/PdfActions";
 import { useDispatch } from "react-redux";
 
 function BasicDetailForm() {
   const auth = useSelector((store) =>store.auth.auth_token)
+  const {form16} = useSelector((state) => state.form)
+  console.log( "USER BASIC FORM",form16)
   const Navigate = useNavigate()
   const dispatch = useDispatch()
   const intialData = {
@@ -134,7 +136,14 @@ function BasicDetailForm() {
        console.log(token)
        localStorage.setItem("User_toker",token)
 dispatch(basicsuccsess(basic))
+if(form16){
+  dispatch(clearform16datasuccess())
+Navigate("/dashboard_Con")
+ 
+}
+else{
   Navigate(`/product_launchboard/${auth}`)
+}
 
 
     }); 

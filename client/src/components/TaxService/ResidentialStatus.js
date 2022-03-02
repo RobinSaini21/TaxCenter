@@ -5,6 +5,7 @@ import "react-tabs/style/react-tabs.css";
 import IndianResident from './ResidentialStatus/IndianResident';
 import NonIndianResident from './ResidentialStatus/NonIndianResident';
 import NotOrdinartResident from './ResidentialStatus/NotOrdinartResident';
+import { Link } from 'react-router-dom';
 
 function ResidentialStatus() {
   return (
@@ -29,6 +30,10 @@ function ResidentialStatus() {
             <NotOrdinartResident/>
             </TabPanel>
           </Tabs>
+          <Link to={"/ChooseTypeofRegime"}>
+
+            Choose Regime
+          </Link>
         </div>
         </div>
       );

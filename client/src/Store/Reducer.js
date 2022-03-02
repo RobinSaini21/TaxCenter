@@ -1,4 +1,4 @@
-import {LOGIN_SUCCESS,REGISTER_SUCCESS,SIGN_OUT} from './actions/AuthActions';
+import {LOGIN_SUCCESS,REGISTER_SUCCESS,SIGN_OUT,LOGIN_SUCCESS_FAILED} from './actions/AuthActions';
 
 
 
@@ -34,7 +34,7 @@ switch (action.type){
         userDetails: action.payload.data.email
 
     }
-    case  LOGIN_SUCCESS:
+    case  LOGIN_SUCCESS_FAILED:
         return {
          ...state,
          userLoggedIn: false,

@@ -10,26 +10,27 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { pdfclear } from "../../Store/actions/PdfActions";
 import { useEffect } from "react";
+import { loginfailed } from "../../Store/actions/AuthActions";
+import CaptchaTest from "../Captcha/Captcha";
 
 export default function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const pdf = useSelector((store) => store.pdf.userPdf)
-   const userLoggedIn = useSelector((store) =>store.auth.userLoggedIn)
-   const auth = useSelector((store) =>store.auth.auth_token)
-   console.log('auth token' ,auth)
+  const pdf = useSelector((store) => store.pdf.userPdf);
+  const userLoggedIn = useSelector((store) => store.auth.userLoggedIn);
+  const auth = useSelector((store) => store.auth.auth_token);
+  console.log("auth token", auth);
 
   // console.log("LOGGIN =>" ,pdf)
   useEffect(() => {
-     if (pdf === true && userLoggedIn) {
-              navigate(`/form16/${auth}`) 
-              dispatch(pdfclear())
-            } 
-             else if(userLoggedIn){
-              navigate(`/basicuser/${auth}`);
-             }
-            //  
-  })
+    if (pdf === true && userLoggedIn) {
+      navigate(`/form16/${auth}`);
+      dispatch(pdfclear());
+    } else if (userLoggedIn) {
+      navigate(`/basicuser/${auth}`);
+    }
+    //
+  });
 
   const intialData = {
     email: "",
@@ -65,28 +66,23 @@ export default function Login() {
 
             const auth_token = res.data.token;
             console.log(auth_token);
-          
+
             const Rdata = { email, auth_token };
 
-    if(res.status === 200){
+            if (res.status === 200) {
+              dispatch(loginfailed());
+            } else {
+              console.log(dispatch(loginSuccess(Rdata)));
+            }
 
-    } else {
-      console.log(dispatch(loginSuccess(Rdata)));
-    }
-            
-            
             // if(!userLoggedIn){ navigate("/register");}
-       
           });
 
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
             setSubmitting(false);
           }, 400);
-        }
-      
-      
-      }
+        }}
       >
         {({
           values,
@@ -173,6 +169,7 @@ export default function Login() {
                         />
                         <span style={{ color: "red" }}>{errors.password}</span>
                       </div>
+                      <CaptchaTest/>
                       <div class="row px-3 mb-4">
                         {/* <div class="custom-control custom-checkbox custom-control-inline"> <input id="chk1" type="checkbox" name="chk" class="custom-control-input"/> <label for="chk1" class="custom-control-label text-sm">Remember me</label> </div>  */}
                         <a href="#" class="ml-auto mb-0 text-sm">

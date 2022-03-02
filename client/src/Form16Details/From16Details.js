@@ -4,10 +4,13 @@ import { useNavigate } from "react-router";
 import { form16api } from "../services/AuthApi";
 import { useSelector } from "react-redux";
 import store from "../Store";
+import { form16datasuccess } from "../Store/actions/PdfActions";
+import { useDispatch } from "react-redux";
 
 
 const From16Details = () => {
   const Navigate = useNavigate()
+  const dispatch = useDispatch()
   const { pannum,salarysection1,standarDeduction1,tannub,incomefromsalary1,c801 ,d801,totaldeduciton1,totaltaxdeducted1  } = useSelector((state) => state.pdf.userform16data)
 
 console.log(salarysection1)
@@ -256,8 +259,13 @@ console.log(salarysection1)
             alert(JSON.stringify(values, null, 2));
             setSubmitting(false);
           }, 400);
+        console.log(
+          dispatch(form16datasuccess())
+        )
        Navigate("/form16check")
-        }}
+      
+      
+      }}
       >
         {({
           values,

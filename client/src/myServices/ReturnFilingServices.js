@@ -27,7 +27,7 @@ Finish filing in less than 15 minutes.
                   </p>
                 </div>
                 <div class="card-footer text-muted d-flex justify-content-center">
-                  <Link to={"/dashboard"}>
+                  <Link className="Link_Route" to={"/dashboard"}>
                 START YOURSELF
                 </Link>
                 </div>

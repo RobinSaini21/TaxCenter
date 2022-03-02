@@ -4,6 +4,8 @@ export const BASIC_SUCCSESS = "BASIC_SUCCSESS";
 export const EXTRACTED_DATA = "EXTRACTED_DATA";
 export const USER_BASIC_DATA = "USER_BASIC_DATA";
 export const ClEAR_USER_BASIC_DATA = "ClEAR_USER_BASIC_DATA";
+export const FORM16_DATA = "FORM16_DATA";
+export const CLEAR_FORM16_DATA = "CLEAR_FORM16_DATA"; 
 
 export const pdfsuccess = () => ({
   type: PDF_SUCCESS,
@@ -29,4 +31,12 @@ export const extracteddata = (data) => ({
 
 export const clearuserbasicdata = () =>({
     type: ClEAR_USER_BASIC_DATA
+})
+
+export const form16datasuccess = () => ({
+  type: FORM16_DATA
+})
+
+export const clearform16datasuccess = () => ({
+  type: CLEAR_FORM16_DATA
 })
