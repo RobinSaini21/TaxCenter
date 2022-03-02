@@ -13,6 +13,6 @@ const userbasicSchema = new mongoose.Schema({
     gender: String,
     bday: String,
     
-});
+},{  timestamps: true});
 
 module.exports = userbasicSchema

@@ -45,6 +45,7 @@ const TestUploadFile  = () => {
               id='customFile'
               value={values.file}
               onChange={onChange}
+              on
             />
             <label className='custom-file-label' htmlFor='customFile'>
               {filename}

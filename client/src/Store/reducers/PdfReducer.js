@@ -35,10 +35,12 @@ const pdfReducer = (state = initialState, action) => {
       };
     case EXTRACTED_DATA:
       return {
+        ...state,
         userform16data: action.payload.data,
       };
     case ClEAR_USER_BASIC_DATA:
       return {
+        ...state,
         userbasicdata: null,
         userbasic: false,
       };

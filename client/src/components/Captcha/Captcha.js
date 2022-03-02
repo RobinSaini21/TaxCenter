@@ -50,7 +50,7 @@ export default function CaptchaTest() {
 
       {/* <FormField type="password" name="password" /> */}
 
-      <HCaptcha sitekey={sitekey}  onVerify={handleVerificationSuccess} style = {{width: "1000px"}} />
+      <HCaptcha sitekey={sitekey}  onVerify={handleVerificationSuccess}  />
 {/* 
       <Button
         disabled={!(username && password && validation)}

@@ -5,10 +5,6 @@ const bp = require('body-parser');
 const userbasicSchema = require('../MongodbSchema/BasicdetailSchema')
 
 
-
-
-
-
 const basicdata = new mongoose.model("UserBasicData", userbasicSchema)
 
 router.get("/userbasicdetails",(req,res) =>{

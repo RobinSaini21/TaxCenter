@@ -7,13 +7,22 @@ import store from "../Store";
 import { form16datasuccess } from "../Store/actions/PdfActions";
 import { useDispatch } from "react-redux";
 
-
 const From16Details = () => {
-  const Navigate = useNavigate()
-  const dispatch = useDispatch()
-  const { pannum,salarysection1,standarDeduction1,tannub,incomefromsalary1,c801 ,d801,totaldeduciton1,totaltaxdeducted1  } = useSelector((state) => state.pdf.userform16data)
+  const Navigate = useNavigate();
+  const dispatch = useDispatch();
+  const {
+    pannum,
+    salarysection1,
+    standarDeduction1,
+    tannub,
+    incomefromsalary1,
+    c801,
+    d801,
+    totaldeduciton1,
+    totaltaxdeducted1,
+  } = useSelector((state) => state.pdf.userform16data);
 
-console.log(salarysection1)
+  console.log(salarysection1);
   const intialData = {
     pan: pannum,
     finacialyear: "",
@@ -179,7 +188,6 @@ console.log(salarysection1)
         initialValues={intialData}
         validate={basicRegistrationSchema}
         onSubmit={(values, { setSubmitting }) => {
-        
           const pan = values.pan;
           const finacialyear = values.finacialyear;
           const regimetype = values.regimetype;
@@ -252,20 +260,15 @@ console.log(salarysection1)
             totaltaxdeducted,
           };
 
-       
           console.log(form16Data);
           form16api(form16Data);
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
             setSubmitting(false);
           }, 400);
-        console.log(
-          dispatch(form16datasuccess())
-        )
-       Navigate("/form16check")
-      
-      
-      }}
+          console.log(dispatch(form16datasuccess()));
+          Navigate("/form16check");
+        }}
       >
         {({
           values,
@@ -347,7 +350,7 @@ console.log(salarysection1)
                 {/* <span style={{color:"red" }} >{errors.middlename}</span> */}
                 <span style={{ color: "red" }}>{errors.tanofemployer}</span>
               </div>
-         
+
               <div class="form-group">
                 <select
                   className="sSelect w-100"
@@ -360,7 +363,9 @@ console.log(salarysection1)
                   <option value="" class="form-control item" disabled>
                     --Please choose an option--
                   </option>
-                  <option value="Private - Other than Goverment and PSU Organisation">Private - Other than Goverment and PSU Organisation</option>
+                  <option value="Private - Other than Goverment and PSU Organisation">
+                    Private - Other than Goverment and PSU Organisation
+                  </option>
                   <option value="State Goverment">State Goverment</option>
                   <option value="Central Goverment">Central Goverment</option>
                   <option value="Public Sector Unit">Public Sector Unit</option>

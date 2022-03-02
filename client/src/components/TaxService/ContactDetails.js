@@ -1,10 +1,10 @@
-import React from 'react';
-import { Formik } from 'formik';
-import { useNavigate } from 'react-router';
-import { useDispatch } from 'react-redux';
+import React from "react";
+import { Formik } from "formik";
+import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
 
 function ContactDetails() {
-    const Navigate = useNavigate();
+  const Navigate = useNavigate();
   const dispatch = useDispatch();
   const intialData = {
     address: "",
@@ -25,35 +25,35 @@ function ContactDetails() {
     if (!values.address) {
       errors.address = "Required";
     }
-    if(!values.premise){
-        errors.premise = "Required"
+    if (!values.premise) {
+      errors.premise = "Required";
     }
-    if(!values.street){
-        errors.street = "Required"
+    if (!values.street) {
+      errors.street = "Required";
     }
-    if(!values.area){
-        errors.area = "Required"
+    if (!values.area) {
+      errors.area = "Required";
     }
-    if(!values.town){
-        errors.town = "Required"
+    if (!values.town) {
+      errors.town = "Required";
     }
-    if(!values.pincode){
-        errors.pincode = "Required"
+    if (!values.pincode) {
+      errors.pincode = "Required";
     }
-    if(!values.state){
-        errors.state = "Required"
+    if (!values.state) {
+      errors.state = "Required";
     }
-    if(!values.country){
-        errors.country = "Required"
+    if (!values.country) {
+      errors.country = "Required";
     }
-    if(!values.email){
-        errors.email = "Required"
+    if (!values.email) {
+      errors.email = "Required";
     }
-    if(!values.moblienum){
-        errors.moblienum = "Required"
+    if (!values.moblienum) {
+      errors.moblienum = "Required";
     }
-    if(!values.aadharnum){
-        errors.aadharnum = "Required"
+    if (!values.aadharnum) {
+      errors.aadharnum = "Required";
     }
 
     return errors;
@@ -65,7 +65,6 @@ function ContactDetails() {
         initialValues={intialData}
         validate={basicRegistrationSchema}
         onSubmit={(values, { setSubmitting }) => {
-          
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
             setSubmitting(false);
@@ -87,9 +86,7 @@ function ContactDetails() {
             <form type="submit" onSubmit={handleSubmit}>
               <div>
                 <h4>Please complete your Contact Details</h4>
-                <p>
-                This is a mandatory requirement from the Government
-                </p>
+                <p>This is a mandatory requirement from the Government</p>
               </div>
               <div class="form-group">
                 <input
@@ -254,4 +251,4 @@ function ContactDetails() {
   );
 }
 
-export default ContactDetails
+export default ContactDetails;

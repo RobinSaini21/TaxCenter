@@ -8,10 +8,12 @@ const form16Reducer = (state = initialState, action) => {
     switch (action.type) {
       case FORM16_DATA:
         return {
+            ...state,
           form16: true,
         };
         case CLEAR_FORM16_DATA:
             return {
+                ...state,
                 form16: false
             }
   

@@ -43,16 +43,6 @@ router.post("/Register", async (req, res) => {
     user.save().then((doc) => res.status(201).send(doc)
     );
 });
-router.get("/", async (req, res) => {
- 
-    const body = req.body;
-    const user = new User(body);
-    user.collection("customers").find({}).toArray(function(err, result) {
-        if (err) throw err;
-        console.log(result);
-        db.close();
-      });
-});
 
 
 //LOGIN LOGIN LOGIN LOGIN

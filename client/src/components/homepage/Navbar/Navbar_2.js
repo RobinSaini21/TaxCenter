@@ -132,7 +132,7 @@ function Navbar_2() {
                 </a>
               </li>
               <li className="nav-item">
-                {userLoggedIn ? <Logout_button />: <Login_button /> }
+                {userLoggedIn ? <Logout_button /> : <Login_button />}
               </li>
             </ul>
           </div>

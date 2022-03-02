@@ -8,12 +8,14 @@ import authReducer from "./Store/Reducer";
 import pdfReducer from "./Store/reducers/PdfReducer";
 import ResidentReducer from "./Store/reducers/ResidentReducer";
 import form16Reducer from "./Store/reducers/From16Reducer";
+import apiReducer from "./Store/reducers/ApiReducer";
 
 const rootReducer = combineReducers({
     form: form16Reducer,
     auth: authReducer,
     pdf: pdfReducer,
-    Resident: ResidentReducer
+    Resident: ResidentReducer,
+    api: apiReducer
 })
 
 

@@ -36,6 +36,8 @@ import FamilyIncome from "../components/TaxService/FamilyIncome";
 import ContactDetails from "../components/TaxService/ContactDetails";
 import BanKDetails from "../components/TaxService/BanKDetails";
 import AddBankDetails from "../components/TaxService/AddBankDetails";
+import Users from "../AdminPage/Users";
+import AdminPage from "../AdminPage/AdminPage";
 
 function AllRoutes() {
   // const {token} = useSelector((state) => authReducer)
@@ -181,6 +183,18 @@ element: <IncometaxPaid/>
     {
       path: "/AddBankDetails",
       element: <AddBankDetails/>
+    },
+    {
+      path: '/admin_user_page',
+      element: <Users/>
+    },
+    {
+      path: "/Adminpage",
+element: <AdminPage/>
+    },
+    {
+      path: "/user",
+      element: <Users/>
     }
   ]);
   return routes;
