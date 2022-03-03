@@ -1,4 +1,4 @@
-require('dotenv/config')
+  require('dotenv/config')
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
@@ -12,10 +12,12 @@ const readline = require('readline')
  const rl = readline.createInterface(process.stdin,process.stdout);
  const mserSchema = require('./MongodbSchema/RegisterSchema');
  var MongoClient = require('mongodb').MongoClient;
-
-
-
+ const UserBasicData = require('./MongodbSchema/BasicdetailSchema')
 const User = new mongoose.model("User", mserSchema)
+const jwt = require("jsonwebtoken");
+
+const config = process.env;
+
 
 
 
@@ -32,6 +34,8 @@ app.use(session({
     maxAge: 24 * 60 * 60 * 365 * 1000
   }
 }))
+
+
 app.get('/', (req, res) => {
   if (req.session.views) {
     req.session.views++;
@@ -102,6 +106,27 @@ app.post('/upload', (req, res) => {
 const form16schema = require('./MongodbSchema/Form16Schema');
 const { connect } = require('http2');
 
+app.get( "/verfiy" ,authenticateJWT = (req, res, next) => {
+  const authHeader = req.headers.authorization;
+
+  if (authHeader) {
+      const token = authHeader.split(' ')[1];
+
+      jwt.verify(token,"thisismysecret" , (err, user) => {
+          if (err) {
+              return res.sendStatus(403);
+          } else{
+            req.user = user;
+            console.log(req.user)
+            next();
+          }
+
+      
+      });
+  } else {
+      res.sendStatus(401);
+  }
+})
 
 
 const userform16data = new mongoose.model("form16Data", form16schema)
@@ -184,19 +209,43 @@ app.post("/form16data",(req,res)=>{
         }
     })
 }) 
+const object = "620e1c387934d910f8df2d03"
+var ObjectId = mongoose.Types.ObjectId
 app.get("/mynew",function(req,res){
   MongoClient.connect(mongodbURL, function(err, db) {
     if (err) throw err;
     var dbo = db.db("test");
-    dbo.collection("users").find({}, { projection: { _id: 1, email: 1,}}).toArray(function(err, result) {
+    dbo.collection("users").findOne({_id: ObjectId(`${object}`)}, function(err, result) {
       if (err) throw err;
       console.log(result);
+      db.close();
+    });
+    dbo.collection("users").find({}, { projection: { _id: 1, email: 1,}}).toArray(function(err, result) {
+      if (err) throw err;
+      // console.log(result);
       res.send(result)
       db.close();
     });
   });
 })
-
+// var ObjectId = mongoose.Types.ObjectId
+// console.log(ObjectId)
+// MongoClient.connect(mongodbURL, function(err, db) {
+//   if (err) throw err;
+//   var dbo = db.db("test");
+//   var myobj = { user:{
+// User
+//   }
+// , otherInfo:{
+// UserBasicData
+// }
+// };
+//   dbo.collection("users").insertOne(myobj, function(err, res) {
+//     if (err) throw err;
+//     console.log("1 document inserted");
+//     db.close();
+//   });
+// });
 
 
 app.listen(4000,()=>{

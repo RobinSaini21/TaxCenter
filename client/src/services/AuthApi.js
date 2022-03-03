@@ -1,5 +1,7 @@
 import instance from "../http/Instance";
+import { useSelector } from "react-redux";
 
+//"/verfiy" 
 
 
 
@@ -89,4 +91,19 @@ export const salaryapi = async (data) => {
     } catch (err) {
       return null;
     }
+  };
+
+  export const apitokenregister = async (access_token) => {
+  
+    instance.get("/verfiy" , {
+      headers: {
+        'Authorization': `token ${access_token}`
+      }
+    })
+    .then((res) => {
+      console.log(res.data)
+    })
+    .catch((error) => {
+      console.error(error)
+    })
   };

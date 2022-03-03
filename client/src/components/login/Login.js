@@ -12,6 +12,7 @@ import { pdfclear } from "../../Store/actions/PdfActions";
 import { useEffect } from "react";
 import { loginfailed } from "../../Store/actions/AuthActions";
 import CaptchaTest from "../Captcha/Captcha";
+import { apitokenregister } from "../../services/AuthApi";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -66,13 +67,14 @@ export default function Login() {
 
             const auth_token = res.data.token;
             console.log(auth_token);
-
+apitokenregister(auth_token)
             const Rdata = { email, auth_token };
-
+console.log(Rdata)
             if (res.status === 200) {
-              dispatch(loginfailed());
-            } else {
+              
               console.log(dispatch(loginSuccess(Rdata)));
+            } else {
+              dispatch(loginfailed());
             }
 
             // if(!userLoggedIn){ navigate("/register");}
