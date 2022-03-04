@@ -15,6 +15,7 @@ const readline = require('readline')
  const UserBasicData = require('./MongodbSchema/BasicdetailSchema')
 const User = new mongoose.model("User", mserSchema)
 const jwt = require("jsonwebtoken");
+const form16schema = require('./MongodbSchema/Form16Schema');
 
 const config = process.env;
 
@@ -103,8 +104,7 @@ app.post('/upload', (req, res) => {
 
 
 
-const form16schema = require('./MongodbSchema/Form16Schema');
-const { connect } = require('http2');
+
 
 app.get( "/verfiy" ,authenticateJWT = (req, res, next) => {
   const authHeader = req.headers.authorization;

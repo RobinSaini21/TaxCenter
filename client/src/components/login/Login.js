@@ -67,11 +67,10 @@ export default function Login() {
 
             const auth_token = res.data.token;
             console.log(auth_token);
-apitokenregister(auth_token)
+            apitokenregister(auth_token);
             const Rdata = { email, auth_token };
-console.log(Rdata)
+            console.log(Rdata);
             if (res.status === 200) {
-              
               console.log(dispatch(loginSuccess(Rdata)));
             } else {
               dispatch(loginfailed());
@@ -171,7 +170,7 @@ console.log(Rdata)
                         />
                         <span style={{ color: "red" }}>{errors.password}</span>
                       </div>
-                      <CaptchaTest/>
+                      <CaptchaTest />
                       <div class="row px-3 mb-4">
                         {/* <div class="custom-control custom-checkbox custom-control-inline"> <input id="chk1" type="checkbox" name="chk" class="custom-control-input"/> <label for="chk1" class="custom-control-label text-sm">Remember me</label> </div>  */}
                         <a href="#" class="ml-auto mb-0 text-sm">

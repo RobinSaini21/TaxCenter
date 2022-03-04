@@ -48,18 +48,17 @@ console.log(process.env.SECRET_KEY)
 
 router.post("/Register", async (req, res) => {
 
-    // Our register logic starts here
+   
     try {
-      // Get user input
+ 
       const {  email, password } = req.body;
   
-      // Validate user input
+
       if (!(email && password )) {
         res.status(400).send("All input is required");
       }
   
-      // check if user already exist
-      // Validate if user exist in our database
+      
       const oldUser = await User.findOne({ email });
   
       if (oldUser) {
