@@ -102,6 +102,8 @@ export const salaryapi = async (data) => {
     })
     .then((res) => {
       console.log(res.data)
+      const user = res.data.user.id
+      localStorage.setItem("user_id",user)
     })
     .catch((error) => {
       console.error(error)

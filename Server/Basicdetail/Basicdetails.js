@@ -5,23 +5,25 @@ const bp = require('body-parser');
 const userbasicSchema = require('../MongodbSchema/BasicdetailSchema')
 
 
-const basicdata = new mongoose.model("UserBasicData", userbasicSchema)
+const basicdata = new mongoose.model("USERDETAILS", userbasicSchema)
 
 router.get("/userbasicdetails",(req,res) =>{
     res.send("you are in user singup")
 })
 // console.log(request.body)
 router.post("/userbasicdetails",(req,res)=>{
-    console.log(req.body) 
-    const {pan,email,firstname,middlename,lastname,fathername,mobilenum,aadharnum,gender,bday}  = req.body;
-    
+  
+    // console.log(req.body) 
+    const { userDb_Id,pan,email,firstname,middlename,lastname,fathername,mobilenum,aadharnum,gender,bday}  = req.body;
+    console.log(userDb_Id)
     basicdata.findOne({email:email},(err,user)=>{
         
         if(user){
       
             res.send({message:"user already exist"})
         }else {
-    const user = new basicdata({ pan,email,firstname,middlename,lastname,fathername,mobilenum,aadharnum,gender,bday})
+    const user = new basicdata({ user: userDb_Id, pan,email,firstname,middlename,lastname,fathername,mobilenum,aadharnum,gender,bday})
+    
     console.log(req.body)
             user.save(err=>{
                 if(err){
@@ -35,6 +37,5 @@ router.post("/userbasicdetails",(req,res)=>{
 
 
 }) 
-
 
 module.exports = router

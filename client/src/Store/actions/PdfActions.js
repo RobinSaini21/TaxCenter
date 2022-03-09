@@ -6,6 +6,7 @@ export const USER_BASIC_DATA = "USER_BASIC_DATA";
 export const ClEAR_USER_BASIC_DATA = "ClEAR_USER_BASIC_DATA";
 export const FORM16_DATA = "FORM16_DATA";
 export const CLEAR_FORM16_DATA = "CLEAR_FORM16_DATA"; 
+export const USER_DETAILS = "USER_DETAILS";
 
 export const pdfsuccess = () => ({
   type: PDF_SUCCESS,

@@ -12,11 +12,11 @@ const readline = require('readline')
  const rl = readline.createInterface(process.stdin,process.stdout);
  const mserSchema = require('./MongodbSchema/RegisterSchema');
  var MongoClient = require('mongodb').MongoClient;
- const UserBasicData = require('./MongodbSchema/BasicdetailSchema')
+ const userbasicSchema = require('./MongodbSchema/BasicdetailSchema')
 const User = new mongoose.model("User", mserSchema)
 const jwt = require("jsonwebtoken");
 const form16schema = require('./MongodbSchema/Form16Schema');
-
+const basicdata = new mongoose.model("USERDETAILS", userbasicSchema)
 const config = process.env;
 
 
@@ -116,8 +116,10 @@ app.get( "/verfiy" ,authenticateJWT = (req, res, next) => {
           if (err) {
               return res.sendStatus(403);
           } else{
+            return res.json(user)
             req.user = user;
             console.log(req.user)
+          
             next();
           }
 
@@ -247,6 +249,49 @@ app.get("/mynew",function(req,res){
 //   });
 // });
 
+//userdetails
+//users
+
+//  const client = await MongoClient.connect('mongodb://localhost:27017/test');
+ 
+const  run= async () => {
+ const docs  = basicdata.aggregate([
+{
+  $lookup: {
+    from: 'users',
+    as: 'profile',
+    let: {userId: "$user"},
+    pipeline: [
+      {$match: {$expr:{$eq:['$_id','$$userId']}}}
+    ]
+  }
+},
+{
+  $unwind: '$profile'
+},
+{
+  $project: {
+    _id: 1,
+    email: 1,
+    pan: 1,
+    password : '$profile.password'
+  }
+}
+ 
+      
+]).exec((err,result) =>{
+  if(err){
+    console.log(err)
+  }
+  else{
+    console.log(result)
+  }
+} )
+   console.log(docs)
+
+} 
+
+run()
 
 app.listen(4000,()=>{
     console.log("started")

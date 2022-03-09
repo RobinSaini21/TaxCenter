@@ -3,14 +3,13 @@ import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { Formik } from "formik";
 import axios from "axios";
-import { loginSuccess } from "../../Store/actions/AuthActions";
+import { loginSuccess,loginfailed , userDbid } from "../../Store/actions/AuthActions";
 import Facebook from "../GoogleLogin/FacebookLogin";
 import MyGoolgeLogin from "../GoogleLogin/GoolgeLogin";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { pdfclear } from "../../Store/actions/PdfActions";
 import { useEffect } from "react";
-import { loginfailed } from "../../Store/actions/AuthActions";
 import CaptchaTest from "../Captcha/Captcha";
 import { apitokenregister } from "../../services/AuthApi";
 
@@ -32,6 +31,12 @@ export default function Login() {
     }
     //
   });
+
+useEffect(() =>{
+  const data =  localStorage.getItem("user_id")
+  console.log("LOGIN =>",data)
+console.log(dispatch(userDbid(data)))
+})
 
   const intialData = {
     email: "",
@@ -62,16 +67,15 @@ export default function Login() {
           const password = values.password;
           const data = { email, password };
           axios.post("http://localhost:4000/Login", data).then((res) => {
-            console.log(res);
-            console.log(res.data);
+        
 
             const auth_token = res.data.token;
-            console.log(auth_token);
+       
             apitokenregister(auth_token);
             const Rdata = { email, auth_token };
             console.log(Rdata);
             if (res.status === 200) {
-              console.log(dispatch(loginSuccess(Rdata)));
+              dispatch(loginSuccess(Rdata))
             } else {
               dispatch(loginfailed());
             }

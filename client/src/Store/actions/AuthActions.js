@@ -3,6 +3,7 @@ export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const SIGN_OUT = "SIGN_OUT";
 export const LOGIN_FAILED = "LOGIN_FAILED";
 export const LOGIN_SUCCESS_FAILED = "LOGIN_SUCCESS_FAILED";
+export const USER_DB_ID = "USER_DB_ID"
 
 export const loginSuccess = (data) => ({
   type: LOGIN_SUCCESS,
@@ -27,6 +28,12 @@ export const loginfailed = () =>({
   type: LOGIN_SUCCESS_FAILED
 })
 
+export const userDbid = (data) =>({
+  type: USER_DB_ID,
+payload:  {
+data: data
+  }
+})
 
 
 

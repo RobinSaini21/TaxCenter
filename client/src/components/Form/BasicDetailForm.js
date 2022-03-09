@@ -10,11 +10,13 @@ import {
 import { useDispatch } from "react-redux";
 
 function BasicDetailForm() {
+  const {userDb_Id} = useSelector((state) => state.auth);
   const auth = useSelector((store) => store.auth.auth_token);
   const { form16 } = useSelector((state) => state.form);
   console.log("USER BASIC FORM", form16);
   const Navigate = useNavigate();
   const dispatch = useDispatch();
+  console.log(userDb_Id,"<USER ID")
   const intialData = {
     pan: "",
     email: "",
@@ -95,7 +97,9 @@ function BasicDetailForm() {
           const aadharnum = values.aadharnum;
           const gender = values.gender;
           const bday = values.bday;
+          
           const basic = {
+            userDb_Id,
             pan,
             email,
             firsname,
@@ -107,6 +111,7 @@ function BasicDetailForm() {
             gender,
             bday,
           };
+          
           axios
             .post("http://localhost:4000/userbasicdetails", basic)
             .then((res) => {
