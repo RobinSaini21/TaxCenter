@@ -12,6 +12,8 @@ import { pdfclear } from "../../Store/actions/PdfActions";
 import { useEffect } from "react";
 import CaptchaTest from "../Captcha/Captcha";
 import { apitokenregister } from "../../services/AuthApi";
+import { logindata } from "../../services/AuthApi";
+
 
 export default function Login() {
   const navigate = useNavigate();
@@ -19,7 +21,7 @@ export default function Login() {
   const pdf = useSelector((store) => store.pdf.userPdf);
   const userLoggedIn = useSelector((store) => store.auth.userLoggedIn);
   const auth = useSelector((store) => store.auth.auth_token);
-  console.log("auth token", auth);
+
 
   // console.log("LOGGIN =>" ,pdf)
   useEffect(() => {
@@ -32,11 +34,7 @@ export default function Login() {
     //
   });
 
-useEffect(() =>{
-  const data =  localStorage.getItem("user_id")
-  console.log("LOGIN =>",data)
-console.log(dispatch(userDbid(data)))
-})
+
 
   const intialData = {
     email: "",
@@ -62,26 +60,27 @@ console.log(dispatch(userDbid(data)))
       <Formik
         initialValues={intialData}
         validate={registrationSchema}
-        onSubmit={(values, { setSubmitting }) => {
+        onSubmit={ async (values, { setSubmitting }) => {
           const email = values.email;
           const password = values.password;
           const data = { email, password };
-          axios.post("http://localhost:4000/Login", data).then((res) => {
+        //  await axios.post("http://localhost:4000/Login", data).then((res) => {
         
 
-            const auth_token = res.data.token;
-       
-            apitokenregister(auth_token);
-            const Rdata = { email, auth_token };
-            console.log(Rdata);
-            if (res.status === 200) {
-              dispatch(loginSuccess(Rdata))
-            } else {
-              dispatch(loginfailed());
-            }
+           
 
-            // if(!userLoggedIn){ navigate("/register");}
-          });
+        //     // if(!userLoggedIn){ navigate("/register");}
+        //   });
+const res = await logindata(data)
+          const auth_token = res.data.token;
+          console.log(res,"Resdata")
+           const Rdata = { email, auth_token };
+           console.log(Rdata);
+           if (res.status === 200) {
+             dispatch(loginSuccess(Rdata))
+           } else {
+             dispatch(loginfailed());
+           }
 
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));

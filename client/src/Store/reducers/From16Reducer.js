@@ -1,7 +1,8 @@
-import { FORM16_DATA, CLEAR_FORM16_DATA } from "../actions/PdfActions";
+import { FORM16_DATA, CLEAR_FORM16_DATA, USER_DETAILS } from "../actions/PdfActions";
 
 const initialState = {
     form16: false,
+    userDetails: false
   };
 
 const form16Reducer = (state = initialState, action) => {
@@ -15,6 +16,11 @@ const form16Reducer = (state = initialState, action) => {
             return {
                 ...state,
                 form16: false
+            }
+            case USER_DETAILS:
+              return {
+              ...state,
+              userDetails: true
             }
   
       default:

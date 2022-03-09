@@ -9,30 +9,27 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import store from "../../Store";
 import { useEffect } from "react";
-
+import { userDbid } from "../../Store/actions/AuthActions";
+import instance from "../../http/Instance";
 
 const Register = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const Navigate = useNavigate();
 
-  const userLoggedIn = useSelector((store) =>store.auth.userLoggedIn)
-  const auth = useSelector((store) =>store.auth.auth_token)
-  console.log("REGISTER =>", userLoggedIn)
-useEffect(()=>{
-    if(userLoggedIn){
-  Navigate(`/basicuser/${auth}`)
+  const userLoggedIn = useSelector((store) => store.auth.userLoggedIn);
+  const auth = useSelector((store) => store.auth.auth_token);
+  // console.log("REGISTER =>", userLoggedIn)
+  useEffect(() => {
+    if (userLoggedIn) {
+      Navigate(`/basicuser/${auth}`);
     }
-})
-   
+  });
 
-     
-   
   const intialData = {
     email: "",
     password: "",
     confirm_password: "",
   };
-
 
   const registrationSchema = (values) => {
     const errors = {};
@@ -47,9 +44,7 @@ useEffect(()=>{
       document.getElementById("password").style.borderColor = "red";
     } else if (values.password.length > 20) {
       errors.password = "password must be 20 characters or less";
-    }
-   
-    else if (!/\d/.test(values.password)) {
+    } else if (!/\d/.test(values.password)) {
       errors.password = "strong password";
     }
     if (values.confirm_password != values.password) {
@@ -59,33 +54,47 @@ useEffect(()=>{
     return errors;
   };
 
-
- 
   return (
     <div>
       <Formik
         initialValues={intialData}
-
         validate={registrationSchema}
-        onSubmit={(values, { setSubmitting }) => {
-       
+        onSubmit={ async (values, { setSubmitting }) => {
           const email = values.email;
           const password = values.password;
-        
-          const apidata = { email, password };
-     apiregister(apidata)
-     const auth_token =  localStorage.getItem('APIreg_TOKEN')
-    
-        const data = {email,auth_token}
-        
-        console.log('auth_token' ,data)
-   
-      dispatch(registerSuccess(data))
 
+          const apidata =  { email, password };
 
+    const ares = await apiregister(apidata);
+console.log("Regisetr",ares)
+const auth_token = ares.data;
 
- 
-   
+          const data = { email, auth_token };
+
+          await instance
+          .get("/verfiy", {
+            headers: {
+              Authorization: `token ${auth_token}`,
+            },
+          })
+          .then((res) => {
+      
+            // 
+          //   const user_id = res.data.user_id
+          // return user_id
+         
+      
+          const data = res.data.user_id
+          console.log("TOKEN DATA",dispatch(userDbid(data)))
+          console.log(data)
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+//       const ares = await apitokenregister(auth_token)    
+// console.log(ares)
+          dispatch(registerSuccess(data));
+
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
             setSubmitting(false);
@@ -193,12 +202,11 @@ useEffect(()=>{
                         />
                         <span style={{ color: "red" }}>{errors.password}</span>
                       </div>
-                     
-                      
+
                       <div class="row px-3 mb-4">
                         {/* <div class="custom-control custom-checkbox custom-control-inline"> <input id="chk1" type="checkbox" name="chk" class="custom-control-input"/> <label for="chk1" class="custom-control-label text-sm">Remember me</label> </div>  */}
                         <a href="#" class="ml-auto mb-0 text-sm">
-                        You agree to the terms and conditions of the website.
+                          You agree to the terms and conditions of the website.
                         </a>
                       </div>
                       <div class="row mb-3 px-3">

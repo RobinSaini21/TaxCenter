@@ -41,3 +41,7 @@ export const form16datasuccess = () => ({
 export const clearform16datasuccess = () => ({
   type: CLEAR_FORM16_DATA
 })
+
+export const userdetails = () =>({
+  type: USER_DETAILS
+})

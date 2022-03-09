@@ -11,7 +11,7 @@ import store from "../../../Store";
 function Navbar_2() {
   const dispatch = useDispatch();
   const userLoggedIn = useSelector((store) => store.auth.userLoggedIn);
-  console.log("Navbar", userLoggedIn);
+ 
 
   const Login_button = () => {
     return (

@@ -91,12 +91,12 @@ token:"thisismysecret"
       );
       // save user token
       user.token = token;
-  const data = {
-    user: user,
-    token: token
-  }
+  // const data = {
+  //   user: user,
+  //   // token: token
+  // }
       // return new user
-      res.status(201).json([data]);
+      res.status(201).json([token]);
     } catch (err) {
       console.log(err);
     }

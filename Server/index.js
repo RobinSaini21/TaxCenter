@@ -257,37 +257,47 @@ app.get("/mynew",function(req,res){
 const  run= async () => {
  const docs  = basicdata.aggregate([
 {
-  $lookup: {
-    from: 'users',
+  $lookup:{
+    from: "users",
     as: 'profile',
-    let: {userId: "$user"},
+    let: {userID: '$user'},
+    // pipeline: [
+    // {$match:{$expr:{$ep:['$_id','$$userID']}}}
+    // ]
     pipeline: [
-      {$match: {$expr:{$eq:['$_id','$$userId']}}}
+      {$match: {$expr:{$eq:['$_id','$$userID']}}}
     ]
-  }
+  },  
+  
 },
 {
   $unwind: '$profile'
 },
 {
   $project: {
+    User_id: "$profile._id",
+    user: 1,
     _id: 1,
     email: 1,
     pan: 1,
-    password : '$profile.password'
+    aadharnum: 1,
+    LoginEmail: '$profile.email'
   }
 }
- 
+
+
       
 ]).exec((err,result) =>{
   if(err){
     console.log(err)
   }
   else{
-    console.log(result)
+     console.log(result)
   }
 } )
-   console.log(docs)
+    // console.log(docs)
+
+ 
 
 } 
 
