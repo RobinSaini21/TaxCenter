@@ -12,26 +12,29 @@ import { pdfclear } from "../../Store/actions/PdfActions";
 import { useEffect } from "react";
 import CaptchaTest from "../Captcha/Captcha";
 import { apitokenregister } from "../../services/AuthApi";
-import { logindata } from "../../services/AuthApi";
+import { logindata,apiprofile } from "../../services/AuthApi";
+import instance from "../../http/Instance";
+
 
 
 export default function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const pdf = useSelector((store) => store.pdf.userPdf);
-  const userLoggedIn = useSelector((store) => store.auth.userLoggedIn);
-  const auth = useSelector((store) => store.auth.auth_token);
+  const {userLoggedIn,auth } = useSelector((store) => store.auth);
+  const userDb_Id  = useSelector((store) => store.auth.userDb_Id);
 
+//userDb_Id
 
-  // console.log("LOGGIN =>" ,pdf)
   useEffect(() => {
+  
+    console.log("USERID",userDb_Id)
     if (pdf === true && userLoggedIn) {
       navigate(`/form16/${auth}`);
       dispatch(pdfclear());
     } else if (userLoggedIn) {
       navigate(`/basicuser/${auth}`);
-    }
-    //
+    } 
   });
 
 
@@ -64,24 +67,32 @@ export default function Login() {
           const email = values.email;
           const password = values.password;
           const data = { email, password };
-        //  await axios.post("http://localhost:4000/Login", data).then((res) => {
-        
-
-           
-
-        //     // if(!userLoggedIn){ navigate("/register");}
-        //   });
-const res = await logindata(data)
+           const res = await logindata(data)
           const auth_token = res.data.token;
-          console.log(res,"Resdata")
            const Rdata = { email, auth_token };
-           console.log(Rdata);
            if (res.status === 200) {
              dispatch(loginSuccess(Rdata))
            } else {
              dispatch(loginfailed());
            }
-
+        
+           await instance
+           .get("/verfiy", {
+             headers: {
+               Authorization: `token ${auth_token}`,
+             },
+           })
+           .then((res) => {
+             const data = res.data.user.id;
+             console.log(res)
+          dispatch(userDbid(data))
+          apiprofile(data)
+             console.log(data);
+           })
+           .catch((error) => {
+             console.error(error);
+           });
+          console.log("USER_ID",userDb_Id)
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
             setSubmitting(false);

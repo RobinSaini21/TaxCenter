@@ -6,84 +6,10 @@ const mongoose = require("mongoose");
 const {check,validationResult} = require("express-validator")
 const User = new mongoose.model("User")
 
-// router.post("/Login", (req, res) => {
-    // jwt.sign(
-    //     payload,
-    //     "randomString", {
-    //         expiresIn: 10000
-    //     },
-    //     (err, token) => {
-    //         if (err) throw err;
-    //         res.status(200).json({
-    //             token
-    //         });
-    //     }
-    // );
-//     const { email, password } = req.body;
-//     User.findOne({ email: email }, async (err, user) => {
-//         // bcrypt.compare(req.body.password != user.password,function(err,res){
-//         //     if(req.body.password != user.password){
-//         //         res.json({success: false, message: 'passwords do not match'});
-//         //       } else {
-//         //         // Send JWT
-//         //       }
-//         // })
-//         if (user) {
-//             // console.log(bcrypt.compare(user.password))
-//             if (password === user.password) {
-              
-                
-//                 const payload = {
-//                     user: {
-//                         id: user.id
-//                     }
-//                 };
-//                 jwt.sign(
-//                     payload,
-//                     "randomString", {
-//                     expiresIn: 10000
-//                 },
-            
-//                     (err, token) => {
-//                         if (err) throw err;
-//                         return res.status(200).json({
-//                             message: "login sucess", user: user ,token: token
-                          
-//                         });
-//                     }
-                    
-//                 );
-//             //     res.send({ 
-//             //  })
-//             } else {
-//                 res.send({ message: "wrong credentials" })
-//             }
-//         } else {
-//             res.send("not register")
-//         }
-//     })
-//     const payload = {
-//         user: {
-//             id: User.id
-//         }
-//     };
-//     jwt.sign(
-//         payload,
-//         "randomString", {
-//             expiresIn: 10000
-//         },
-//         (err, token) => {
-//             if (err) throw err;
-//            return res.status(200).json({
-//                 token
-//             });
-//         }
-//     );
-
-// })
 
 
-//LOGIN
+
+
 
 router.post(
   "/Login",
@@ -98,6 +24,7 @@ router.post(
 
     if (!errors.isEmpty()) {
       return res.status(400).json({
+        message: "Enter the Details",
         errors: errors.array()
       });
     }
@@ -148,40 +75,4 @@ router.post(
 
 
 
-// router.post( "/Login", async (req, res) => {
-
-//   // Our login logic starts here
-//   try {
-//     // Get user input
-//     const { email, password } = req.body;
-
-//     // Validate user input
-//     if (!(email && password)) {
-//       res.status(400).send("All input is required");
-//     }
-//     // Validate if user exist in our database
-//     const user = await User.findOne({ email });
-
-//     if (user && (await bcrypt.compare(password, user.password))) {
-//       // Create token
-//       const token = jwt.sign(
-//         { user_id: user._id, email },
-//         "thisismysecret",
-//         {
-//           expiresIn: "2h",
-//         }
-//       );
-
-//       // save user token
-//       user.token = token;
-
-//       // user
-//       res.status(200).json(user);
-//     }
-//     res.status(400).send("Invalid Credentials");
-//   } catch (err) {
-//     console.log(err);
-//   }
-//   // Our register logic ends here
-// });
 module.exports = router

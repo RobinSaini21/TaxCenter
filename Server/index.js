@@ -16,7 +16,7 @@ const readline = require('readline')
 const User = new mongoose.model("User", mserSchema)
 const jwt = require("jsonwebtoken");
 const form16schema = require('./MongodbSchema/Form16Schema');
-const basicdata = new mongoose.model("USERDETAILS", userbasicSchema)
+const Basicdata = new mongoose.model("USERDETAILS", userbasicSchema)
 const config = process.env;
 
 
@@ -254,18 +254,54 @@ app.get("/mynew",function(req,res){
 
 //  const client = await MongoClient.connect('mongodb://localhost:27017/test');
  
+// app.post('/getprofile',(res,req) =>{
+//   const userDb_Id = req.body.userDb_Id
+//   console.log(userDb_Id)
+//   res.send({message:"sucessfull"})
+// })
+
+  app.get( '/getprofile' ,authenticateJWT = (req, res, next) => {
+    const authHeader = req.headers.authorization;
+  console.log(authHeader)
+  Basicdata.findOne({user: `${authHeader}`}).exec((err,result) =>{
+    if (err) throw err
+    else 
+    res.send(result)
+    console.log(result)
+  });
+  })
+ 
+
+
+
+
 const  run= async () => {
- const docs  = basicdata.aggregate([
+  const Uprofile =  User.findById({_id: "622878bd05239a8e5c50daa4"}).exec((err,result) =>{
+    if (err) throw err
+    // else 
+    // console.log(result)
+  });
+ 
+const basic =  Basicdata.findOne({user:"622878bd05239a8e5c50daa4"}).exec((err,result) =>{
+  if (err) throw err
+  // else 
+  // console.log(result)
+});
+var ObjectId = mongoose.Types.ObjectId
+const u_id = "62287c1a447b5e86cac92846"
+ const docs  = Basicdata.aggregate([
+
+
 {
+  
+  
   $lookup:{
     from: "users",
     as: 'profile',
     let: {userID: '$user'},
-    // pipeline: [
-    // {$match:{$expr:{$ep:['$_id','$$userID']}}}
-    // ]
+  
     pipeline: [
-      {$match: {$expr:{$eq:['$_id','$$userID']}}}
+      {$match:  {$expr:{$eq:['$_id','$$userID',]}}}
     ]
   },  
   
@@ -283,8 +319,16 @@ const  run= async () => {
     aadharnum: 1,
     LoginEmail: '$profile.email'
   }
-}
-
+},
+{
+  $match:{
+    $and: [
+      {
+        'user':'62287c1a447b5e86cac92846'
+      }
+    ]
+  }
+},
 
       
 ]).exec((err,result) =>{
@@ -293,6 +337,7 @@ const  run= async () => {
   }
   else{
      console.log(result)
+   
   }
 } )
     // console.log(docs)

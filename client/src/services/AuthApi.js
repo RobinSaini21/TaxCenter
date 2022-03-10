@@ -110,8 +110,34 @@ export const apitokenregister = async (access_token) => {
     // return user_id
    
 
-    const data = res.data.user_id
-    console.log("THIS IS MY ACTIONS",store.dispatch(userDbid(data)))
+    // const data = res.data.user_id
+    // console.log("THIS IS MY ACTIONS",store.dispatch(userDbid(data)))
+    console.log(res)
+    return res
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
+
+
+//'/getprofile'
+export const apiprofile = async (data) => {
+  await instance
+    .get('/getprofile', {
+      headers: {
+        Authorization: `${data}`,
+      },
+    })
+    .then((res) => {
+
+      // 
+    //   const user_id = res.data.user_id
+    // return user_id
+   
+
+    // const data = res.data.user_id
+    console.log(res)
     return res
     })
     .catch((error) => {

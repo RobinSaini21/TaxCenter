@@ -59,40 +59,35 @@ const Register = () => {
       <Formik
         initialValues={intialData}
         validate={registrationSchema}
-        onSubmit={ async (values, { setSubmitting }) => {
+        onSubmit={async (values, { setSubmitting }) => {
           const email = values.email;
           const password = values.password;
 
-          const apidata =  { email, password };
+          const apidata = { email, password };
 
-    const ares = await apiregister(apidata);
-console.log("Regisetr",ares)
-const auth_token = ares.data;
+          const ares = await apiregister(apidata);
+          console.log("Regisetr", ares);
+          const auth_token = ares.data;
 
           const data = { email, auth_token };
 
           await instance
-          .get("/verfiy", {
-            headers: {
-              Authorization: `token ${auth_token}`,
-            },
-          })
-          .then((res) => {
-      
-            // 
-          //   const user_id = res.data.user_id
-          // return user_id
-         
-      
-          const data = res.data.user_id
-          console.log("TOKEN DATA",dispatch(userDbid(data)))
-          console.log(data)
-          })
-          .catch((error) => {
-            console.error(error);
-          });
-//       const ares = await apitokenregister(auth_token)    
-// console.log(ares)
+            .get("/verfiy", {
+              headers: {
+                Authorization: `token ${auth_token}`,
+              },
+            })
+            .then((res) => {
+              console.log(res)
+              const data = res.data.user_id;
+             dispatch(userDbid(data))
+        
+            })
+            .catch((error) => {
+              console.error(error);
+            });
+          //       const ares = await apitokenregister(auth_token)
+          // console.log(ares)
           dispatch(registerSuccess(data));
 
           setTimeout(() => {

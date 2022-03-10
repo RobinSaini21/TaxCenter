@@ -1,56 +1,12 @@
-import React, { useState } from "react";
-import Sidebar from "./Navbar_Sidebar";
-import { Link } from "react-router-dom";
+import React from "react";
 import { useSelector } from "react-redux";
-import Logout from "../../login/logout";
 import "./Navbar.css";
-import { useDispatch } from "react-redux";
-import { logoutSuccess } from "../../../Store/actions/AuthActions";
-import store from "../../../Store";
-import BurgerMenu from "../../BurgerMenu";
+import BurgerMenu from "../../Menus/BurgerMenu";
+import LoginBtn from "../../login/LoginBtn";
 
-function Navbar_2() {
-  const [show,setShow] = useState(true)
-  const dispatch = useDispatch();
+
+const Navbar_2 = () => {
   const userLoggedIn = useSelector((store) => store.auth.userLoggedIn);
- 
-
-  const Login_button = () => {
-    return (
-      <Link to={"/login"}>
-        <button className="nav_btn">LOGIN</button>
-      </Link>
-    );
-  };
-  const Logout_button = () => {
-    const handleSubmit = () => {
-      dispatch(logoutSuccess());
-    };
-const showHide = () =>{
-  setShow(!show)
-  
-}
-
-console.log(show)
-    return (
-      // <Link to={"/"}>
-      //   {/* <button className='nav_btn' onClick={} >LOG OUT</button> */}
-      //   <button className="nav_btn" onClick={handleSubmit}>
-      //     LOGOUT
-      //   </button>
-      // </Link>
-      <div>
-        <button onClick={showHide} style={{border: "none"}}>...</button>
-       {show?  <ul>
-          <li>MY PROFILE</li>
-          <li onClick={handleSubmit} style={{cursor: "pointer"}} >  
-          LOGOUT
-      </li>
-        </ul>: <h1>...</h1>}
-      </div>
-    );
-  };
-
   return (
     <>
       <nav
@@ -148,7 +104,7 @@ console.log(show)
                 </a>
               </li>
               <li className="nav-item">
-                {userLoggedIn ? <Logout_button /> : <Login_button />}
+                {userLoggedIn ? <BurgerMenu /> : <LoginBtn/>}
               </li>
             </ul>
           </div>

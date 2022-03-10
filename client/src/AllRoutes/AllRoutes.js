@@ -1,7 +1,5 @@
 import React from "react";
 import Section_1 from "../components/homepage/Sections/Section_1";
-import TestReg from "../components/register/TestReg";
-import TestingDetailForm from "../components/Form/TestingDetailForm";
 import Login from "../components/login/Login";
 import { BMICalculator } from "../Calculators/BmiCalculators";
 import EmiCalculator from "../Calculators/EmiCalculator";
@@ -9,14 +7,12 @@ import Allcards from "../myServices/Allcards";
 import { useRoutes } from "react-router";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router";
-import authReducer from "../Store/Reducer";
 import BasicDetailForm from "../components/Form/BasicDetailForm";
 import Register from "../components/register/Register";
 import UploadPdf from "../components/PdfComponents/Uploadpdf";
 import Hp from "../components/PdfComponents/Hp";
 import Interest from "../components/PdfComponents/Interest";
 import Salary from "../components/PdfComponents/Salary";
-import Logout from "../components/login/logout";
 import From16Details from "../Form16Details/From16Details";
 import Form16check from "../Form16Details/Form16check";
 import ClickContinue from "../components/ClickContinue/ClickContinue";
@@ -38,17 +34,18 @@ import BanKDetails from "../components/TaxService/BanKDetails";
 import AddBankDetails from "../components/TaxService/AddBankDetails";
 import Users from "../AdminPage/Users";
 import AdminPage from "../AdminPage/AdminPage";
+import Profile from "../components/Profile/Profile";
 
 function AllRoutes() {
-  // const {token} = useSelector((state) => authReducer)
+
   const user = useSelector((store) => store.auth.userLoggedIn);
-  // console.log(token)
 
   const ProtectedRoutes = ({ children }) => {
     return user ? children : <Navigate to="/login" />;
   };
 
   let routes = useRoutes([
+    
     {
       path: "/",
       element: <Section_1 />,
@@ -66,13 +63,13 @@ function AllRoutes() {
       element: <Login />,
     },
     {
-      path: "logout",
-      element: <Logout />,
-    },
-    {
       path: "/dashboard",
       element: <ClickContinue />,
     },
+    {
+      path: "/profile",
+      element: <Profile/>
+          },
     {
       path: "/dashboard_Con",
       element: <Dashboard />,

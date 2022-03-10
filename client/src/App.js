@@ -6,15 +6,17 @@ import Apidata from "./ApiData/Apidata";
 import AdminPage from "./AdminPage/AdminPage";
 import instance from "./http/Instance";
 import { useEffect ,useState} from "react";
-
+//'/getprofile'
 function App() {
-
+ 
+  
 
   return (
     <>
-      <Navbar_2 />
+       <Navbar_2 />
       <AllRoutes />
-<Apidata/>
+{/* <Apidata/>  */}
+
 {/* <AdminPage/> */}
 {/* <AdminPage/> */}
     </>

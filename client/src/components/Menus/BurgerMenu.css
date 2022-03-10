@@ -1,0 +1,9 @@
+.Btn_Vertical_Text{
+     writing-mode: vertical-rl;
+     text-orientation: upright;
+     background: transparent;
+     width: 40px;
+     height: 40px;
+     margin-top: -10px;
+     font-size: 40px;
+}
