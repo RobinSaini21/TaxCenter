@@ -22,13 +22,31 @@ export default function Login() {
   const dispatch = useDispatch();
   const pdf = useSelector((store) => store.pdf.userPdf);
   const {userLoggedIn,auth } = useSelector((store) => store.auth);
-  const userDb_Id  = useSelector((store) => store.auth.userDb_Id);
+  const { userDb_Id } = useSelector((state) => state.auth);
 
-//userDb_Id
+  const profile = async (data) =>{
+    instance.get('/getprofile', {
+     headers: {
+       Authorization: `${data}`,
+     },
+   })
+   .then((res) => {
+     console.log(res)
+     const {data} = res
+     if(data){
+       navigate( `/product_launchboard/${auth}`)
+     }
+   return res
+   })
+   .catch((error) => {
+     console.error(error);
+   });
+ }
+ 
 
-  useEffect(() => {
+  useEffect ( async () => {
   
-    console.log("USERID",userDb_Id)
+    const res = await profile(userDb_Id)
     if (pdf === true && userLoggedIn) {
       navigate(`/form16/${auth}`);
       dispatch(pdfclear());
@@ -92,7 +110,8 @@ export default function Login() {
            .catch((error) => {
              console.error(error);
            });
-          console.log("USER_ID",userDb_Id)
+        
+   
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
             setSubmitting(false);

@@ -5,11 +5,9 @@ const mongoose = require("mongoose");
 const AllRoutes = require('./AllExpressRoutes/AllExpressRoutes')
 const fileupload = require('express-fileupload')
 const session = require('express-session');
-const { cookie } = require('express-validator');
 const fs = require('fs')
 const pdfpasre = require('pdf-parse')
 const readline = require('readline')
- const rl = readline.createInterface(process.stdin,process.stdout);
  const mserSchema = require('./MongodbSchema/RegisterSchema');
  var MongoClient = require('mongodb').MongoClient;
  const userbasicSchema = require('./MongodbSchema/BasicdetailSchema')
@@ -47,9 +45,9 @@ app.get('/', (req, res) => {
   res.send(`${req.session.views} views`);
 })
 app.use(AllRoutes);
-  
 
-const mongodbURL = process.env.CONNECT_DB 
+
+const mongodbURL = process.env.CONNECT_DB
 
 mongoose.connect(mongodbURL,{
     useNewUrlParser:true,
@@ -59,19 +57,19 @@ mongoose.connect(mongodbURL,{
 }
 app.use(fileupload())
 app.post('/upload', (req, res) => {
- 
+
     if (req.files === null) {
       return res.status(400).json({ msg: 'No file uploaded' });
     }
-  
+
     const file = req.files.file;
   console.log(file)
     file.mv(`/Users/sgs/Downloads/WorkSpace/Projects/MyITreturn/server/uploads/${file.name}`, err => {
       if (err) {
         console.error(err);
         return res.status(500).send(err);
-      } 
-   
+      }
+
       const pdffile = fs.readFileSync(`/Users/sgs/Downloads/WorkSpace/Projects/MyITreturn/server/uploads/${file.name}`)
       pdfpasre(pdffile).then(function(data){
        console.log(data.text)
@@ -80,7 +78,7 @@ app.post('/upload', (req, res) => {
        })
        var lineno = 0;
        const linedata = data.text
-       
+
        interface.on('line',() =>{
         lineno++;
         console.log()
@@ -90,17 +88,17 @@ app.post('/upload', (req, res) => {
         // console.log(lineno)
         // console.log(lineno[90])
        })
-     
+
         res.json({ fileName: file.name, filePath: `/uploads/${file.name}` , msg: "File is uploaded", data: data.text});
           })
-       
-       
+
+
     });
   })
 
- 
- 
- 
+
+
+
 
 
 
@@ -119,11 +117,11 @@ app.get( "/verfiy" ,authenticateJWT = (req, res, next) => {
             return res.json(user)
             req.user = user;
             console.log(req.user)
-          
+
             next();
           }
 
-      
+
       });
   } else {
       res.sendStatus(401);
@@ -210,7 +208,7 @@ app.post("/form16data",(req,res)=>{
             res.send({message:"sucessfull"})
         }
     })
-}) 
+})
 const object = "620e1c387934d910f8df2d03"
 var ObjectId = mongoose.Types.ObjectId
 app.get("/mynew",function(req,res){
@@ -253,24 +251,24 @@ app.get("/mynew",function(req,res){
 //users
 
 //  const client = await MongoClient.connect('mongodb://localhost:27017/test');
- 
+
 // app.post('/getprofile',(res,req) =>{
 //   const userDb_Id = req.body.userDb_Id
 //   console.log(userDb_Id)
 //   res.send({message:"sucessfull"})
 // })
-
+// const ObjectId =  mongoose.Schema.Types.ObjectId
   app.get( '/getprofile' ,authenticateJWT = (req, res, next) => {
     const authHeader = req.headers.authorization;
   console.log(authHeader)
-  Basicdata.findOne({user: `${authHeader}`}).exec((err,result) =>{
+  Basicdata.findOne({user: ObjectId(authHeader)}).exec((err,result) =>{
     if (err) throw err
-    else 
+    else
     res.send(result)
     console.log(result)
   });
   })
- 
+
 
 
 
@@ -278,13 +276,13 @@ app.get("/mynew",function(req,res){
 const  run= async () => {
   const Uprofile =  User.findById({_id: "622878bd05239a8e5c50daa4"}).exec((err,result) =>{
     if (err) throw err
-    // else 
+    // else
     // console.log(result)
   });
- 
+
 const basic =  Basicdata.findOne({user:"622878bd05239a8e5c50daa4"}).exec((err,result) =>{
   if (err) throw err
-  // else 
+  // else
   // console.log(result)
 });
 var ObjectId = mongoose.Types.ObjectId
@@ -293,18 +291,18 @@ const u_id = "62287c1a447b5e86cac92846"
 
 
 {
-  
-  
+
+
   $lookup:{
     from: "users",
     as: 'profile',
     let: {userID: '$user'},
-  
+
     pipeline: [
       {$match:  {$expr:{$eq:['$_id','$$userID',]}}}
     ]
-  },  
-  
+  },
+
 },
 {
   $unwind: '$profile'
@@ -320,33 +318,21 @@ const u_id = "62287c1a447b5e86cac92846"
     LoginEmail: '$profile.email'
   }
 },
-{
-  $match:{
-    $and: [
-      {
-        'user':'62287c1a447b5e86cac92846'
-      }
-    ]
-  }
-},
 
-      
+
+
 ]).exec((err,result) =>{
   if(err){
     console.log(err)
   }
   else{
      console.log(result)
-   
+
   }
 } )
-    // console.log(docs)
+}
 
- 
-
-} 
-
-run()
+// run()
 
 app.listen(4000,()=>{
     console.log("started")

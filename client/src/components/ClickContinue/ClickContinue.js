@@ -7,10 +7,9 @@ import { clearuserbasicdata } from "../../Store/actions/PdfActions";
 
 function ClickContinue() {
   const dispatch = useDispatch();
-  const pannum = useSelector((state) => state.pdf.userbasicdata.pan);
-  const firsname = useSelector((store) => store.pdf.userbasicdata.firsname);
-  const lastname = useSelector((store) => store.pdf.userbasicdata.lastname);
-  const middlename = useSelector((store) => store.pdf.userbasicdata.middlename);
+  const { pan, firstname, lastname,middlename } = useSelector(
+    (state) => state.pdf.userbasicdata
+  );
   const auth = useSelector((store) => store.auth.auth_token);
 
   const DeleteDetails = () => {
@@ -48,11 +47,11 @@ function ClickContinue() {
                 <div className="PanCardSec">
                   <Link to={"/dashboard_Con"}>
                     <p>
-                      {firsname}&nbsp;{middlename}&nbsp;{lastname}&nbsp;(Click
+                      {firstname}&nbsp;{middlename}&nbsp;{lastname}&nbsp;(Click
                       here to Continue )
                     </p>
                   </Link>
-                  <p class="card-text">{pannum}</p>
+                  <p class="card-text">{pan}</p>
                   <br />
                 </div>
                 <a href="#" class="mt-auto btn btn-new btn-primary  ">

@@ -7,7 +7,6 @@ function SelectRegime() {
   const Navigate = useNavigate();
   return (
     <div>
-      <h1>Anywhere in your app!</h1>
       <Formik
         initialValues={{ regime: "" }}
         validate={(values) => {

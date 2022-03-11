@@ -4,11 +4,10 @@ import { useSelector } from "react-redux";
 import TaxService from "../components/TaxService/TaxService";
 
 function Dashboard() {
-  const pannum = useSelector((state) => state.pdf.userbasicdata.pan);
-  const firsname = useSelector((store) => store.pdf.userbasicdata.firsname);
-  const lastname = useSelector((store) => store.pdf.userbasicdata.lastname);
-  const middlename = useSelector((store) => store.pdf.userbasicdata.middlename);
-  const auth = useSelector((store) => store.auth.auth_token);
+  const { pan, firstname, lastname } = useSelector(
+    (state) => state.pdf.userbasicdata
+  );
+  console.log( pan,lastname,firstname)
   return (
     <div>
       <div class="container py-3">
@@ -19,7 +18,7 @@ function Dashboard() {
             <div class="col-md-7 px-3">
               <div class="card-block px-6">
                 <h4 class="card-title">
-                  Dashboard Of {firsname}&nbsp;{lastname}[{pannum}]
+                  Dashboard Robin&nbsp;{lastname}[{pan}]
                 </h4>
               </div>
             </div>

@@ -1,8 +1,5 @@
 import instance from "../http/Instance";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import store from "../Store";
-import { userDbid } from "../Store/actions/AuthActions";
+
 
 //"/verfiy"
 
@@ -104,15 +101,7 @@ export const apitokenregister = async (access_token) => {
       },
     })
     .then((res) => {
-
-      // 
-    //   const user_id = res.data.user_id
-    // return user_id
-   
-
-    // const data = res.data.user_id
-    // console.log("THIS IS MY ACTIONS",store.dispatch(userDbid(data)))
-    console.log(res)
+      console.log(res)
     return res
     })
     .catch((error) => {
@@ -121,7 +110,7 @@ export const apitokenregister = async (access_token) => {
 };
 
 
-//'/getprofile'
+
 export const apiprofile = async (data) => {
   await instance
     .get('/getprofile', {
@@ -130,14 +119,6 @@ export const apiprofile = async (data) => {
       },
     })
     .then((res) => {
-
-      // 
-    //   const user_id = res.data.user_id
-    // return user_id
-   
-
-    // const data = res.data.user_id
-    console.log(res)
     return res
     })
     .catch((error) => {

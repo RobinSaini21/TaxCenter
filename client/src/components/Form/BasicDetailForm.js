@@ -3,19 +3,47 @@ import axios from "axios";
 import { Formik } from "formik";
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
+import { basicuserdata } from "../../services/AuthApi";
 import {
-  basicsuccsess,
   clearform16datasuccess,
 } from "../../Store/actions/PdfActions";
 import { useDispatch } from "react-redux";
+import { basicsuccsess } from "../../Store/actions/PdfActions";
+import { useEffect } from "react";
+import instance from "../../http/Instance";
 
-function BasicDetailForm() {
-   const {userDb_Id} = useSelector((state) => state.auth);
-  const auth = useSelector((store) => store.auth.auth_token);
-  const { form16 } = useSelector((state) => state.form);
-// const userDb_Id = "622878bd05239a8e5c50daa4"
+const BasicDetailForm =  () => {
   const Navigate = useNavigate();
   const dispatch = useDispatch();
+  const { userDb_Id } = useSelector((state) => state.auth);
+  const auth = useSelector((store) => store.auth.auth_token);
+  const { form16 } = useSelector((state) => state.form);
+  console.log("BASIC USER", userDb_Id);
+  
+  const profile = async (data) =>{
+     instance.get('/getprofile', {
+      headers: {
+        Authorization: `${data}`,
+      },
+    })
+    .then((res) => {
+      console.log(res)
+      const {data} = res
+      dispatch(basicsuccsess(data))
+      if(data){
+        Navigate( `/product_launchboard/${auth}`)
+      }
+    return res
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  }
+  
+  useEffect( async () =>{
+   const res = await profile(userDb_Id)
+   
+  })
 
   const intialData = {
     pan: "",
@@ -86,23 +114,23 @@ function BasicDetailForm() {
       <Formik
         initialValues={intialData}
         validate={basicRegistrationSchema}
-        onSubmit={(values, { setSubmitting }) => {
+        onSubmit= {async (values, { setSubmitting }) => {
           const pan = values.pan;
           const email = values.email;
           const fathername = values.fathername;
-          const firsname = values.firstname;
+          const firstname = values.firstname;
           const middlename = values.middlename;
           const lastname = values.lastname;
           const mobilenum = values.mobilenumber;
           const aadharnum = values.aadharnum;
           const gender = values.gender;
           const bday = values.bday;
-          
+
           const basic = {
             userDb_Id,
             pan,
             email,
-            firsname,
+            firstname,
             middlename,
             lastname,
             mobilenum,
@@ -111,26 +139,25 @@ function BasicDetailForm() {
             gender,
             bday,
           };
-          
-          axios
-            .post("http://localhost:4000/userbasicdetails", basic)
-            .then((res) => {
-              console.log(res);
-              console.log(res.data);
-              const message = res.data.message;
-            
-          
-              dispatch(basicsuccsess(basic));
+
+          // axios
+          //   .post("http://localhost:4000/userbasicdetails", basic)
+          //   .then((res) => {
+          //     console.log(res);
+          //     console.log(res.data);
+          //     const message = res.data.message;
+       const res = await basicuserdata(basic)
+         console.log("IN BASIC USER FORM",res)
               if (form16) {
-                dispatch(clearform16datasuccess());
                 Navigate("/dashboard_Con");
+                dispatch(clearform16datasuccess());
+               
               } else {
                 Navigate(`/product_launchboard/${auth}`);
               }
-            });
+            
 
-          // basicuserdata(basic)
-          // Navigate()
+          
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
             setSubmitting(false);
@@ -322,6 +349,6 @@ function BasicDetailForm() {
       </Formik>
     </div>
   );
-}
+};
 
 export default BasicDetailForm;
