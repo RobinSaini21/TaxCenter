@@ -35,6 +35,7 @@ import AddBankDetails from "../components/TaxService/AddBankDetails";
 import Users from "../AdminPage/Users";
 import AdminPage from "../AdminPage/AdminPage";
 import Profile from "../components/Profile/Profile";
+import UserDetails from "../AdminPage/UserDetails";
 
 function AllRoutes() {
 
@@ -192,19 +193,15 @@ element: <AdminPage/>
     {
       path: "/user",
       element: <Users/>
+    },
+    {
+      path: "/UserDetails/:id",
+      element: <UserDetails/>
     }
   ]);
   return routes;
 }
 
-{
-  /* <Route path="/" element={<Section_1 />} />
-< Route path="/register" element={<TestReg/>}/>
- <Route path="/login" element={<Login />} />
- <Route path="/basicuser" element={<TestingDetailForm/> } />
- <Route path="/product_launchboard" element={<Allcards/>} />
- <Route path="/bmi_cal" element={<BMICalculator/>}></Route>
- <Route path="/emi_cal" element={<EmiCalculator/>}></Route>
-</Routes> */
-}
+
+
 export default AllRoutes;

@@ -15,13 +15,10 @@ const BurgerMenu = () => {
   const showHide = () => {
     setShow(!show);
   };
-  // writing-mode: vertical-rl;
-  // text-orientation: upright;
   console.log(show);
   return (
     
     <div>
-      {/* <img src={Burger} style={{width: "20px"}} /> */}
       <button className="Btn_Vertical_Text" onClick={showHide} style={{ border: "none" }}>
         ...
       </button>

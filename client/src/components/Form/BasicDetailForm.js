@@ -18,7 +18,7 @@ const BasicDetailForm =  () => {
   const { userDb_Id } = useSelector((state) => state.auth);
   const auth = useSelector((store) => store.auth.auth_token);
   const { form16 } = useSelector((state) => state.form);
-  console.log("BASIC USER", userDb_Id);
+
   
   const profile = async (data) =>{
      instance.get('/getprofile', {
@@ -31,7 +31,7 @@ const BasicDetailForm =  () => {
       const {data} = res
       dispatch(basicsuccsess(data))
       if(data){
-        Navigate( `/product_launchboard/${auth}`)
+        Navigate( `/product_launchboard/${userDb_Id}`)
       }
     return res
     })

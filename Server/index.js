@@ -215,11 +215,6 @@ app.get("/mynew",function(req,res){
   MongoClient.connect(mongodbURL, function(err, db) {
     if (err) throw err;
     var dbo = db.db("test");
-    dbo.collection("users").findOne({_id: ObjectId(`${object}`)}, function(err, result) {
-      if (err) throw err;
-      console.log(result);
-      db.close();
-    });
     dbo.collection("users").find({}, { projection: { _id: 1, email: 1,}}).toArray(function(err, result) {
       if (err) throw err;
       // console.log(result);
@@ -258,7 +253,7 @@ app.get("/mynew",function(req,res){
 //   res.send({message:"sucessfull"})
 // })
 // const ObjectId =  mongoose.Schema.Types.ObjectId
-  app.get( '/getprofile' ,authenticateJWT = (req, res, next) => {
+  app.get( '/getprofile' , (req, res, next) => {
     const authHeader = req.headers.authorization;
   console.log(authHeader)
   Basicdata.findOne({user: ObjectId(authHeader)}).exec((err,result) =>{

@@ -1,8 +1,6 @@
 import instance from "../http/Instance";
 
 
-//"/verfiy"
-
 export const apiregister = async (data) => {
   try {
     const res = await instance.post("/Register", data);
@@ -25,8 +23,6 @@ export const apigoogleregister = async (data) => {
 export const basicuserdata = async (data) => {
   try {
     const res = await instance.post("/userbasicdetails", data);
-
-    console.log(res);
     return res;
   } catch (err) {
     return null;
@@ -111,17 +107,3 @@ export const apitokenregister = async (access_token) => {
 
 
 
-export const apiprofile = async (data) => {
-  await instance
-    .get('/getprofile', {
-      headers: {
-        Authorization: `${data}`,
-      },
-    })
-    .then((res) => {
-    return res
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-};

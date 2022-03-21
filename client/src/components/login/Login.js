@@ -104,7 +104,7 @@ export default function Login() {
              const data = res.data.user.id;
              console.log(res)
           dispatch(userDbid(data))
-          apiprofile(data)
+      
              console.log(data);
            })
            .catch((error) => {

@@ -15,14 +15,14 @@ router.post("/userbasicdetails",(req,res)=>{
   
     // console.log(req.body) 
     const { userDb_Id,pan,email,firstname,middlename,lastname,fathername,mobilenum,aadharnum,gender,bday}  = req.body;
-    console.log(firstname)
+    // console.log(mobilenum)
     basicdata.findOne({email:email},(err,user)=>{
         
         if(user){
       
             res.send({message:"user already exist"})
         }else {
-    const user = new basicdata({ user: userDb_Id, pan,email,firstname,middlename,lastname,fathername,mobilenum,aadharnum,gender,bday})
+    const user = new basicdata({ user: userDb_Id, pan,email,firstname,middlename,lastname,fathername, mobilenumber:mobilenum,aadharnum,gender,bday})
     
     console.log(req.body)
             user.save(err=>{

@@ -18,7 +18,7 @@ function Dashboard() {
             <div class="col-md-7 px-3">
               <div class="card-block px-6">
                 <h4 class="card-title">
-                  Dashboard Robin&nbsp;{lastname}[{pan}]
+                  Dashboard Of {firstname}&nbsp;{lastname}[{pan}]
                 </h4>
               </div>
             </div>

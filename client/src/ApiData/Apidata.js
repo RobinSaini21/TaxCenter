@@ -37,14 +37,12 @@ function Apidata() {
       }
     )
     .then(function (response) {
-      // console.log(response.data);
 const email = response.data;
 dispatch(apidata(email))
 const totalEmail = email.length
 console.log(email.length)
 console.log(Array.isArray(email))
 setData(email)
-// setTotalemail(totalEmail)
     })
     .catch(function (error) {
       console.log(error);
