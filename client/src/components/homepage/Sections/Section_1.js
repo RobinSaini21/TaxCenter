@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 function Section_1() {
   return (
     <div>
-      {/* <Croutes/> */}
       <section className="File_In_2">
         <div className="Flie_In">
           <h1>File Income-tax return with ease</h1>

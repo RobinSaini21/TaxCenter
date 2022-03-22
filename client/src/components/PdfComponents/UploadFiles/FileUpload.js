@@ -2,17 +2,14 @@ import React, { Fragment, useState } from "react";
 import Message from "./Message";
 import Progress from "./Progress";
 import instance from "../../../http/Instance";
-import axios from "axios";
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
-import { pdfsuccess } from "../../../Store/actions/PdfActions";
+import { extracteddata,pdfsuccess } from "../../../Store/actions/PdfActions";
 import { useDispatch } from "react-redux";
-import { extracteddata } from "../../../Store/actions/PdfActions";
+
 
 const FileUpload = () => {
   const userLoggedIn = useSelector((store) => store.auth.userLoggedIn);
-  // const userLoggedIn = useSelector((state) => state.userLoggedIn);
-  // console.log("fileuplaod",userLoggedIn)
   const auth = useSelector((store) => store.auth.auth_token);
   const dispatch = useDispatch();
   const Navigate = useNavigate();
@@ -45,9 +42,8 @@ const FileUpload = () => {
           );
         },
       });
-      console.log("Normal text file", res.data.data);
+   
       const data = res.data.data;
-      //  const TaxableSalary = data.search(266750)
       const pannum = data.substring(420, 430);
       const tannub = data.substring(451, 461);
       const salarysection1 = data.substring(1099, 1105);
@@ -58,17 +54,6 @@ const FileUpload = () => {
       const totaldeduciton1 = data.substring(9535, 9540);
       const totaltaxdeducted1 = data.substring(1085, 1089);
       const TaxableSalary = data.substring(9562, 9568);
-
-      console.log("TaxableSalary", TaxableSalary);
-      console.log("pan", pannum);
-      console.log("tan", tannub);
-      console.log("salarysection", salarysection1);
-      console.log("standarDeduction", standarDeduction1);
-      console.log("incomefromsalary", incomefromsalary1);
-      console.log("c80", c801);
-      console.log("d80", d801);
-      console.log("totaldeduciton", totaldeduciton1);
-      console.log("totaltaxdeducted", totaltaxdeducted1);
 
       const extracteddata_1 = {
         pannum,
@@ -85,7 +70,6 @@ const FileUpload = () => {
 
       dispatch(extracteddata(extracteddata_1));
       localStorage.setItem("FORM16_DATA", extracteddata);
-      // Clear percentage
       setTimeout(() => setUploadPercentage(0), 10000);
 
       const { fileName, filePath } = res.data;
@@ -101,20 +85,6 @@ const FileUpload = () => {
       }
       setUploadPercentage(0);
     }
-    // console.log("FILE FOROM UPLOAD FILES",filename)
-    //     if(file === ''){
-    //        Navigate("/uploadpdf")
-    //       alert("Choose A File")
-    //     }
-    //     dispatch(pdfsuccess())
-
-    //     if(userLoggedIn){
-
-    //     Navigate(`/form16/${auth}`)
-
-    //   }  else  {
-    //  Navigate("/login")
-    //   }
     if (userLoggedIn && file !== "") {
       Navigate(`/form16/${auth}`);
     } else if (file === "") {
@@ -140,9 +110,7 @@ const FileUpload = () => {
             {filename}
           </label>
         </div>
-
         <Progress percentage={uploadPercentage} />
-
         <input
           type="submit"
           value="Upload"

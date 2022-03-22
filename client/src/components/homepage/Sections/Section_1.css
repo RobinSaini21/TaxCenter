@@ -56,8 +56,6 @@
     font-size: 40px;
     margin-top: 100px;
     font-display: grid;
-    /* place-content: center;
-border: 3px solid black; */
   }
 .eRi{
     font-size: 20px;
@@ -70,7 +68,6 @@ border: 3px solid black; */
   display: grid;
   place-content: center;
   place-content: center;
-  /* border: 3px solid black; */
   height: 800px;
   width: 100%;
 

@@ -54,7 +54,6 @@ function Hp() {
         }) => (
           <div class="registration-form">
             <form type="submit" onSubmit={handleSubmit}>
-              <div>{/* <h4>Let Start With Basic Details</h4>  */}</div>
               <div class="form-group">
                 <div class="form-group">
                   <select
@@ -64,8 +63,6 @@ function Hp() {
                     value={values.house}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    // value={gender}
-                    // onChange={(e) => selectGender(e.target.value)}
                   >
                     <option value="" class="form-control item" disabled>
                       --Please choose an option--
@@ -83,7 +80,6 @@ function Hp() {
                   type="text"
                   placeholder="Interest"
                   name="interest"
-                  // value={values.pan}
                   value={values.interest}
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -99,7 +95,6 @@ function Hp() {
                   type="number"
                   placeholder="House Paid"
                   name="housepaid"
-                  // value={values.pan}
                   value={values.housepaid}
                   onChange={handleChange}
                   onBlur={handleBlur}

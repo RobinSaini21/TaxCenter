@@ -1,13 +1,12 @@
-import { Formik, Field } from "formik";
+import { Formik } from "formik";
 import MyGoolgeLogin from "../GoogleLogin/GoolgeLogin";
 import Facebook from "../GoogleLogin/FacebookLogin";
 import { apiregister } from "../../services/AuthApi";
 import { useNavigate } from "react-router";
-import "./Register.css";
+
 import { registerSuccess } from "../../Store/actions/AuthActions";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import store from "../../Store";
 import { useEffect } from "react";
 import { userDbid } from "../../Store/actions/AuthActions";
 import instance from "../../http/Instance";
@@ -15,10 +14,8 @@ import instance from "../../http/Instance";
 const Register = () => {
   const dispatch = useDispatch();
   const Navigate = useNavigate();
-
   const userLoggedIn = useSelector((store) => store.auth.userLoggedIn);
   const auth = useSelector((store) => store.auth.auth_token);
-  // console.log("REGISTER =>", userLoggedIn)
   useEffect(() => {
     if (userLoggedIn) {
       Navigate(`/basicuser/${auth}`);
@@ -62,17 +59,11 @@ const Register = () => {
         onSubmit={async (values, { setSubmitting }) => {
           const email = values.email;
           const password = values.password;
-
           const apidata = { email, password };
-
           const ares = await apiregister(apidata);
-          console.log("Regisetr", ares);
           const auth_token = ares.data;
-
           const data = { email, auth_token };
-
-          await instance
-            .get("/verfiy", {
+          await instance.get("/verfiy", {
               headers: {
                 Authorization: `token ${auth_token}`,
               },
@@ -86,8 +77,6 @@ const Register = () => {
             .catch((error) => {
               console.error(error);
             });
-          //       const ares = await apitokenregister(auth_token)
-          // console.log(ares)
           dispatch(registerSuccess(data));
 
           setTimeout(() => {
@@ -104,7 +93,6 @@ const Register = () => {
           handleBlur,
           handleSubmit,
           isSubmitting,
-          /* and other goodies */
         }) => (
           <form type="submit" onSubmit={handleSubmit}>
             <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
@@ -197,9 +185,7 @@ const Register = () => {
                         />
                         <span style={{ color: "red" }}>{errors.password}</span>
                       </div>
-
                       <div class="row px-3 mb-4">
-                        {/* <div class="custom-control custom-checkbox custom-control-inline"> <input id="chk1" type="checkbox" name="chk" class="custom-control-input"/> <label for="chk1" class="custom-control-label text-sm">Remember me</label> </div>  */}
                         <a href="#" class="ml-auto mb-0 text-sm">
                           You agree to the terms and conditions of the website.
                         </a>
@@ -214,14 +200,6 @@ const Register = () => {
                           Login
                         </button>{" "}
                       </div>
-                      {/* <div class="row mb-4 px-3">
-                        {" "}
-                        <small class="font-weight-bold">
-                          Don't have an account?{" "}
-                          <a class="text-danger ">
-                            Register</a>
-                        </small>{" "}
-                      </div> */}
                     </div>
                   </div>
                 </div>

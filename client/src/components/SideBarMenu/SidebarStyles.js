@@ -5,9 +5,13 @@ export const sideStyles = {
         "background": "black",
         "margin": "6px 0"
     },
+    
     buttonstyles:{
         "background": "transparent",
         "border": "none"
         
+    },
+    linkstyles:{
+        "text-decoration": "none"
     }
 }

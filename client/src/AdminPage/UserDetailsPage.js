@@ -82,7 +82,7 @@ const UserDetailsPage = ({aadharnum,firstname,middlename,lastname,gender,fathern
                     </div>
                     <div class="row">
                       <div class="col-sm-12">
-                        <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
+                        <a class="btn btn-info " >Edit</a>
                       </div>
                     </div>
                   </div>

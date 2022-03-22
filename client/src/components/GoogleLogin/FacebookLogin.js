@@ -39,7 +39,6 @@ export default class Facebook extends Component {
              width: "50px",
             margin: "auto",
             background: "#f4f4f4",
-            // padding: "20px"
           }}
         >
           <img src={picture} alt={name} />

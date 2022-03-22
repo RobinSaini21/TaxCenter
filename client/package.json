@@ -45,6 +45,7 @@
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
     "react-simple-captcha": "^8.2.6",
+    "react-spring": "^9.4.4",
     "react-tabs": "^3.2.3",
     "reactjs-tailwind": "^0.1.9",
     "redux": "^4.1.2",

@@ -4,9 +4,7 @@ import { Formik } from "formik";
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
 import { basicuserdata } from "../../services/AuthApi";
-import {
-  clearform16datasuccess,
-} from "../../Store/actions/PdfActions";
+import { clearform16datasuccess } from "../../Store/actions/PdfActions";
 import { useDispatch } from "react-redux";
 import { basicsuccsess } from "../../Store/actions/PdfActions";
 import { useEffect } from "react";
@@ -27,7 +25,6 @@ const BasicDetailForm =  () => {
       },
     })
     .then((res) => {
-      console.log(res)
       const {data} = res
       dispatch(basicsuccsess(data))
       if(data){
@@ -139,25 +136,14 @@ const BasicDetailForm =  () => {
             gender,
             bday,
           };
-
-          // axios
-          //   .post("http://localhost:4000/userbasicdetails", basic)
-          //   .then((res) => {
-          //     console.log(res);
-          //     console.log(res.data);
-          //     const message = res.data.message;
        const res = await basicuserdata(basic)
          console.log("IN BASIC USER FORM",res)
               if (form16) {
                 Navigate("/dashboard_Con");
-                dispatch(clearform16datasuccess());
-               
+                dispatch(clearform16datasuccess());  
               } else {
                 Navigate(`/product_launchboard/${auth}`);
               }
-            
-
-          
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
             setSubmitting(false);
@@ -172,7 +158,6 @@ const BasicDetailForm =  () => {
           handleBlur,
           handleSubmit,
           isSubmitting,
-          /* and other goodies */
         }) => (
           <div class="registration-form">
             <form type="submit" onSubmit={handleSubmit}>
@@ -187,7 +172,6 @@ const BasicDetailForm =  () => {
                   type="pan"
                   placeholder="PAN"
                   name="pan"
-                  // value={values.pan}
                   value={values.pan}
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -203,7 +187,6 @@ const BasicDetailForm =  () => {
                   type="email"
                   placeholder="Email"
                   name="email"
-                  // value={values.pan}
                   value={values.email}
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -236,7 +219,6 @@ const BasicDetailForm =  () => {
                   type="firstname"
                   placeholder="Firstname"
                   name="firstname"
-                  // value={values.pan}
                   value={values.firstname}
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -251,7 +233,6 @@ const BasicDetailForm =  () => {
                   type="text"
                   placeholder="Middlename"
                   name="middlename"
-                  // value={values.pan}
                   value={values.middlename}
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -266,14 +247,12 @@ const BasicDetailForm =  () => {
                   type="Last Name"
                   placeholder="Lastname"
                   name="lastname"
-                  // value={values.pan}
                   value={values.lastname}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
                 <span style={{ color: "red" }}>{errors.lastname}</span>
               </div>
-
               <div class="form-group">
                 <select
                   className="sSelect w-100"
@@ -282,8 +261,6 @@ const BasicDetailForm =  () => {
                   value={values.gender}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  // value={gender}
-                  // onChange={(e) => selectGender(e.target.value)}
                 >
                   <option value="" class="form-control item" disabled>
                     --Please choose an option--
@@ -291,7 +268,6 @@ const BasicDetailForm =  () => {
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
                 </select>
-
                 <span style={{ color: "red" }}>{errors.gender}</span>
               </div>
               <div class="form-group">
@@ -302,7 +278,6 @@ const BasicDetailForm =  () => {
                   type="fathername"
                   placeholder="Father Name"
                   name="fathername"
-                  // value={values.pan}
                   value={values.fathername}
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -317,7 +292,6 @@ const BasicDetailForm =  () => {
                   type="number"
                   placeholder="Mobile Number"
                   name="mobilenumber"
-                  // value={values.pan}
                   value={values.mobilenumber}
                   onChange={handleChange}
                   onBlur={handleBlur}
