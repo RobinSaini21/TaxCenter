@@ -15,7 +15,6 @@ function ContactDetails() {
     pincode: "",
     state: "",
     country: "",
-    //CONTACT DETAILS
     email: "",
     moblienum: "",
     aadharnum: "",
@@ -80,7 +79,6 @@ function ContactDetails() {
           handleBlur,
           handleSubmit,
           isSubmitting,
-          /* and other goodies */
         }) => (
           <div class="registration-form">
             <form type="submit" onSubmit={handleSubmit}>
@@ -95,7 +93,6 @@ function ContactDetails() {
                   type="text"
                   placeholder="Floor/Door/Block No"
                   name="address"
-                  // value={values.pan}
                   value={values.address}
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -109,12 +106,10 @@ function ContactDetails() {
                   class="form-control item"
                   placeholder="Premise Building"
                   name="premise"
-                  // value={values.pan}
                   value={values.premise}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-                {/* <span style={{color:"red" }} >{errors.email}</span> */}
                 <span style={{ color: "red" }}>{errors.premise}</span>
               </div>
               <div class="form-group">
@@ -123,13 +118,11 @@ function ContactDetails() {
                   type="text"
                   placeholder="Street/Road"
                   name="street"
-                  // value={values.pan}
                   value={values.street}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
                 <span style={{ color: "red" }}>{errors.street}</span>
-                {/* <span style={{color:"red" }} >{errors.firstname}</span> */}
               </div>
               <div class="form-group">
                 <input
@@ -137,7 +130,6 @@ function ContactDetails() {
                   type="text"
                   placeholder="Area/Locality"
                   name="area"
-                  // value={values.pan}
                   value={values.area}
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -150,15 +142,12 @@ function ContactDetails() {
                   type="text"
                   placeholder="Town/City/District"
                   name="town"
-                  // value={values.pan}
                   value={values.town}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
                 <span style={{ color: "red" }}>{errors.town}</span>
-                {/* <span style={{color:"red" }} >{errors.lastname}</span> */}
               </div>
-
               <div class="form-group">
                 <input
                   type="text"
@@ -166,13 +155,11 @@ function ContactDetails() {
                   id="fathername"
                   placeholder="Pin Code"
                   name="pincode"
-                  // value={values.pan}
                   value={values.pincode}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
                 <span style={{ color: "red" }}>{errors.pincode}</span>
-                {/* <span style={{color:"red" }} >{errors.fathername}</span> */}
               </div>
               <div class="form-group">
                 <input
@@ -180,7 +167,6 @@ function ContactDetails() {
                   type="text"
                   placeholder="State"
                   name="state"
-                  // value={values.pan}
                   value={values.state}
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -237,9 +223,6 @@ function ContactDetails() {
               </div>
               <div class="form-group">
                 <button type="submit" class="btn btn-block create-account">
-                  {/* <Link to={"/IncometaxPaid"}>
-                  Submit
-                  </Link> */}
                   Submit
                 </button>
               </div>

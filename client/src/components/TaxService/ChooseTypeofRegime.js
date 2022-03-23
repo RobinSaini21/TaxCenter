@@ -32,7 +32,6 @@ function ChooseTypeofRegime() {
           handleBlur,
           handleSubmit,
           isSubmitting,
-          /* and other goodies */
         }) => (
           <form onSubmit={handleSubmit}>
             <div>
@@ -56,7 +55,6 @@ function ChooseTypeofRegime() {
                           </p>
                           <div class="form-group">
                             <select
-                              // className="other-list-item"
                               name="regime"
                               id="regime"
                               value={values.regime}
@@ -96,15 +94,6 @@ function ChooseTypeofRegime() {
                       >
                         <div className="EDCMEnu">
                           <ol>
-                            {/* <a class="dropdown-item" href="#">
-                    Continue
-                  </a> */}
-                            {/* <Link to={`/basicuser/${auth}`} class="dropdown-item">
-                    Edit
-                  </Link> */}
-                            {/* <Link to={"/SalaryIncome"} >
-                    Salary
-                 </Link> */}
                             <button type="submit" disabled={isSubmitting}>
                               Submit
                             </button>
@@ -115,7 +104,6 @@ function ChooseTypeofRegime() {
                   </div>
                 </div>
               </div>
-
               <br />
               <br />
             </div>

@@ -53,7 +53,6 @@ function Section_1() {
         </div>
         <div>
         <Link to="/login">Existing Users</Link>
-    
         </div>
       </section>
     </div>

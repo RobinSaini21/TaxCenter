@@ -70,30 +70,6 @@ function AboutIncome() {
         initialValues={intialData}
         validate={basicRegistrationSchema}
         onSubmit={(values, { setSubmitting }) => {
-          //     const pan = values.pan;
-          //     const email = values.email;
-          //     const fathername = values.fathername
-          //     const firsname = values.firstname;
-          //     const middlename = values.middlename;
-          //     const lastname = values.lastname;
-          //     const mobilenum = values.mobilenumber;
-          //     const aadharnum = values.aadharnum;
-          //     const gender = values.gender;
-          //     const bday = values.bday
-          //     const basic = {pan,email,firsname,middlename,lastname,mobilenum,aadharnum ,fathername,gender,bday}
-          //     axios.post("http://localhost:4000/userbasicdetails", basic).then((res) => {
-          //        console.log(res)
-          //        console.log(res.data)
-          //         const message = (res.data.message);
-          //        const token = res.data.token
-          //        console.log(token)
-          //        localStorage.setItem("User_toker",token)
-          // dispatch(basicsuccsess(basic))
-          //   Navigate(`/product_launchboard/${auth}`)
-
-          //     });
-
-          // basicuserdata(basic)
           Navigate("/SelectRegime");
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
@@ -109,7 +85,6 @@ function AboutIncome() {
           handleBlur,
           handleSubmit,
           isSubmitting,
-          /* and other goodies */
         }) => (
           <div>
             <form type="submit" onSubmit={handleSubmit}>
@@ -126,10 +101,6 @@ function AboutIncome() {
                           value={values.salary}
                           onChange={handleChange}
                           onBlur={handleBlur}
-                          //   onChange={handleChange}
-                          //   onBlur={handleBlur}
-                          // value={gender}
-                          // onChange={(e) => selectGender(e.target.value)}
                         >
                           <option value="" class="form-control item" disabled>
                             --Please choose an option--
@@ -148,11 +119,7 @@ function AboutIncome() {
                           name="hoPro"
                           id="hoPro"
                           value={values.hoPro}
-                          //   value={values.dd80}
                           onChange={handleChange}
-                          //   onBlur={handleBlur}
-                          // value={gender}
-                          // onChange={(e) => selectGender(e.target.value)}
                         >
                           <option value="" class="form-control item" disabled>
                             --Please choose an option--
@@ -171,11 +138,7 @@ function AboutIncome() {
                           name="lessDe"
                           id="lessDe"
                           value={values.lessDe}
-                          //   value={values.dd80}
                           onChange={handleChange}
-                          //   onBlur={handleBlur}
-                          // value={gender}
-                          // onChange={(e) => selectGender(e.target.value)}
                         >
                           <option value="" class="form-control item" disabled>
                             --Please choose an option--
@@ -195,9 +158,6 @@ function AboutIncome() {
                           id="totalTaxIn"
                           value={values.totalTaxIn}
                           onChange={handleChange}
-                          //   onBlur={handleBlur}
-                          // value={gender}
-                          // onChange={(e) => selectGender(e.target.value)}
                         >
                           <option value="" class="form-control item" disabled>
                             --Please choose an option--
@@ -217,9 +177,6 @@ function AboutIncome() {
                           id="tax"
                           value={values.tax}
                           onChange={handleChange}
-                          //   onBlur={handleBlur}
-                          // value={gender}
-                          // onChange={(e) => selectGender(e.target.value)}
                         >
                           <option value="" class="form-control item" disabled>
                             --Please choose an option--
@@ -239,9 +196,6 @@ function AboutIncome() {
                           id="lessRe"
                           value={values.lessRe}
                           onChange={handleChange}
-                          //   onBlur={handleBlur}
-                          // value={gender}
-                          // onChange={(e) => selectGender(e.target.value)}
                         >
                           <option value="" class="form-control item" disabled>
                             --Please choose an option--
@@ -261,9 +215,6 @@ function AboutIncome() {
                           id="addhealth"
                           value={values.addhealth}
                           onChange={handleChange}
-                          //   onBlur={handleBlur}
-                          // value={gender}
-                          // onChange={(e) => selectGender(e.target.value)}
                         >
                           <option value="" class="form-control item" disabled>
                             --Please choose an option--
@@ -283,9 +234,6 @@ function AboutIncome() {
                           id="totalTax"
                           value={values.totalTax}
                           onChange={handleChange}
-                          //   onBlur={handleBlur}
-                          // value={gender}
-                          // onChange={(e) => selectGender(e.target.value)}
                         >
                           <option value="" class="form-control item" disabled>
                             --Please choose an option--
@@ -305,9 +253,6 @@ function AboutIncome() {
                           id="lessRelief"
                           value={values.lessRelief}
                           onChange={handleChange}
-                          //   onBlur={handleBlur}
-                          // value={gender}
-                          // onChange={(e) => selectGender(e.target.value)}
                         >
                           <option value="" class="form-control item" disabled>
                             --Please choose an option--
@@ -327,9 +272,6 @@ function AboutIncome() {
                           id="tsd"
                           value={values.tsd}
                           onChange={handleChange}
-                          //   onBlur={handleBlur}
-                          // value={gender}
-                          // onChange={(e) => selectGender(e.target.value)}
                         >
                           <option value="" class="form-control item" disabled>
                             --Please choose an option--
@@ -349,9 +291,6 @@ function AboutIncome() {
                           id="addInterest"
                           value={values.addInterest}
                           onChange={handleChange}
-                          //   onBlur={handleBlur}
-                          // value={gender}
-                          // onChange={(e) => selectGender(e.target.value)}
                         >
                           <option value="" class="form-control item" disabled>
                             --Please choose an option--
@@ -371,9 +310,6 @@ function AboutIncome() {
                           id="lessSelf"
                           value={values.lessSelf}
                           onChange={handleChange}
-                          //   onBlur={handleBlur}
-                          // value={gender}
-                          // onChange={(e) => selectGender(e.target.value)}
                         >
                           <option value="" class="form-control item" disabled>
                             --Please choose an option--
@@ -393,9 +329,6 @@ function AboutIncome() {
                           id="taxRefundable"
                           value={values.taxRefundable}
                           onChange={handleChange}
-                          //   onBlur={handleBlur}
-                          // value={gender}
-                          // onChange={(e) => selectGender(e.target.value)}
                         >
                           <option value="" class="form-control item" disabled>
                             --Please choose an option--
@@ -411,7 +344,6 @@ function AboutIncome() {
                     <li class="list-group-item">
                       <p className="other-list-item" style={{ color: "green" }}>
                         Next <br />
-                        {/* <Link to={}></Link> */}
                         <div class="form-group">
                           <button
                             type="submit"
@@ -435,92 +367,4 @@ function AboutIncome() {
 
 export default AboutIncome;
 
-// const auth = useSelector((store) =>store.auth.auth_token)
-//   const Navigate = useNavigate()
-//   const dispatch = useDispatch()
 
-//   const basicRegistrationSchema = (values) => {
-//     const errors = {};
-//     if (!values.pan) {
-
-//       errors.pan = "Required";
-//     } else if (
-
-//       values.pan.length > 10
-//     ) {
-//       errors.pan = "Invalid Pan Card Number Format";
-//     }
-//     if (!values.email) {
-
-//       errors.email = "Required";
-//     } else if (
-//       !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-//     ) {
-//       errors.email = "Invalid email address";
-//     }
-//     if (!values.firstname) {
-
-//       errors.firstname = "Required";
-
-//     }
-//     else if(values.firstname.length  < 3){
-
-//       errors.firstname = "firstname must be 3 characters or more"
-//     }
-//     if (!values.middlename) {
-
-//       errors.middlename = "Required";
-
-//     }
-//     else if(values.middlename.length  < 3){
-
-//       errors.firstname = "middlename must be 3 characters or more"
-//     }
-//     if (!values.lastname) {
-
-//       errors.lastname = "Required";
-
-//     }
-//     else if(values.lastname.length  < 3){
-
-//       errors.lastname = "lastname must be 3 characters or more"
-//     }
-//     if (!values.fathername) {
-
-//       errors.fathername = "Required";
-
-//     }
-//     else if(values.fathername.length  < 3){
-
-//       errors.fathername = "fahtername must be 3 characters or more"
-//     }
-//     if (!values.aadharnum) {
-
-//       errors.aadharnum = "Required";
-
-//     }
-//     else if(values.aadharnum.length  <= 12){
-
-//       errors.aadharnum = "Aadhar number must be 3 characters or more"
-//     }
-//     if (!values.mobilenumber) {
-
-//       errors.mobilenumber = "Required";
-
-//     }
-//     else if(values.mobilenumber.length  > 10){
-
-//       errors.mobilenumber = "Aadhar number must be 3 characters or more"
-//     }
-//     if (!values.gender) {
-
-//        errors.gender = "Please Select One";
-
-//      }
-//      if(!values.bday){
-//        errors.bday = "Select Your Birthday"
-
-//      }
-
-//     return errors;
-//   }

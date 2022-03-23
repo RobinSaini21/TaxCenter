@@ -34,7 +34,6 @@ function Hp() {
           const house = values.house;
           const interest = values.interest;
           const housepaid = values.housepaid;
-
           const data = { house, interest, housepaid };
           hpapi(data);
           setTimeout(() => {
@@ -70,7 +69,6 @@ function Hp() {
                     <option value="Self Occupied">Self Occupied</option>
                     <option value="Occupied">Occupied</option>
                   </select>
-
                   <span style={{ color: "red" }}>{errors.fdrinterest}</span>
                 </div>
                 <input
@@ -86,7 +84,6 @@ function Hp() {
                 />
                 <span style={{ color: "red" }}>{errors.savinginterest}</span>
               </div>
-
               <div class="form-group">
                 <input
                   type="text"

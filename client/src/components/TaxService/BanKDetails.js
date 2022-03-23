@@ -16,7 +16,6 @@ function BanKDetails() {
             <div class="col-md-7 px-3">
               <div class="card-block px-6">
                 <h4 class="card-title">Bank Details</h4>
-
                 <p class="card-text">
                   Please provide details of all Saving and Current Bank Account
                   in India, held in the name of {firsname}&nbsp;{middlename}{" "}
@@ -25,9 +24,7 @@ function BanKDetails() {
                   here. This is a mandatory requirement.
                 </p>
                 <div className="PanCa">
-                  {/* <p>Add your family income details</p> */}
-
-                  <br />
+                <br />
                 </div>
                 <a href="#">
                   <Link
@@ -37,7 +34,6 @@ function BanKDetails() {
                     + Add Bank Details
                   </Link>
                 </a>
-
                 <div></div>
               </div>
             </div>
@@ -50,15 +46,6 @@ function BanKDetails() {
               >
                 <div className="EDCMEnu">
                   <ol>
-                    {/* <a class="dropdown-item" href="#">
-                  Continue
-                </a> */}
-                    {/* <Link to={`/basicuser/${auth}`} class="dropdown-item">
-                  Edit
-                </Link> */}
-                    {/* <Link to={"/ContactDetails"} >
-             Contact Details
-               </Link> */}
                   </ol>
                 </div>
               </div>
@@ -66,7 +53,6 @@ function BanKDetails() {
           </div>
         </div>
       </div>
-
       <br />
       <br />
     </div>

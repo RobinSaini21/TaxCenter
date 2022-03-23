@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { GoogleLogin } from "react-google-login";
 import "./FaceBook.css";
-import axios from "axios";
 import { apigoogleregister, apiregister } from "../../services/AuthApi";
 import { loginSuccess } from "../../Store/actions/AuthActions";
 import { useDispatch } from "react-redux";

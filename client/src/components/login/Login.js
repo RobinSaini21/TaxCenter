@@ -11,7 +11,6 @@ import { useSelector } from "react-redux";
 import { pdfclear } from "../../Store/actions/PdfActions";
 import { useEffect } from "react";
 import CaptchaTest from "../Captcha/Captcha";
-import { apitokenregister } from "../../services/AuthApi";
 import { logindata,apiprofile } from "../../services/AuthApi";
 import instance from "../../http/Instance";
 
@@ -93,7 +92,6 @@ export default function Login() {
            } else {
              dispatch(loginfailed());
            }
-        
            await instance
            .get("/verfiy", {
              headers: {
@@ -110,8 +108,6 @@ export default function Login() {
            .catch((error) => {
              console.error(error);
            });
-        
-   
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
             setSubmitting(false);

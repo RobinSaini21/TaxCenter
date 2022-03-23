@@ -3,7 +3,6 @@ import MyGoolgeLogin from "../GoogleLogin/GoolgeLogin";
 import Facebook from "../GoogleLogin/FacebookLogin";
 import { apiregister } from "../../services/AuthApi";
 import { useNavigate } from "react-router";
-
 import { registerSuccess } from "../../Store/actions/AuthActions";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -21,13 +20,11 @@ const Register = () => {
       Navigate(`/basicuser/${auth}`);
     }
   });
-
   const intialData = {
     email: "",
     password: "",
     confirm_password: "",
   };
-
   const registrationSchema = (values) => {
     const errors = {};
     if (!values.email) {
@@ -50,7 +47,6 @@ const Register = () => {
     }
     return errors;
   };
-
   return (
     <div>
       <Formik
