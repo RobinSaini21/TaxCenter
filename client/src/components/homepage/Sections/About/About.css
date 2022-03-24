@@ -346,3 +346,10 @@ width: 100%;
   background: #0c4653;
   border-radius: 10px;
 }
+.section_1{
+  /* background-image: url("Rectangle3863.png"); */
+  background-color: black;
+}
+.background-img{
+  background-image: url("./Rectangle3863.png");
+}

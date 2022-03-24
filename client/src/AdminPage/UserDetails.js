@@ -52,7 +52,7 @@ const UserDetails = () => {
     {!loading ? <h4>Loading</h4>:
       <UserDetailsPage aadharnum={aadharnum} fathername={fathername}
       firstname = {firstname} middlename={middlename} lastname={lastname}
-      gender={gender} pan={pan} mobilenumber={middlename} createdAt={createdAt}
+      gender={gender} pan={pan} mobilenumber={mobilenumber} createdAt={createdAt}
       email = {email}
       />
     }

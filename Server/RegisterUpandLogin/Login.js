@@ -6,11 +6,6 @@ const mongoose = require("mongoose");
 const {check,validationResult} = require("express-validator")
 const User = new mongoose.model("User")
 
-
-
-
-
-
 router.post(
   "/Login",
   [

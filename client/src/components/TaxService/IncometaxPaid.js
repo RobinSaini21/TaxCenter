@@ -39,7 +39,6 @@ function IncometaxPaid() {
           handleBlur,
           handleSubmit,
           isSubmitting,
-          /* and other goodies */
         }) => (
           <form onSubmit={handleSubmit}>
             <div className="TaxService_P">
@@ -65,9 +64,6 @@ function IncometaxPaid() {
                         id="taxpaid"
                         value={values.taxpaid}
                         onChange={handleChange}
-                        //   onBlur={handleBlur}
-                        // value={gender}
-                        // onChange={(e) => selectGender(e.target.value)}
                       >
                         <option value="" class="form-control item" disabled>
                           --Please choose an option--
@@ -91,9 +87,6 @@ function IncometaxPaid() {
                         id="finayear"
                         value={values.finayear}
                         onChange={handleChange}
-                        //   onBlur={handleBlur}
-                        // value={gender}
-                        // onChange={(e) => selectGender(e.target.value)}
                       >
                         <option value="" class="form-control item" disabled>
                           --Please choose an option--
@@ -107,7 +100,6 @@ function IncometaxPaid() {
                   <li class="list-group-item">
                     <p className="other-list-item" style={{ color: "green" }}>
                       Next <br />
-                      {/* <Link to={"/TaxDeducted"}>TDS</Link> */}
                       <button type="submit" disabled={isSubmitting}>
                         TDS
                       </button>

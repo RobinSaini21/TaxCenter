@@ -36,6 +36,7 @@ import Users from "../AdminPage/Users";
 import AdminPage from "../AdminPage/AdminPage";
 import Profile from "../components/Profile/Profile";
 import UserDetails from "../AdminPage/UserDetails";
+import About from "../components/homepage/Sections/About/About";
 
 function AllRoutes() {
 
@@ -197,6 +198,10 @@ element: <AdminPage/>
     {
       path: "/UserDetails/:id",
       element: <UserDetails/>
+    },{
+      path: "/About",
+      element: <About/>
+
     }
   ]);
   return routes;

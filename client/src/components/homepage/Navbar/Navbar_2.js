@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import "./Navbar.css";
 import BurgerMenu from "../../Menus/BurgerMenu";
 import LoginBtn from "../../login/LoginBtn";
+import { Link } from "react-router-dom";
 
 
 const Navbar_2 = () => {
@@ -21,7 +22,6 @@ const Navbar_2 = () => {
           >
             Tax Center
           </a>
-
           <button
             className="navbar-toggler"
             type="button"
@@ -39,14 +39,14 @@ const Navbar_2 = () => {
           >
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a
+                <Link to={"/About"}
                   className="nav_header_link nav-link active"
                   aria-current="page"
-                  href="#"
+              
                   style={{ color: "white" }}
                 >
                   ABOUT US
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
                 <a
@@ -93,7 +93,6 @@ const Navbar_2 = () => {
                   </li>
                 </ul>
               </li>
-
               <li className="nav-item">
                 <a
                   className="nav_header_link nav-link"

@@ -27,7 +27,6 @@ function FamilyIncome() {
                 >
                   + Add Family Income
                 </a>
-
                 <div></div>
               </div>
             </div>
@@ -40,12 +39,6 @@ function FamilyIncome() {
               >
                 <div className="EDCMEnu">
                   <ol>
-                    {/* <a class="dropdown-item" href="#">
-                  Continue
-                </a> */}
-                    {/* <Link to={`/basicuser/${auth}`} class="dropdown-item">
-                  Edit
-                </Link> */}
                     <Link to={"/ContactDetails"}>Contact Details</Link>
                   </ol>
                 </div>

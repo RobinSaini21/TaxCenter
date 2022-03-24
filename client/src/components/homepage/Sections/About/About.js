@@ -89,25 +89,21 @@ const About = () => {
       </section>
       <section>
         <div>
-          <h1 className="heading_from">From compliance to financial services,
-we cover them all.</h1>
-
+          <h1 className="heading_from">
+            From compliance to financial services, we cover them all.
+          </h1>
         </div>
         <div className="card_grow"></div>
-<div className="card_grow_1"></div>
-<div className="card_grow_2"></div>
-<div className="card_grow_3"></div>
+        <div className="card_grow_1"></div>
+        <div className="card_grow_2"></div>
+        <div className="card_grow_3"></div>
       </section>
       <section>
         <div>
-          <h1 className="heading_investor">
-          Our investors
-          </h1>
+          <h1 className="heading_investor">Our investors</h1>
         </div>
       </section>
-      <footer className="footer_2">
-
-      </footer>
+      <footer className="footer_2"></footer>
     </div>
   );
 };
