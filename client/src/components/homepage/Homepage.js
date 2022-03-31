@@ -6,8 +6,6 @@ import Section_1 from "./Sections/Section_1";
 const Homepage = () =>{
     return(
         <>
-        {/* <Croutes/> */}
-      {/* <Navbar/> */}
       <Section_1/>
         </>
     )

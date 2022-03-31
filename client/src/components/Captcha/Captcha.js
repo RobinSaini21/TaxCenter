@@ -11,7 +11,6 @@ export default function CaptchaTest() {
   const { validation, setValidation } = useState(false);
 
   const handleVerificationSuccess = async response => {
-    // console.log("server response:", response);
     var bodyFormData = new FormData();
     bodyFormData.set("secret", sitekey);
     bodyFormData.set("response", response);
@@ -46,54 +45,10 @@ export default function CaptchaTest() {
         }
       }}
     >
-      {/* <FormField name="username" /> */}
-
-      {/* <FormField type="password" name="password" /> */}
-
       <HCaptcha sitekey={sitekey}  onVerify={handleVerificationSuccess}  />
-{/* 
-      <Button
-        disabled={!(username && password && validation)}
-        plain={false}
-        primary
-        type="submit"
-      >
-        Submit
-      </Button> */}
     </Form>
   );
 };
 
-// import {
-//   loadCaptchaEnginge,
-//   LoadCanvasTemplate,
-//   validateCaptcha
-// } from "react-simple-captcha";
-// import { useEffect, useRef, useState } from "react";
-// export default function CaptchaTest() {
-//   const captchaRef1 = useRef(null);
-//   const handleCaptcha1 = (e) => {
-//     e.preventDefault();
-//     const captcha = captchaRef1.current.value;
-//     if (validateCaptcha(captcha)) {
-//       alert("true");
-//     } else {
-//       alert("false");
-//     }
-//   };
-//   useEffect((e) => {
-//     // e.preventDefault();
-//     loadCaptchaEnginge(7);
-//   });
-//   return (
-//     <div className="App">
-//       <div>
-//         <LoadCanvasTemplate />
-//         <input    id="create-account-pseudo" ref={captchaRef1} type="text" />
-//         <br></br>
-//         <button className="btn" onClick={handleCaptcha1}>Check</button>
-//       </div>
-//     </div>
-//   );
-// }
+
 

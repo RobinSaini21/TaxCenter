@@ -29,7 +29,6 @@ function TaxDeducted() {
             <p className="other-list-item" style={{ color: "green" }}>
               Next <br />
               <Link to={"/OtherInformations"}>
-                {/* "/ResidentialStatus" */}
                 Other Details Starts
               </Link>
             </p>

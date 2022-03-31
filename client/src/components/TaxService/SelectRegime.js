@@ -1,9 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Formik } from "formik";
 import { useNavigate } from "react-router";
+import { apiselectregime } from "../../services/AuthApi";
+import { useSelector } from "react-redux";
 
 function SelectRegime() {
+  const { userDb_Id } = useSelector((state) => state.auth);
   const Navigate = useNavigate();
   return (
     <div>
@@ -16,12 +18,18 @@ function SelectRegime() {
           }
           return errors;
         }}
-        onSubmit={(values, { setSubmitting }) => {
+        onSubmit= { async (values, { setSubmitting }) => {
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
             setSubmitting(false);
           }, 400);
-          //  Navigate("/ChooseTypeofRegime")
+         
+          const data = {
+            regime: values.regime,
+            use_id: userDb_Id
+          }
+          const res = await apiselectregime(data)
+          console.log(res)
           Navigate("/ResidentialStatus");
         }}
       >
@@ -55,14 +63,10 @@ function SelectRegime() {
                         <div className="PanCa">
                           <div class="form-group">
                             <select
-                              // className="other-list-item"
                               name="regime"
                               id="regime"
                               value={values.regime}
                               onChange={handleChange}
-                              //   onBlur={handleBlur}
-                              // value={gender}
-                              // onChange={(e) => selectGender(e.target.value)}
                             >
                               <option
                                 value=""
@@ -97,18 +101,9 @@ function SelectRegime() {
                       >
                         <div className="EDCMEnu">
                           <ol>
-                            {/* <a class="dropdown-item" href="#">
-                      Continue
-                    </a> */}
-                            {/* <Link to={`/basicuser/${auth}`} class="dropdown-item">
-                      Edit
-                    </Link> */}
                             <button type="submit" disabled={isSubmitting}>
                               Submit
                             </button>
-                            {/* <Link to={"/ChooseTypeofRegime"}>
-                       Continue
-                   </Link> */}
                           </ol>
                         </div>
                       </div>

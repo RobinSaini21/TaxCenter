@@ -1,9 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { apincome } from "../../services/AuthApi";
 import { Formik } from "formik";
 import { useNavigate } from "react-router";
+import { useSelector } from "react-redux";
 
 function AboutIncome() {
+  const { userDb_Id } = useSelector((state) => state.auth);
   const Navigate = useNavigate();
   const intialData = {
     salary: "",
@@ -69,7 +71,25 @@ function AboutIncome() {
       <Formik
         initialValues={intialData}
         validate={basicRegistrationSchema}
-        onSubmit={(values, { setSubmitting }) => {
+        onSubmit= { async (values, { setSubmitting }) => {
+
+          const data = {
+            salary:  values.salary,
+            hoPro:  values.hoPro,
+            lessDe:  values.lessDe,
+            totalTaxIn:  values.totalTaxIn,
+            tax:  values.tax,
+            lessRe:  values.lessRe,
+            addhealth:  values.addhealth,
+            totalTax:  values.totalTax,
+            lessRelief:  values.lessRelief,
+            tsd:  values.tsd,
+            addInterest:  values.addInterest,
+            lessSelf:  values.lessSelf,
+            taxRefundable:  values.taxRefundable,
+          }
+          const res = await apincome(data)
+          console.log(res)
           Navigate("/SelectRegime");
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));

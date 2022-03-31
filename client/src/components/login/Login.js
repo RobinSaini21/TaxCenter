@@ -3,7 +3,11 @@ import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { Formik } from "formik";
 import axios from "axios";
-import { loginSuccess,loginfailed , userDbid } from "../../Store/actions/AuthActions";
+import {
+  loginSuccess,
+  loginfailed,
+  userDbid,
+} from "../../Store/actions/AuthActions";
 import Facebook from "../GoogleLogin/FacebookLogin";
 import MyGoolgeLogin from "../GoogleLogin/GoolgeLogin";
 import { Link } from "react-router-dom";
@@ -11,50 +15,45 @@ import { useSelector } from "react-redux";
 import { pdfclear } from "../../Store/actions/PdfActions";
 import { useEffect } from "react";
 import CaptchaTest from "../Captcha/Captcha";
-import { logindata,apiprofile } from "../../services/AuthApi";
+import { logindata, apiprofile } from "../../services/AuthApi";
 import instance from "../../http/Instance";
-
-
 
 export default function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const pdf = useSelector((store) => store.pdf.userPdf);
-  const {userLoggedIn,auth } = useSelector((store) => store.auth);
+  const { userLoggedIn, auth } = useSelector((store) => store.auth);
   const { userDb_Id } = useSelector((state) => state.auth);
 
-  const profile = async (data) =>{
-    instance.get('/getprofile', {
-     headers: {
-       Authorization: `${data}`,
-     },
-   })
-   .then((res) => {
-     console.log(res)
-     const {data} = res
-     if(data){
-       navigate( `/product_launchboard/${auth}`)
-     }
-   return res
-   })
-   .catch((error) => {
-     console.error(error);
-   });
- }
- 
+  const profile = async (data) => {
+    instance
+      .get("/getprofile", {
+        headers: {
+          Authorization: `${data}`,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        const { data } = res;
+        if (data) {
+          navigate(`/product_launchboard/${auth}`);
+        }
+        return res;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
-  useEffect ( async () => {
-  
-    const res = await profile(userDb_Id)
+  useEffect(async () => {
+    const res = await profile(userDb_Id);
     if (pdf === true && userLoggedIn) {
       navigate(`/form16/${auth}`);
       dispatch(pdfclear());
     } else if (userLoggedIn) {
       navigate(`/basicuser/${auth}`);
-    } 
+    }
   });
-
-
 
   const intialData = {
     email: "",
@@ -80,34 +79,34 @@ export default function Login() {
       <Formik
         initialValues={intialData}
         validate={registrationSchema}
-        onSubmit={ async (values, { setSubmitting }) => {
+        onSubmit={async (values, { setSubmitting }) => {
           const email = values.email;
           const password = values.password;
           const data = { email, password };
-           const res = await logindata(data)
+          const res = await logindata(data);
           const auth_token = res.data.token;
-           const Rdata = { email, auth_token };
-           if (res.status === 200) {
-             dispatch(loginSuccess(Rdata))
-           } else {
-             dispatch(loginfailed());
-           }
-           await instance
-           .get("/verfiy", {
-             headers: {
-               Authorization: `token ${auth_token}`,
-             },
-           })
-           .then((res) => {
-             const data = res.data.user.id;
-             console.log(res)
-          dispatch(userDbid(data))
-      
-             console.log(data);
-           })
-           .catch((error) => {
-             console.error(error);
-           });
+          const Rdata = { email, auth_token };
+          if (res.status === 200) {
+            dispatch(loginSuccess(Rdata));
+          } else {
+            dispatch(loginfailed());
+          }
+          await instance
+            .get("/verfiy", {
+              headers: {
+                Authorization: `token ${auth_token}`,
+              },
+            })
+            .then((res) => {
+              const data = res.data.user.id;
+              console.log(res);
+              dispatch(userDbid(data));
+
+              console.log(data);
+            })
+            .catch((error) => {
+              console.error(error);
+            });
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
             setSubmitting(false);

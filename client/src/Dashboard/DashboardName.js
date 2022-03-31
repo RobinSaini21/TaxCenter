@@ -7,12 +7,10 @@ function Dashboard() {
   const { pan, firstname, lastname } = useSelector(
     (state) => state.pdf.userbasicdata
   );
-  console.log( pan,lastname,firstname)
   return (
     <div>
       <div class="container py-3">
         <div class="title h1 text-center">INCOME-TAX RETURN FILING SERVICE</div>
-        {/* <i class="fad fa-camera"></i> */}
         <div class="card">
           <div class="row ">
             <div class="col-md-7 px-3">
@@ -25,7 +23,6 @@ function Dashboard() {
           </div>
         </div>
       </div>
-
       <br />
       <br />
       <TaxService />

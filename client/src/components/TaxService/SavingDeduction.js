@@ -5,12 +5,14 @@ import { useSelector } from "react-redux";
 import { basicsuccsess } from "../../Store/actions/PdfActions";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { savingdeductionapi } from "../../services/AuthApi";
 
 function SavingDeduction() {
-  //   const auth = useSelector((store) => store.auth.auth_token);
+  const { userDb_Id } = useSelector((state) => state.auth);
   const Navigate = useNavigate();
   const dispatch = useDispatch();
   const intialData = {
+    use_id: userDb_Id,
     c80: "",
     ccc80: "",
     dcc80: "",
@@ -59,12 +61,26 @@ function SavingDeduction() {
       <Formik
         initialValues={intialData}
         validate={basicRegistrationSchema}
-        onSubmit={(values, { setSubmitting }) => {
+        onSubmit= { async (values, { setSubmitting }) => {
+     
+          const data = {
+            c80: values.c80,
+            ccc80: values.ccc80,
+            dcc80: values.dcc80,
+            dcc801b: values.dcc801b,
+            ccd802: values.ccd802,
+            d80: values.d80,
+            totalamount: values.totalamount,
+            g80: values.g80,
+            tta80: values.tta80
+          }
+          const res = await savingdeductionapi(data)
+          console.log(res)
+          Navigate("/IncometaxPaid");
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
             setSubmitting(false);
           }, 400);
-          Navigate("/IncometaxPaid");
         }}
       >
         {({
@@ -93,7 +109,6 @@ function SavingDeduction() {
                   type="number"
                   placeholder="80c Tax Saving Investment"
                   name="c80"
-                  // value={values.pan}
                   value={values.c80}
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -107,12 +122,10 @@ function SavingDeduction() {
                   class="form-control item"
                   placeholder="80CCC Pension Funds"
                   name="ccc80"
-                  // value={values.pan}
                   value={values.ccc80}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-                {/* <span style={{color:"red" }} >{errors.email}</span> */}
                 <span style={{ color: "red" }}>{errors.ccc80}</span>
               </div>
               <div class="form-group">
@@ -121,13 +134,11 @@ function SavingDeduction() {
                   type="number"
                   placeholder="80CCD(1) - Self Contribution "
                   name="dcc80"
-                  // value={values.pan}
                   value={values.dcc80}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
                 <span style={{ color: "red" }}>{errors.dcc80}</span>
-                {/* <span style={{color:"red" }} >{errors.firstname}</span> */}
               </div>
               <div class="form-group">
                 <input
@@ -136,7 +147,6 @@ function SavingDeduction() {
                   type="number"
                   placeholder=" 80CCD(1B)- Additional Contribution"
                   name="dcc801b"
-                  // value={values.pan}
                   value={values.dcc801b}
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -150,13 +160,11 @@ function SavingDeduction() {
                   type="number"
                   placeholder="80CCD(2)- Employers Contribution"
                   name="ccd802"
-                  // value={values.pan}
                   value={values.ccd802}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
                 <span style={{ color: "red" }}>{errors.ccd802}</span>
-                {/* <span style={{color:"red" }} >{errors.lastname}</span> */}
               </div>
 
               <div class="form-group">
@@ -166,13 +174,11 @@ function SavingDeduction() {
                   id="fathername"
                   placeholder="80D Health Insurance"
                   name="d80"
-                  // value={values.pan}
                   value={values.d80}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
                 <span style={{ color: "red" }}>{errors.d80}</span>
-                {/* <span style={{color:"red" }} >{errors.fathername}</span> */}
               </div>
               <div class="form-group">
                 <input
@@ -180,7 +186,6 @@ function SavingDeduction() {
                   type="number"
                   placeholder="G80 Donations"
                   name="g80"
-                  // value={values.pan}
                   value={values.g80}
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -213,9 +218,6 @@ function SavingDeduction() {
               </div>
               <div class="form-group">
                 <button type="submit" class="btn btn-block create-account">
-                  {/* <Link to={"/IncometaxPaid"}>
-                  Submit
-                  </Link> */}
                   Submit
                 </button>
               </div>

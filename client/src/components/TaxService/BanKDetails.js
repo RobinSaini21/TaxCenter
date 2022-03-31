@@ -10,7 +10,6 @@ function BanKDetails() {
     <div>
       <div class="container py-3">
         <div class="title h1 text-center"></div>
-
         <div class="card">
           <div class="row ">
             <div class="col-md-7 px-3">

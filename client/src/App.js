@@ -5,20 +5,36 @@ import SideBar from "./components/SideBarMenu/SideBar";
 import LandinPage from "./components/homepage/Sections/LandinPage";
 import About from "./components/homepage/Sections/About/About";
 import AboutBootStrap from "./components/homepage/Sections/About/AboutBootStrap";
+import Footer from "./components/homepage/Sections/Footer/Footer";
+import Career from "./components/homepage/Career/Career";
+import TrustandSafty from "./components/homepage/Sections/TrustandSafty/TrustandSafty";
+import ClearnadLearn from "./components/homepage/Sections/ClearnadLearn/ClearnadLearn";
+import ClearChoricals from "./components/homepage/ClearChoricals/ClearChoricals";
+import Glossary from "./components/homepage/Sections/Glossary/Glossary";
 
-
-function App() {
-  const admin = false;
+const App = () => {
+  function sum(a, b) {
+    return a + b;
+  }
+  
+console.log(  sum(1, '2'))
   return (
     <>
-      {/* {admin ? <SideBar /> : <Navbar_2 />}
-      <AllRoutes /> */}
-      <AboutBootStrap/>
-      {/* <LandinPage/> */}
-      {/* <About/> */}
-
+      {/* {admin ? <SideBar /> :}
+     */}
+       <Navbar_2 />
+       {/* <LandinPage/> */}
+       <AllRoutes />  
+{/* <About/> */}
+<Footer/>
     </>
   );
 }
 
+ {/* <AboutBootStrap/>
+   <TrustandSafty/>
+   <ClearnadLearn/>
+    <ClearChoricals/>
+     
+      <Glossary/> */}
 export default App;

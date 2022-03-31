@@ -66,9 +66,6 @@ function OtherInformations() {
                         id="familymember"
                         value={values.familymember}
                         onChange={handleChange}
-                        //   onBlur={handleBlur}
-                        // value={gender}
-                        // onChange={(e) => selectGender(e.target.value)}
                       >
                         <option value="" class="form-control item" disabled>
                           --Please choose an option--
@@ -97,9 +94,6 @@ function OtherInformations() {
                         id="shares"
                         value={values.shares}
                         onChange={handleChange}
-                        //   onBlur={handleBlur}
-                        // value={gender}
-                        // onChange={(e) => selectGender(e.target.value)}
                       >
                         <option value="" class="form-control item" disabled>
                           --Please choose an option--
@@ -126,9 +120,6 @@ function OtherInformations() {
                         id="civilCode"
                         value={values.civilCode}
                         onChange={handleChange}
-                        //   onBlur={handleBlur}
-                        // value={gender}
-                        // onChange={(e) => selectGender(e.target.value)}
                       >
                         <option value="" class="form-control item" disabled>
                           --Please choose an option--
@@ -143,7 +134,6 @@ function OtherInformations() {
                   <li class="list-group-item">
                     <p className="other-list-item" style={{ color: "green" }}>
                       Next <br />
-                      {/* <Link to={"/FamilyIncome"}>Other Details</Link> */}
                       <button type="submit" disabled={isSubmitting}>
                         Submit
                       </button>
@@ -224,9 +214,6 @@ function SelectRegime() {
                         id="familymember"
                         value={values.familymember}
                         onChange={handleChange}
-                        //   onBlur={handleBlur}
-                        // value={gender}
-                        // onChange={(e) => selectGender(e.target.value)}
                       >
                         <option value="" class="form-control item" disabled>
                           --Please choose an option--
@@ -257,9 +244,6 @@ function SelectRegime() {
                         id="shares"
                         value={values.shares}
                         onChange={handleChange}
-                        //   onBlur={handleBlur}
-                        // value={gender}
-                        // onChange={(e) => selectGender(e.target.value)}
                       >
                         <option value="" class="form-control item" disabled>
                           --Please choose an option--
@@ -286,9 +270,6 @@ function SelectRegime() {
                         id="civilCode"
                         value={values.civilCode}
                         onChange={handleChange}
-                        //   onBlur={handleBlur}
-                        // value={gender}
-                        // onChange={(e) => selectGender(e.target.value)}
                       >
                         <option value="" class="form-control item" disabled>
                           --Please choose an option--
@@ -303,7 +284,6 @@ function SelectRegime() {
                   <li class="list-group-item">
                     <p className="other-list-item" style={{ color: "green" }}>
                       Next <br />
-                      {/* <Link to={"/FamilyIncome"}>Other Details</Link> */}
                       <button type="submit" disabled={isSubmitting}>
                         Submit
                       </button>

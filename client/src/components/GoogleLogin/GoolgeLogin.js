@@ -8,7 +8,6 @@ import { useNavigate } from "react-router";
 import { useState } from "react";
 
 const MyGoolgeLogin = () => {
-  const [data, setData] = useState();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleSuccess = async (res) => {

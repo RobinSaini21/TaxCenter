@@ -3,5 +3,3 @@
  const SIGN_OUT = "SIGN_OUT";
 
  export default { LOGIN_SUCCESS,REGISTER_SUCCESS,SIGN_OUT}
-//  export default REGISTER_SUCCESS
-//  export default SIGN_OUT

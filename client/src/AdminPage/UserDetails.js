@@ -45,7 +45,7 @@ const UserDetails = () => {
     pan,
     createdAt,
   } = user;
-  console.log(loading)
+ 
   return (
 <div>
 

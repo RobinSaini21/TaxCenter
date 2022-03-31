@@ -52,7 +52,6 @@ function Taxsummary() {
             <p className="other-list-item" style={{ color: "green" }}>
               Next <br />
               <Link to={"/AboutIncome"}>
-                {/* "/ResidentialStatus" */}
                 Continue
               </Link>
             </p>

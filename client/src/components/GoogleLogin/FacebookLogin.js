@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import FacebookLogin from 'react-facebook-login';
-import './FaceBook.css';
+import FacebookLogin from "react-facebook-login";
+import "./FaceBook.css";
 
 export default class Facebook extends Component {
   state = {
@@ -8,7 +8,7 @@ export default class Facebook extends Component {
     userID: "",
     name: "",
     email: "",
-    picture: ""
+    picture: "",
   };
 
   responseFacebook = (response) => {
@@ -19,7 +19,7 @@ export default class Facebook extends Component {
         userID: response.userID,
         name: response.name,
         email: response.email,
-        picture: response.picture.data.url
+        picture: response.picture.data.url,
       });
     }
   };
@@ -36,7 +36,7 @@ export default class Facebook extends Component {
       fbContent = (
         <div
           style={{
-             width: "50px",
+            width: "50px",
             margin: "auto",
             background: "#f4f4f4",
           }}
@@ -49,18 +49,17 @@ export default class Facebook extends Component {
     } else {
       fbContent = (
         <FacebookLogin
-          appId= {process.env.REACT_APP_FACEBOOK_API_URL}
+          appId={process.env.REACT_APP_FACEBOOK_API_URL}
           autoLoad={false}
           fields="name,email,picture"
           onClick={this.componentClicked}
           callback={this.responseFacebook}
           icon="fa-facebook"
           cssClass="btnFacebook"
-          textButton = "&nbsp;&nbsp;Sign In with Facebook"   
+          textButton="&nbsp;&nbsp;Sign In with Facebook"
         />
       );
     }
     return <div>{fbContent}</div>;
   }
 }
-

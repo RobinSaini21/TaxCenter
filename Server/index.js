@@ -283,11 +283,7 @@ const basic =  Basicdata.findOne({user:"622878bd05239a8e5c50daa4"}).exec((err,re
 var ObjectId = mongoose.Types.ObjectId
 const u_id = "62287c1a447b5e86cac92846"
  const docs  = Basicdata.aggregate([
-
-
 {
-
-
   $lookup:{
     from: "users",
     as: 'profile',
@@ -297,7 +293,6 @@ const u_id = "62287c1a447b5e86cac92846"
       {$match:  {$expr:{$eq:['$_id','$$userID',]}}}
     ]
   },
-
 },
 {
   $unwind: '$profile'
@@ -313,9 +308,6 @@ const u_id = "62287c1a447b5e86cac92846"
     LoginEmail: '$profile.email'
   }
 },
-
-
-
 ]).exec((err,result) =>{
   if(err){
     console.log(err)
@@ -327,7 +319,13 @@ const u_id = "62287c1a447b5e86cac92846"
 } )
 }
 
-// run()
+
+
+app.post("/deduction",(res,req) =>{
+  res.send("you are in user singup")
+})
+
+
 
 app.listen(4000,()=>{
     console.log("started")

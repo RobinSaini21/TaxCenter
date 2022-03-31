@@ -51,34 +51,13 @@ setData(email)
     },[])
 
 ;
-// console.log(Array.isArray(data))
-// const listItems = data.map(product =>
-//   <li key={product._id}>
-//     {product.email}
-//   </li>
-// );
-// // const emails = data.map(data =>
-//   <li key={data._id}>{data.email}</li>
-//   )
-// console.log(emails)
  return (
-   
 <div>
-  {/* <h4>{totalEmail}</h4>
-<ul>{listItems}</ul> */}
 
 </div>
-  )
-
-
-  
+  )  
 }
-
 
 export default Apidata;
 
-{/* {data.map((email)=>{
-  return (
-    <div key={email.id}>I am one Object in the Array {email}</div>
-  )
-})} */}
+

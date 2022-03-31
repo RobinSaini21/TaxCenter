@@ -48,12 +48,6 @@ function SalaryIncome() {
               >
                 <div className="EDCMEnu">
                   <ol>
-                    {/* <a class="dropdown-item" href="#">
-                    Continue
-                  </a> */}
-                    {/* <Link to={`/basicuser/${auth}`} class="dropdown-item">
-                    Edit
-                  </Link> */}
                     <Link to={"/Deduction"}>Deduction Start</Link>
                   </ol>
                 </div>

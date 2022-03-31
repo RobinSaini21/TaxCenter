@@ -278,7 +278,6 @@ const From16Details = () => {
           handleBlur,
           handleSubmit,
           isSubmitting,
-          /* and other goodies */
         }) => (
           <div class="registration-form">
             <form type="submit" onSubmit={handleSubmit}>
@@ -293,7 +292,6 @@ const From16Details = () => {
                   type="pan"
                   placeholder={pannum}
                   name="pan"
-                  // value={values.pan}
                   value={values.pan}
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -309,7 +307,6 @@ const From16Details = () => {
                   type="number"
                   placeholder="2020-21"
                   name="finacialyear"
-                  // value={values.pan}
                   value={values.finacialyear}
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -342,12 +339,10 @@ const From16Details = () => {
                   type="text"
                   placeholder="Tan Of Employer(Check part A of Form16)"
                   name="tanofemployer"
-                  // value={values.pan}
                   value={values.tanofemployer}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-                {/* <span style={{color:"red" }} >{errors.middlename}</span> */}
                 <span style={{ color: "red" }}>{errors.tanofemployer}</span>
               </div>
 
@@ -384,12 +379,10 @@ const From16Details = () => {
                   type="text"
                   placeholder="Type of Organisation"
                   name="typeoforganisation"
-                  // value={values.pan}
                   value={values.typeoforganisation}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-                {/* <span style={{color:"red" }} >{errors.mobilenumber}</span> */}
                 <span style={{ color: "red" }}>
                   {errors.typeoforganisation}
                 </span>
@@ -421,7 +414,6 @@ const From16Details = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-                {/* <span style={{color: "red"}}>{errors.aadharnum}</span> */}
                 <span style={{ color: "red" }}>{errors.salarysec172}</span>
               </div>
               <div class="form-group">
@@ -447,7 +439,6 @@ const From16Details = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-                {/* <span style={{color: "red"}}>{errors.aadharnum}</span> */}
                 <span style={{ color: "red" }}>{errors.grossalary}</span>
               </div>
               <div class="form-group">
@@ -460,7 +451,6 @@ const From16Details = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-                {/* <span style={{color: "red"}}>{errors.aadharnum}</span> */}
                 <span style={{ color: "red" }}>
                   {errors.allowancessection10}
                 </span>
@@ -475,7 +465,6 @@ const From16Details = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-                {/* <span style={{color: "red"}}>{errors.aadharnum}</span> */}
                 <span style={{ color: "red" }}>{errors.balance}</span>
               </div>
               <div class="form-group">

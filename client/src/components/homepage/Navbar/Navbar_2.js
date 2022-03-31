@@ -11,7 +11,7 @@ const Navbar_2 = () => {
   return (
     <>
       <nav
-        className="navbar navbar-expand-lg navbar-light "
+        className="navbar navbar-expand-lg navbar-light"
         style={{ background: "#118A85", height: "123px" }}
       >
         <div className="container">
@@ -45,7 +45,7 @@ const Navbar_2 = () => {
               
                   style={{ color: "white" }}
                 >
-                  ABOUT US
+                  About Us
                 </Link>
               </li>
               <li className="nav-item">
@@ -54,7 +54,7 @@ const Navbar_2 = () => {
                   href="#"
                   style={{ color: "white" }}
                 >
-                  PRICING
+                  Support
                 </a>
               </li>
               <li
@@ -99,7 +99,7 @@ const Navbar_2 = () => {
                   href="#"
                   style={{ color: "white" }}
                 >
-                  HELP
+                  Contact
                 </a>
               </li>
               <li className="nav-item">
