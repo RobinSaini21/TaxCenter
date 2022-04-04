@@ -19,7 +19,7 @@ const Register = () => {
     if (userLoggedIn) {
       Navigate(`/basicuser/${auth}`);
     }
-  });
+  },[userLoggedIn]);
   const intialData = {
     email: "",
     password: "",

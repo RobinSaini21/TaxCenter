@@ -15,7 +15,6 @@ router.post("/userbasicdetails",(req,res)=>{
   
     // console.log(req.body) 
     const { userDb_Id,pan,email,firstname,middlename,lastname,fathername,mobilenum,aadharnum,gender,bday}  = req.body;
-    // console.log(mobilenum)
     basicdata.findOne({email:email},(err,user)=>{
         
         if(user){

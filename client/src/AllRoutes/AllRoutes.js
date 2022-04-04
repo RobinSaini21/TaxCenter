@@ -39,7 +39,6 @@ import UserDetails from "../AdminPage/UserDetails";
 import About from "../components/homepage/Sections/About/About";
 
 function AllRoutes() {
-
   const user = useSelector((store) => store.auth.userLoggedIn);
 
   const ProtectedRoutes = ({ children }) => {
@@ -47,7 +46,6 @@ function AllRoutes() {
   };
 
   let routes = useRoutes([
-    
     {
       path: "/",
       element: <Section_1 />,
@@ -70,8 +68,8 @@ function AllRoutes() {
     },
     {
       path: "/profile",
-      element: <Profile/>
-          },
+      element: <Profile />,
+    },
     {
       path: "/dashboard_Con",
       element: <Dashboard />,
@@ -82,7 +80,7 @@ function AllRoutes() {
     },
     {
       path: "/TaxDeducted",
-element: <TaxDeducted/>
+      element: <TaxDeducted />,
     },
     {
       path: "/ResidentialStatus",
@@ -97,13 +95,13 @@ element: <TaxDeducted/>
       element: <SelectRegime />,
     },
     {
-      path: "/OtherInformations" ,
-      element:<OtherInformations/>
+      path: "/OtherInformations",
+      element: <OtherInformations />,
     },
-{ 
-  path:"/FamilyIncome",
-  element: <FamilyIncome/>
-},
+    {
+      path: "/FamilyIncome",
+      element: <FamilyIncome />,
+    },
     {
       path: "/product_launchboard/:id",
       element: (
@@ -128,9 +126,9 @@ element: <TaxDeducted/>
       path: "/interest",
       element: <Interest />,
     },
-    { 
+    {
       path: "/ContactDetails",
-      element: <ContactDetails/>
+      element: <ContactDetails />,
     },
     {
       path: "/form16/:id",
@@ -156,57 +154,55 @@ element: <TaxDeducted/>
       ],
     },
     {
-     path:"/SalaryIncome",
-     element: <SalaryIncome/> 
+      path: "/SalaryIncome",
+      element: <SalaryIncome />,
     },
     {
       path: "/Deduction",
-      element: <Deduction/>
+      element: <Deduction />,
     },
     {
       path: "/SavingDeduction",
-      element: <SavingDeduction/>
+      element: <SavingDeduction />,
     },
     {
       path: "/IncometaxPaid",
-element: <IncometaxPaid/>
+      element: <IncometaxPaid />,
     },
     {
       path: "/AboutIncome",
-      element: <AboutIncome/>
+      element: <AboutIncome />,
     },
     {
       path: "/BanKDetails",
-      element: <BanKDetails/>
+      element: <BanKDetails />,
     },
     {
       path: "/AddBankDetails",
-      element: <AddBankDetails/>
+      element: <AddBankDetails />,
     },
     {
-      path: '/admin_user_page',
-      element: <Users/>
+      path: "/admin_user_page",
+      element: <Users />,
     },
     {
       path: "/Adminpage",
-element: <AdminPage/>
+      element: <AdminPage />,
     },
     {
       path: "/user",
-      element: <Users/>
+      element: <Users />,
     },
     {
       path: "/UserDetails/:id",
-      element: <UserDetails/>
-    },{
+      element: <UserDetails />,
+    },
+    {
       path: "/About",
-      element: <About/>
-
-    }
+      element: <About />,
+    },
   ]);
   return routes;
 }
-
-
 
 export default AllRoutes;

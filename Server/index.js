@@ -321,9 +321,6 @@ const u_id = "62287c1a447b5e86cac92846"
 
 
 
-app.post("/deduction",(res,req) =>{
-  res.send("you are in user singup")
-})
 
 
 

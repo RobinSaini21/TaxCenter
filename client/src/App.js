@@ -13,11 +13,7 @@ import ClearChoricals from "./components/homepage/ClearChoricals/ClearChoricals"
 import Glossary from "./components/homepage/Sections/Glossary/Glossary";
 
 const App = () => {
-  function sum(a, b) {
-    return a + b;
-  }
-  
-console.log(  sum(1, '2'))
+
   return (
     <>
       {/* {admin ? <SideBar /> :}

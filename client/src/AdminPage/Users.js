@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 function Users() {
   const { apidata } = useSelector((state) => state.api);
-  const [show, setShow] = useState(false);
   const totalemails = apidata.length;
   console.log(apidata);
   const Showdata = () => {

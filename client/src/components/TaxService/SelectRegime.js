@@ -55,7 +55,6 @@ function SelectRegime() {
                         <h4 class="card-title">
                           Which Tax Regime Have You Opted For?{" "}
                         </h4>
-
                         <p class="card-text">
                           Old Regime and New Regime are two different ways to
                           calculation of Tax
@@ -92,7 +91,6 @@ function SelectRegime() {
                         </a>
                       </div>
                     </div>
-
                     <div class="col-md-5">
                       <div
                         id="CarouselTest"
@@ -111,7 +109,6 @@ function SelectRegime() {
                   </div>
                 </div>
               </div>
-
               <br />
               <br />
             </div>

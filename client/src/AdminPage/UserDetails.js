@@ -29,8 +29,6 @@ const UserDetails = () => {
 
   useEffect(() => {
     const res = profile(id);
-
-    console.log(user);
   }, []);
 
   const {
@@ -48,7 +46,6 @@ const UserDetails = () => {
  
   return (
 <div>
-
     {!loading ? <h4>Loading</h4>:
       <UserDetailsPage aadharnum={aadharnum} fathername={fathername}
       firstname = {firstname} middlename={middlename} lastname={lastname}
@@ -56,8 +53,7 @@ const UserDetails = () => {
       email = {email}
       />
     }
-</div>
-    
+</div>  
   );
 };
 
